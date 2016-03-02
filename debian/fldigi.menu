@@ -1,4 +1,0 @@
-?package(fldigi):needs="X11" section="Applications/Amateur Radio"\
-  title="fldigi" description="Digital mode terminal" icon="/usr/share/pixmaps/fldigi-small.xpm" command="/usr/bin/fldigi"
-?package(fldigi):needs="X11" section="Applications/Amateur Radio"\
-  title="flarq" description="Digital mode terminal" icon="/usr/share/pixmaps/flarq-small.xpm" command="/usr/bin/flarq"
