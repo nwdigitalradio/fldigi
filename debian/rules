@@ -1,0 +1,41 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# Override BUILD_{DATE,USER,HOST} for reproducible build
+export BUILD_DATE = $(shell dpkg-parsechangelog -SVersion)
+export BUILD_USER = $(shell dpkg-parsechangelog -SSource)
+export BUILD_HOST = $(shell dpkg-vendor --query Vendor)
+
+%:
+	dh  $@
+
+override_dh_clean:
+	# Remove the pre-generated man pages (often "NOT-BUILT" dummies)
+	rm -f doc/flarq.1 doc/fldigi.1
+	dh_clean
+
+# Collect dpkg-buildflags from versions which support --export=configure
+# (older dpkg-buildflags will whine here, but won't break the build)
+configure_flags := $(shell f=`dpkg-buildflags --export=configure`; if [ $$? = 0 ]; then echo $$f; fi)
+
+# Configure the build for verbose make log output
+override_dh_auto_configure:
+	dh_auto_configure -- $(configure_flags) --disable-silent-rules
+
+# Build the -dbg package with debug symbols
+.PHONY: override_dh_strip override_dh_auto_install override_dh_installdocs
+override_dh_strip:
+	dh_strip --dbg-package=fldigi-dbg
+override_dh_auto_install:
+	dh_auto_install --destdir=debian/fldigi
+override_dh_installdocs:
+	dh_installdocs --link-doc=fldigi
+

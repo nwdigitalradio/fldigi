@@ -1,0 +1,804 @@
+fldigi (3.23.01-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian:
+    - asciidoc-timezone.patch (reproducible builds)
+    - updated upstream homepage URL
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 23 Sep 2015 10:35:05 -0700
+
+fldigi (3.22.13-1) unstable; urgency=medium
+
+  * New upstream release
+  * Debian:
+    - build with libflxmlrpc-dev, not libxmlrpc-core-c3-dev + src/xmlrpcpp
+    - override BUILD_{DATE,USER,HOST} for reproducible build
+    - remove prebuild (often dummy) man pages in dh_clean
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 22 Jul 2015 06:33:05 -0700
+
+fldigi (3.22.10-1) unstable; urgency=high
+
+  * New upstream release
+    - Proper fix for the fl_height startup crash (LP: #1448188)
+      - upstream: dfc430f FTextView styles bug
+  * debian: drop fix-fl_height-startup-crash.patch
+
+ -- Kamal Mostafa <kamal@whence.com>  Mon, 01 Jun 2015 13:57:07 -0700
+
+fldigi (3.22.08-2) unstable; urgency=high
+
+  * debian: fix-fl_height-startup-crash.patch (LP: #1448188)
+
+ -- Kamal Mostafa <kamal@whence.com>  Thu, 28 May 2015 13:22:25 -0700
+
+fldigi (3.22.08-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Tue, 19 May 2015 13:21:51 -0700
+
+fldigi (3.22.04-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Thu, 08 Jan 2015 13:11:39 -0800
+
+fldigi (3.22.01-1) unstable; urgency=medium
+
+  * New upstream release
+  * Debian packaging:
+    - bump Standards-Version to 3.9.6
+
+ -- Kamal Mostafa <kamal@whence.com>  Fri, 24 Oct 2014 10:48:37 -0700
+
+fldigi (3.22.00-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 19 Oct 2014 13:10:39 -0700
+
+fldigi (3.21.83-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/control: updated Vcs-* urls
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 02 Jul 2014 08:40:54 -0700
+
+fldigi (3.21.82-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 04 May 2014 09:52:30 -0700
+
+fldigi (3.21.81-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Tue, 01 Apr 2014 13:55:08 -0700
+
+fldigi (3.21.80-1) unstable; urgency=medium
+
+  * New upstream release
+  * Build-deps: s/libxmlrpc-c3-dev/libxmlrpc-core-c3-dev/ (old transition)
+
+ -- Kamal Mostafa <kamal@whence.com>  Mon, 24 Mar 2014 15:32:44 -0700
+
+fldigi (3.21.79-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+  * Note: Fails to build on kfreebsd again
+
+ -- Kamal Mostafa <kamal@whence.com>  Mon, 17 Mar 2014 14:02:44 -0700
+
+fldigi (3.21.78-1) unstable; urgency=medium
+
+  * New upstream release
+  * Debian packaging: drop patch fixed upstream:
+    - debian/patches/avoid-nitems-fltk-kfreebsd-collision-2.patch
+
+ -- Kamal Mostafa <kamal@whence.com>  Fri, 31 Jan 2014 09:53:30 -0800
+
+fldigi (3.21.77-2) unstable; urgency=low
+
+  * Take #2: Fix kfreebsd FTBFS due to FLTK/FreeBSD 'nitems' macro collision
+    (http://www.fltk.org/str.php?L2984)
+    - debian/patches/avoid-nitems-fltk-kfreebsd-collision-2.patch
+  * Debian packaging:
+    - bump Standards-Version to 3.9.5
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 26 Jan 2014 10:55:33 -0800
+
+fldigi (3.21.77-1) unstable; urgency=low
+
+  * New upstream release
+  * Debian packaging: drop patches fixed upstream:
+    - drop debian/patches/avoid-nitems-fltk-kfreebsd-collision.patch
+
+ -- Kamal Mostafa <kamal@whence.com>  Thu, 31 Oct 2013 15:27:50 -0700
+
+fldigi (3.21.76-1) unstable; urgency=low
+
+  * New upstream release
+  * Fix kfreebsd FTBFS due to FLTK/FreeBSD 'nitems' macro collision
+    (http://www.fltk.org/str.php?L2984)
+    - debian/patches/avoid-nitems-fltk-kfreebsd-collision.patch
+
+ -- Kamal Mostafa <kamal@whence.com>  Tue, 17 Sep 2013 09:57:56 -0700
+
+fldigi (3.21.75-1) unstable; urgency=low
+
+  * New upstream release
+    - dropped support for FLTK 1.1 (requires FLTK 1.3)
+
+ -- Kamal Mostafa <kamal@whence.com>  Tue, 03 Sep 2013 13:33:58 -0700
+
+fldigi (3.21.74-1) unstable; urgency=low
+
+  * New upstream release
+  * Debian packaging: drop patches fixed upstream:
+    - drop 0001-Code-cleanup-cast-to-pointer-warnings.patch
+    - drop 0001-Fix-start-up-segfault-active_modem-NULL.patch
+
+ -- Kamal Mostafa <kamal@whence.com>  Sat, 17 Aug 2013 10:27:06 -0700
+
+fldigi (3.21.73-2) unstable; urgency=low
+
+  * Fix start-up segfault (Closes: 719523)
+    - debian/patches/0001-Fix-start-up-segfault-active_modem-NULL.patch
+
+ -- Kamal Mostafa <kamal@whence.com>  Mon, 12 Aug 2013 14:26:50 -0700
+
+fldigi (3.21.73-1) unstable; urgency=low
+
+  * New upstream release 
+    - Closes: #705431 (RsID checkbox/behavior fix)
+
+ -- Kamal Mostafa <kamal@whence.com>  Thu, 01 Aug 2013 18:22:41 -0700
+
+fldigi (3.21.72-1) unstable; urgency=low
+
+  * New upstream release 
+
+ -- Kamal Mostafa <kamal@whence.com>  Sat, 18 May 2013 08:56:56 -0700
+
+fldigi (3.21.71-1) unstable; urgency=low
+
+  * New upstream release 
+
+ -- Kamal Mostafa <kamal@whence.com>  Mon, 13 May 2013 07:38:12 -0700
+
+fldigi (3.21.70-1) unstable; urgency=low
+
+  * New upstream release 
+  * Debian packaging:
+    - drop only-declare-glob-if-available.patch (now upstream)
+
+ -- Kamal Mostafa <kamal@whence.com>  Mon, 15 Apr 2013 13:16:20 -0700
+
+fldigi (3.21.69-2) unstable; urgency=low
+
+  * Fix FTBFS on non-linux systems:
+    - debian/patches/only-declare-glob-if-available.patch
+
+ -- Kamal Mostafa <kamal@whence.com>  Thu, 11 Apr 2013 13:18:08 -0700
+
+fldigi (3.21.69-1) unstable; urgency=low
+
+  * New upstream release 
+
+ -- Kamal Mostafa <kamal@whence.com>  Thu, 11 Apr 2013 11:03:35 -0700
+
+fldigi (3.21.68-1) unstable; urgency=low
+
+  * New upstream release 
+
+ -- Kamal Mostafa <kamal@whence.com>  Sat, 09 Feb 2013 09:11:52 -0800
+
+fldigi (3.21.67-2) unstable; urgency=low
+
+  * Debian packaging:
+    - debian/fldigi.menu: use absolute path to menu icons
+
+ -- Kamal Mostafa <kamal@whence.com>  Sat, 02 Feb 2013 11:52:30 -0800
+
+fldigi (3.21.67-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Sat, 02 Feb 2013 11:24:30 -0800
+
+fldigi (3.21.66-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Sat, 19 Jan 2013 10:20:54 -0800
+
+fldigi (3.21.65-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Mon, 31 Dec 2012 16:01:54 -0800
+
+fldigi (3.21.64-1) unstable; urgency=low
+
+  * New upstream release
+  * Debian packaging:
+    - bump Standards-Version to 3.9.4
+    - debian/patches/update-config-guess-sub.patch
+
+ -- Kamal Mostafa <kamal@whence.com>  Fri, 28 Dec 2012 11:54:12 -0800
+
+fldigi (3.21.63-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Fri, 07 Dec 2012 11:43:11 -0800
+
+fldigi (3.21.61-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Fri, 16 Nov 2012 11:43:22 -0800
+
+fldigi (3.21.60-1) unstable; urgency=low
+
+  * New upstream release
+    - Restores support for fltk1.1 builds (was broken in 3.21.59)
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 04 Nov 2012 06:57:53 -0800
+
+fldigi (3.21.59-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Fri, 02 Nov 2012 13:14:58 -0700
+
+fldigi (3.21.56-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 10 Oct 2012 06:50:38 -0700
+
+fldigi (3.21.54-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Thu, 04 Oct 2012 17:31:02 -0700
+
+fldigi (3.21.53-1) unstable; urgency=low
+
+  * New upstream release
+    - Fix crash if no OSS mixer support (LP: #1058298)
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 03 Oct 2012 14:48:50 -0700
+
+fldigi (3.21.52-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Fri, 21 Sep 2012 15:56:53 -0700
+
+fldigi (3.21.51-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Thu, 20 Sep 2012 09:18:00 -0700
+
+fldigi (3.21.50-1) unstable; urgency=low
+
+  * New upstream release
+  * Debian packaging
+    - added Vcs-* fields: http://git.debian.org/?p=collab-maint/fldigi.git
+    - minor cleanups
+
+ -- Kamal Mostafa <kamal@whence.com>  Tue, 07 Aug 2012 17:27:07 -0700
+
+fldigi (3.21.49-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 08 Jul 2012 10:56:32 -0700
+
+fldigi (3.21.48-1) unstable; urgency=low
+
+  * New upstream release, includes these changes only:
+    - Tango Icon Library updated public domain version (Closes: #679792)
+    - Retry session ID after session time out (Closes: #679797)
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 01 Jul 2012 09:28:21 -0700
+
+fldigi (3.21.47-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Sat, 30 Jun 2012 09:01:59 -0700
+
+fldigi (3.21.45-2) unstable; urgency=low
+
+  * Debian packaging:
+    - do not fail in debian/rules when buildling on old distros which
+      don't support "dpkg-buildflags --export=configure"
+
+ -- Kamal Mostafa <kamal@whence.com>  Sat, 16 Jun 2012 13:55:14 -0700
+
+fldigi (3.21.45-1) unstable; urgency=low
+
+  * New upstream release
+    - fixes FTBFS on libfltk1.1 platforms
+  * Debian packaging:
+    - enable dpkg-buildflags and verbose make log
+
+ -- Kamal Mostafa <kamal@whence.com>  Sat, 16 Jun 2012 11:31:03 -0700
+
+fldigi (3.21.44-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Fri, 15 Jun 2012 14:03:04 -0700
+
+fldigi (3.21.43-1) unstable; urgency=low
+
+  * New upstream release
+    - fixes macro/TX problem (for libfltk1.1 builds)
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 30 May 2012 14:23:16 -0700
+
+fldigi (3.21.42-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Tue, 08 May 2012 14:16:41 -0700
+
+fldigi (3.21.41-1) unstable; urgency=low
+
+  * New upstream release
+  * Update Build-Depends: libpng-dev (Closes: #662327)
+
+ -- Kamal Mostafa <kamal@whence.com>  Thu, 29 Mar 2012 08:57:16 -0700
+
+fldigi (3.21.39-1) unstable; urgency=low
+
+  * New upstream release
+  * Debian packaging:
+    - bump Standards-Version to 3.9.3
+    - convert debian/copyright to copyright-format 1.0
+
+ -- Kamal Mostafa <kamal@whence.com>  Sat, 03 Mar 2012 10:34:02 -0800
+
+fldigi (3.21.38-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 05 Feb 2012 08:49:00 -0800
+
+fldigi (3.21.36-1) unstable; urgency=low
+
+  * New upstream release
+  * Update Build-Depends: libfltk1.3
+
+ -- Kamal Mostafa <kamal@whence.com>  Tue, 24 Jan 2012 14:57:44 -0800
+
+fldigi (3.21.34-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 28 Dec 2011 10:40:01 -0800
+
+fldigi (3.21.33-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Mon, 12 Dec 2011 18:24:40 -0800
+
+fldigi (3.21.32-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Fri, 09 Dec 2011 15:13:19 -0800
+
+fldigi (3.21.31-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 04 Dec 2011 06:43:19 -0800
+
+fldigi (3.21.28-1) unstable; urgency=low
+
+  * New upstream release
+  * Created fldigi-dbg debug symbols package
+
+ -- Kamal Mostafa <kamal@whence.com>  Tue, 22 Nov 2011 17:56:38 -0800
+
+fldigi (3.21.26-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Tue, 15 Nov 2011 13:26:59 -0800
+
+fldigi (3.21.24-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Sat, 12 Nov 2011 09:25:58 -0800
+
+fldigi (3.21.23-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Thu, 03 Nov 2011 16:23:59 -0400
+
+fldigi (3.21.22-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Fri, 28 Oct 2011 17:48:15 -0700
+
+fldigi (3.21.21-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 26 Oct 2011 06:41:45 -0700
+
+fldigi (3.21.20-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Tue, 25 Oct 2011 08:42:41 -0700
+
+fldigi (3.21.19-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Thu, 20 Oct 2011 08:54:06 -0700
+
+fldigi (3.21.18-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Mon, 17 Oct 2011 09:23:21 -0700
+
+fldigi (3.21.17-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 16 Oct 2011 07:21:13 -0700
+
+fldigi (3.21.16-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 05 Oct 2011 09:31:57 -0700
+
+fldigi (3.21.15-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 28 Sep 2011 08:47:08 -0700
+
+fldigi (3.21.14-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 04 Sep 2011 08:40:53 -0700
+
+fldigi (3.21.13-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 07 Aug 2011 18:48:16 -0700
+
+fldigi (3.21.12-1) unstable; urgency=low
+
+  * New upstream release
+  * Remove dummy man pages (again) and generate them at build time:
+    - debian/patches/remove-dummy-man-pages.patch
+    - add Build-depends: asciidoc, docbook-xsl, xsltproc
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 03 Jul 2011 08:22:14 -0700
+
+fldigi (3.21.11-1) unstable; urgency=low
+
+  * New upstream release
+  * Drop do-not-use-nls-in-mode-info-table.patch (landed upstream)
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 15 Jun 2011 21:24:11 -0700
+
+fldigi (3.21.10-2) unstable; urgency=low
+
+  * Fix failure to start up due to NLS problem (Closes: #628864)
+    - do-not-use-nls-in-mode-info-table.patch
+
+ -- Kamal Mostafa <kamal@whence.com>  Sat, 11 Jun 2011 16:48:20 -0700
+
+fldigi (3.21.10-1) unstable; urgency=low
+
+  * New upstream release
+  * Drop debian/patches which have landed upstream:
+    - drop do-not-use-PATH_MAX-unconditionally.patch
+    - drop do-not-use-SA_NOCLDWAIT-unconditionally.patch
+    - drop remove-dummy-man-pages.patch
+    - drop Build-depends: asciidoc, docbook-xsl, xsltproc
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 29 May 2011 06:52:09 -0700
+
+fldigi (3.21.9-1) unstable; urgency=low
+
+  * New upstream release
+  * Remove dummy man pages (again) and generate them at build time:
+    - debian/patches/remove-dummy-man-pages.patch
+    - add Build-depends: asciidoc, docbook-xsl, xsltproc
+
+ -- Kamal Mostafa <kamal@whence.com>  Thu, 21 Apr 2011 11:36:09 -0700
+
+fldigi (3.21.8-3) unstable; urgency=low
+
+  * do-not-use-SA_NOCLDWAIT-unconditionally.patch: fix FTBFS on GNU/Hurd
+
+ -- Kamal Mostafa <kamal@whence.com>  Sun, 10 Apr 2011 09:45:23 -0700
+
+fldigi (3.21.8-2) unstable; urgency=low
+
+  * do-not-use-PATH_MAX-unconditionally.patch: fix FTBFS on GNU/Hurd
+
+ -- Kamal Mostafa <kamal@whence.com>  Fri, 08 Apr 2011 17:49:10 -0700
+
+fldigi (3.21.8-1) unstable; urgency=low
+
+  * New upstream release
+  * Use pre-generated man pages:
+    - drop debian/patches/remove-dummy-man-pages.patch
+    - drop Build-depends: asciidoc, docbook-xsl, xsltproc
+
+ -- Kamal Mostafa <kamal@whence.com>  Tue, 05 Apr 2011 10:43:29 -0700
+
+fldigi (3.21.7-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kamal Mostafa <kamal@whence.com>  Mon, 21 Mar 2011 18:40:00 -0700
+
+fldigi (3.21.5-1) unstable; urgency=low
+
+  * New upstream release
+  * Packaging: updated debian/watch
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 09 Mar 2011 07:39:10 -0800
+
+fldigi (3.21.4-1) unstable; urgency=low
+
+  * New upstream release
+  * Remove dummy man pages and generate them at build time:
+    - debian/patches/remove-dummy-man-pages.patch
+    - add Build-depends: asciidoc, docbook-xsl, xsltproc
+  * Misc packaging: bump standards, source/format, add myself to uploaders
+
+ -- Kamal Mostafa <kamal@whence.com>  Thu, 03 Mar 2011 12:43:03 -0800
+
+fldigi (3.20.23-1) unstable; urgency=low
+
+  * new upstream
+
+ -- Patrick Ouellette <pouelle@debian.org>  Wed, 11 Aug 2010 17:13:30 -0400
+
+fldigi (3.20.20-1) unstable; urgency=low
+
+  * New upstream
+
+ -- Patrick Ouellette <pouelle@debian.org>  Fri, 23 Jul 2010 09:53:06 -0400
+
+fldigi (3.20.19-1) unstable; urgency=low
+
+  * New upstream release 
+
+ -- Patrick Ouellette <pouelle@debian.org>  Sun, 11 Jul 2010 17:35:22 -0400
+
+fldigi (3.20.17-1) unstable; urgency=low
+
+  * New upstream release (Closes: #583894)
+  * Bump standards to 3.8.4
+  * Update watch file to point to http://www.w1hkj.com/download
+
+ -- Patrick Ouellette <pouelle@debian.org>  Tue, 22 Jun 2010 14:37:26 -0400
+
+fldigi (3.12.5-1) unstable; urgency=low
+
+  [ Stelios Bounanos ]
+  * New upstream release
+  * Bump Standards-Version to 3.8.3 (no changes)
+  * Simplify debian/rules
+   - Add single generic dh rule and build-depend on debhelper >= 7.0.50
+   - Add fldigi.install file for menu icons
+  * Update Build-Depends
+   - remove libjpeg62-dev (no longer a dependency)
+   - remove libxft-dev    (indirect fltk dependency)
+   - remove zlib1g-dev    (indirect fltk dependency)
+   - remove libexpat1-dev (not a dependency)
+   - add libxmlrpc-c3-dev (needed for --with-xmlrpc)
+   - add libpulse-dev     (needed for --with-pulseaudio)
+  * Depend on librpc-xml-perl, which is required by fldigi-shell
+  * Suggest libterm-readline-gnu-perl | libterm-readline-perl-perl,
+    either of which will make fldigi-shell more usable
+  * Add menu entry and small icon for flarq
+  * Update watch file
+    Use BerliOS project page to check for new upstream versions; the
+    relative location of the source tarball is much less likely to
+    change on this site
+  * Update description
+   - Fix typo
+   - Delete trailing whitespace
+  * Add Homepage field
+
+  [ Joop Stakenborg ]
+  * Upload on behalf of Stelios.
+  * Retiring, remove myself from the uploaders field.
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Sat, 14 Nov 2009 19:33:10 +0000
+
+fldigi (3.11.6-1) unstable; urgency=low
+
+  * new upstream
+
+ -- Patrick Ouellette <pouelle@debian.org>  Wed, 15 Jul 2009 08:46:40 -0400
+
+fldigi (3.11.4-1) unstable; urgency=low
+
+  * New upstream release (Closes: #530938)
+  * Upstream fixed FTBFS with gcc-4.4 (Closes: #525712)
+
+ -- Patrick Ouellette <pouelle@debian.org>  Sat, 13 Jun 2009 21:57:44 -0400
+
+fldigi (3.10-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Patrick Ouellette <pouelle@debian.org>  Fri, 20 Feb 2009 22:10:46 -0500
+
+fldigi (3.03-2) unstable; urgency=low
+
+  * Fix FTBFS on with gcc-4.4, warned upstream about this.
+    Closes: #504910.
+  * We now have version 3.03 in Debian. Closes: #496705.
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Tue, 18 Nov 2008 19:29:09 +0100
+
+fldigi (3.03-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Mon, 17 Nov 2008 19:40:43 +0100
+
+fldigi (2.10.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Thu, 08 May 2008 22:30:11 +0200
+
+fldigi (2.10.2-1) unstable; urgency=low
+
+  * New upstream release
+  * Updated debian/watch for upstream site changes. 
+  * Remove build-dependency on libboost-dev, which is only required when
+    building with g++ < 4.x. 
+  * Added recommends for extra-xdg-menus.
+
+ -- Hamish Moffatt <hamish@debian.org>  Sun, 30 Mar 2008 17:01:20 +1100
+
+fldigi (2.10.1-1) unstable; urgency=low
+
+  * New upstream release
+  * added support for pulseaudio
+
+ -- Patrick Ouellette <pouelle@debian.org>  Sat, 22 Mar 2008 13:39:21 -0400
+
+fldigi (2.09-1) unstable; urgency=low
+
+  * New upstream release.
+  * watch files seems to be working correctly here. The bug report uses
+    and old watch file, so it seems to be fixed. Closes: #460003.
+    Also see the 2.08-1 changelog.
+  * Removed .desktop file from the debian dir, now that upstream uses one.
+  * Added Network as a main category to the .desktop file, reported upstream.
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Tue, 12 Feb 2008 19:24:51 +0100
+
+fldigi (2.08-1) unstable; urgency=low
+
+  * New upstream version
+  * Updated watch file for new upstream site layout
+  * Upstream no longer uses libportaudiocpp0 but libportaudio2 instead, so the
+    build-dependency on portaudio19-dev has been relaxed (which in turn helps
+    with Ubuntu guty backports.)
+
+ -- Hamish Moffatt <hamish@debian.org>  Fri, 01 Feb 2008 21:40:38 +1100
+
+fldigi (2.07-3) unstable; urgency=low
+
+  * Link to shared libsamplerate0 rather than using embedded copy. Added
+    build-depends on libsamplerate0-dev. 
+
+ -- Hamish Moffatt <hamish@debian.org>  Sun, 27 Jan 2008 12:26:27 +1100
+
+fldigi (2.07-2) unstable; urgency=low
+
+  * Fix FTBFS with g++-4.2 4.2.2-5 by removing -fno-rtti from the compiler
+    flags; thanks to Stelios Bounanos for the patch. (closes: #459031)
+
+ -- Hamish Moffatt <hamish@debian.org>  Sat, 05 Jan 2008 11:18:56 +1100
+
+fldigi (2.07-1) unstable; urgency=low
+
+  * New upstream release (closes: #457959).
+    * Incorporates patches for compatibility with gcc 4.3.
+  * General cleanup:
+    * call configure during build, rather than depending on included
+      configure output and Makefiles
+    * Use "make install" to install all upstream-provided files
+    * Add png icons in /usr/share/pixmaps
+  * Add debian/watch file
+  * Added desktop file for GNOME/KDE menus
+
+ -- Hamish Moffatt <hamish@debian.org>  Thu, 03 Jan 2008 23:56:10 +1100
+
+fldigi (2.05-3) unstable; urgency=low
+
+  * More FTBFS with GCC 4.3. Another patch by Stelios Bounanos, thanks!
+    Closes: #456056.
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Fri, 14 Dec 2007 22:50:50 +0100
+
+fldigi (2.05-2) unstable; urgency=low
+
+  * Fix FTBFS, patch by Stelios Bounanos, thanks! Closes: #455035.
+  * Fix build with gcc4.3. Closes: #455167.
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Sun, 09 Dec 2007 11:09:48 +0100
+
+fldigi (2.05-1) unstable; urgency=low
+
+  * New upstream release. Closes: #454961.
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Sat, 08 Dec 2007 17:19:38 +0100
+
+fldigi (2.03-1) unstable; urgency=low
+
+  * New upstream release. Closes: #447548. Thanks Sam Morgan, ka5oai
+    for reporting and Hamish Moffatt for helping out.
+  * Requires portaudio19-dev >= 19+svn20071022-2.
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Tue, 30 Oct 2007 20:09:56 +0100
+
+fldigi (2.0-1) unstable; urgency=low
+
+  * New upstream release. Closes: #447165.
+  * Handles nostrip build options. Closes: #436851.
+  * Menu transition.
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Sat, 20 Oct 2007 19:03:22 +0200
+
+fldigi (1.33-1) unstable; urgency=low
+
+  * New upstream release.
+  * Change debian/control so we know it is an x-windows GUI. Thanks
+    Benjamin, KI4CXN.
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Mon, 12 Mar 2007 20:00:20 +0100
+
+fldigi (1.32-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Sat, 10 Mar 2007 17:34:33 +0100
+
+fldigi (1.31-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Mon,  5 Mar 2007 19:34:39 +0100
+
+fldigi (1.30-1) unstable; urgency=low
+
+  * Initial release (Closes: #412244).
+
+ -- Joop Stakenborg <pa3aba@debian.org>  Fri,  2 Mar 2007 19:16:52 +0100
+

@@ -1,0 +1,28 @@
+Source: fldigi
+Section: hamradio
+Priority: extra
+Maintainer: Debian Hamradio Maintainers <debian-hams@lists.debian.org>
+Uploaders: Kamal Mostafa <kamal@whence.com>, Jaime Robles <jaime@debian.org>, Patrick Ouellette <pouelle@debian.org>, Hamish Moffatt <hamish@debian.org>
+Build-Depends: debhelper (>= 7.0.50), libflxmlrpc-dev, libfltk1.3-dev, libhamlib-dev, libpng-dev, portaudio19-dev, libpulse-dev, libsndfile1-dev, libsamplerate0-dev, asciidoc, docbook-xsl, xsltproc
+Standards-Version: 3.9.6
+Homepage: http://www.w1hkj.com/
+Vcs-Git: git://anonscm.debian.org/collab-maint/fldigi.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/fldigi.git
+
+Package: fldigi
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: extra-xdg-menus
+Description: digital modem program for hamradio operators
+ Fldigi is a modem program which supports most of the digital modes used
+ by hamradio operators today. You can also use the program for
+ calibrating your sound card to WWV or doing a frequency measurement test.
+ The program also comes with a CW decoder. Fldigi is written with the
+ help of the Fast Light Toolkit X GUI.
+
+Package: fldigi-dbg
+Architecture: any
+Section: debug
+Depends: fldigi (= ${binary:Version}), ${misc:Depends}
+Description: debugging symbols for fldigi
+ This package contains the debugging symbols for fldigi.

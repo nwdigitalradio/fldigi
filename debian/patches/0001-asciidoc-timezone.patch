@@ -1,0 +1,36 @@
+From 594dd3f5de0f53461b9f75e6b9e640a9690e7327 Mon Sep 17 00:00:00 2001
+From: Kamal Mostafa <kamal@whence.com>
+Date: Sun, 30 Aug 2015 18:04:56 -0700
+Subject: asciidoc timezone
+
+ * Run asciidoc with TZ=0 to make the footer datestamp independent of
+   the build machine's timezone (for reproducible builds).
+---
+ doc/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 8a6feb3..1818150 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -36,7 +36,7 @@ endif
+ 
+ %.1: $$@.txt $(ASCIIDOC_CONF)
+ if HAVE_ASCIIDOC
+-	$(call silent,ADOC  ,$@)$(A2X) $(A2X_ARGS) $<
++	$(call silent,ADOC  ,$@)TZ=0 $(A2X) $(A2X_ARGS) $<
+ else
+ 	$(call silent,ADOC  ,$@)echo '.TH "NOT-BUILT" "1" "" "" ""' > $@
+ endif
+@@ -62,7 +62,7 @@ ASCIIDOC_ARGS = --unsafe -a toc -a data-uri -a badges -a icons -a iconsdir=$(ASC
+ 	    echo "  ***   make ASCIIDOC_ICONS_DIR=/path/to/icons" >&2; \
+ 	    false; \
+ 	fi
+-	$(call silent,ADOC  ,$@)$(ASCIIDOC) $(ASCIIDOC_ARGS) --out-file $@ $<
++	$(call silent,ADOC  ,$@)TZ=0 $(ASCIIDOC) $(ASCIIDOC_ARGS) --out-file $@ $<
+ 
+ all-local: $(ASCIIDOC_MAN_DIST) $(ASCIIDOC_HTML)
+ 
+-- 
+1.9.1
+
