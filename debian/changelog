@@ -1,3 +1,16 @@
+fldigi (3.23.08-1) unstable; urgency=medium
+
+  * New upstream release
+    - (Closes: #811801) GCC 6 build fix
+  * debian:
+    - drop asciidoc-timezone.patch (fixed upstream)
+    - stop shipping fldigi.menu (W: command-in-menu-file-and-desktop-file)
+    - update debian/watch
+    - drop explicit -dbg package build
+    - bump Standards-Version to 3.9.7
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 02 Mar 2016 10:30:02 -0800
+
 fldigi (3.23.01-1) unstable; urgency=medium
 
   * New upstream release
