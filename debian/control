@@ -19,10 +19,3 @@ Description: digital modem program for hamradio operators
  calibrating your sound card to WWV or doing a frequency measurement test.
  The program also comes with a CW decoder. Fldigi is written with the
  help of the Fast Light Toolkit X GUI.
-
-Package: fldigi-dbg
-Architecture: any
-Section: debug
-Depends: fldigi (= ${binary:Version}), ${misc:Depends}
-Description: debugging symbols for fldigi
- This package contains the debugging symbols for fldigi.

@@ -30,10 +30,7 @@ configure_flags := $(shell f=`dpkg-buildflags --export=configure`; if [ $$? = 0 
 override_dh_auto_configure:
 	dh_auto_configure -- $(configure_flags) --disable-silent-rules
 
-# Build the -dbg package with debug symbols
-.PHONY: override_dh_strip override_dh_auto_install override_dh_installdocs
-override_dh_strip:
-	dh_strip --dbg-package=fldigi-dbg
+.PHONY: override_dh_auto_install override_dh_installdocs
 override_dh_auto_install:
 	dh_auto_install --destdir=debian/fldigi
 override_dh_installdocs:
