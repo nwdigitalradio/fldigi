@@ -1,2 +1,2 @@
 version=3
-http://www.w1hkj.com/downloads/fldigi/fldigi-(.+).tar.gz
+http://sf.net/fldigi/fldigi-(\d\S*)\.(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))
