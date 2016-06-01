@@ -1,3 +1,13 @@
+fldigi (3.23.10-1) unstable; urgency=medium
+
+  * New upstream release
+    - Sanitize tile_x, tile_y startup values (LP: #1478358)
+  * debian:
+    - add .png icons for Gnome Software app (LP: #1575356)
+    - bump Standards-Version to 3.9.8
+
+ -- Kamal Mostafa <kamal@whence.com>  Wed, 01 Jun 2016 08:36:15 -0700
+
 fldigi (3.23.08-1) unstable; urgency=medium
 
   * New upstream release

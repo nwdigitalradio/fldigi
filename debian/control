@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Debian Hamradio Maintainers <debian-hams@lists.debian.org>
 Uploaders: Kamal Mostafa <kamal@whence.com>, Jaime Robles <jaime@debian.org>, Patrick Ouellette <pouelle@debian.org>, Hamish Moffatt <hamish@debian.org>
 Build-Depends: debhelper (>= 7.0.50), libflxmlrpc-dev, libfltk1.3-dev, libhamlib-dev, libpng-dev, portaudio19-dev, libpulse-dev, libsndfile1-dev, libsamplerate0-dev, asciidoc, docbook-xsl, xsltproc
-Standards-Version: 3.9.7
+Standards-Version: 3.9.8
 Homepage: http://www.w1hkj.com/
 Vcs-Git: git://anonscm.debian.org/collab-maint/fldigi.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/fldigi.git
