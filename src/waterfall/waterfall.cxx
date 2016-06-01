@@ -71,6 +71,7 @@
 #include "flslider2.h"
 #include "debug.h"
 #include "rigsupport.h"
+#include "xmlrpc.h"
 
 using namespace std;
 
@@ -304,7 +305,7 @@ void WFdisp::makeMarker()
 
 	makeMarker_(marker_width, &RGBmarker, carrierfreq, clrMin, clrM, clrMax);
 
-	if (unlikely(active_modem->freqlocked())) {
+	if (unlikely(active_modem->freqlocked() || mode == MODE_FSQ)) {
 		int txfreq = static_cast<int>(active_modem->get_txfreq());
 		adjust_color_inv(RGBmarker.R, RGBmarker.G, RGBmarker.B, FL_BLACK, FL_RED);
 		makeMarker_( static_cast<int>(bandwidth / 2.0 + 1),
@@ -1245,6 +1246,7 @@ void xmtrcv_cb(Fl_Widget *w, void *vi)
 		}
 		else {
 			TransmitText->clear();
+			reset_xmlchars();
 			if (arq_text_available)
 				AbortARQ();
 			if (progStatus.timer)

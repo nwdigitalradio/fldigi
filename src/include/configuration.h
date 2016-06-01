@@ -76,6 +76,9 @@
     ELEM_(bool, confirmExit, "CONFIRMEXIT",                                             \
           "Ensure user wants to leave flgidi",                                          \
           true)                                                                         \
+        ELEM_(bool, show_tx_timer, "SHOW_TX_TIMER",                                     \
+          "Show tx timer on menu bar",                                                  \
+          true)                                                                         \
         ELEM_(bool, SaveConfig, "SAVECONFIG",                                           \
               "Save current configuration on exit",                                     \
               true)                                                                     \
@@ -697,6 +700,9 @@
         ELEM_(Fl_Color, fsq_undirected_color, "FSQUNDIRECTEDCOLOR",                     \
               "Color for FSQ undirected text",                                          \
               FL_DARK_GREEN)                                                            \
+        ELEM_(bool, add_fsq_msg_dt, "ADDFSQMSGDT",                                      \
+              "Add date-time stamp to each # type received message",                    \
+              1)                                                                        \
         /* IFKP */                                                                      \
         ELEM_(int, ifkp_baud, "IFKPBAUD",                                               \
               "1, 2, 3",                                                                \
@@ -865,6 +871,9 @@
               true)                                                                     \
         ELEM_(bool, open_flmsg, "OPEN_FLMSG",                                           \
               "Open flmsg with the autoextract file",                                   \
+              true)                                                                     \
+        ELEM_(bool, flmsg_transfer_direct, "FLMSG_TRANSFER_DIRECT",                     \
+              "Transfer incoming flmsg autosend file to open flmsg application",        \
               true)                                                                     \
         ELEM_(bool, open_flmsg_print, "OPEN_FLMSG_PRINT",                               \
               "Open flmsg with the autoextract file\nprint to browser\nclose flmsg",    \
@@ -1605,6 +1614,9 @@
         ELEM_(Fl_Color, RxIDColor, "RXIDCOLOR",                                         \
               "UI RxID select color",                                                   \
               FL_GREEN)                                                                 \
+        ELEM_(Fl_Color, RxIDwideColor, "RXIDWIDECOLOR",                                 \
+              "UI RxID WIDE search select color",                                       \
+              FL_DARK_RED)                                                              \
         ELEM_(Fl_Color, TxIDColor, "TXIDCOLOR",                                         \
               "UI TxID select color",                                                   \
               FL_GREEN)                                                                 \
@@ -1668,11 +1680,26 @@
               "Number of seconds to wait before transmit resume",                       \
               3)                                                                        \
         ELEM_(int, kpsql_attenuation, "KPSQL_ATTENUATION",                              \
-        "KPSQL Attenuation in 1/n of 1:1 Gain",                                         \
-        2)                                                                              \
+              "KPSQL Attenuation in 1/n of 1:1 Gain",                                   \
+              2)                                                                        \
         ELEM_(bool, csma_enabled, "CSMA_ENABLED",                                       \
               "Use CSMA on heavy traffic channels (AX25)",                              \
               true)                                                                     \
+	    ELEM_(bool, kiss_tcp_io, "KISS_TCP_IO",                                         \
+	          "Connect kiss io via TCP/IP vise UDP/IP",                                 \
+	          false)                                                                    \
+        ELEM_(bool, kiss_tcp_listen, "KISS_TCP_LISTEN",                                 \
+              "Listen for TCP connection (Server mode)",                                \
+              false)                                                                    \
+        ELEM_(bool, kpsql_enabled, "KPSQL_ENABLED",                                     \
+              "Enable/Disable KPSQL",                                                   \
+              false)                                                                    \
+        ELEM_(bool, tcp_udp_auto_connect, "TCP_UDP_AUTO_CONNECT",                       \
+              "Make Connect Attemp on Fldigi Start",                                    \
+              false)                                                                    \
+        ELEM_(bool, kiss_io_modem_change_inhibit, "KISS_IO_MODEM_CHANGE_INHIBIT",       \
+              "Enable/Disable Modem Change to a non 8 bit when KISS IO is in use",      \
+              false)                                                                    \
         ELEM_(std::string, flrig_ip_address, "FLRIG_IP_ADDRESS",                        \
               "IP Address of flrig server",                                             \
               DEFAULT_FLRIG_IP_ADDRESS)                                                 \
@@ -1882,9 +1909,15 @@
         ELEM_(bool, us_units, "US_UNITS",                                               \
               "Use US units of distance for QRB",                                       \
               false)                                                                    \
-        ELEM_(int, MacroEditFontsize, "MACROEDITFONTSIZE",                             \
+        ELEM_(int, MacroEditFontsize, "MACROEDITFONTSIZE",                              \
               "RX text font size",                                                      \
-              16)
+              16)                                                                       \
+        ELEM_(bool, psk8DCDShortFlag, "PSK8DCDSHORTFLAG",                               \
+              "Flag: Change DCD pre-ample length",                                      \
+              false)                                                                    \
+        ELEM_(bool, dockable_macros, "DOCKABLE_MACROS",                                 \
+              "Allow dockable macros",                                                  \
+              true)
 
 
 // declare the struct

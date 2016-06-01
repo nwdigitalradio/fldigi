@@ -58,9 +58,9 @@ string windowTitle;
 
 vector<qrg_mode_t> freqlist;
 
-const unsigned char nfields = 4;
+const unsigned char nfields = 5;//4;
 int fwidths[nfields];
-enum { max_rfcarrier, max_rmode, max_mode };
+enum { max_rfcarrier, max_rmode, max_mode, max_carrier };
 
 #if !USE_HAMLIB
 
@@ -137,16 +137,19 @@ string modeString(rmode_t m)
 void initOptionMenus()
 {
 	qso_opMODE->clear();
+
 	list<MODE>::iterator MD;
 	list<MODE> *pMD = 0;
+
 	if (lmodes.empty() == false)
 		pMD = &lmodes;
 	else if (lmodeCMD.empty() == false)
 		pMD = &lmodeCMD;
-
+printf("initOptionMenus()\n");
 	if (pMD) {
 		MD = pMD->begin();
 		while (MD != pMD->end()) {
+printf("adding mode: %s\n", (*MD).SYMBOL.c_str());
 			qso_opMODE->add( (*MD).SYMBOL.c_str());
 			MD++;
 		}
@@ -168,6 +171,7 @@ void initOptionMenus()
 	if (pBW) {
 		bw = pBW->begin();
 		while (bw != pBW->end()) {
+printf("adding BW: %s\n", (*bw).SYMBOL.c_str());
 			qso_opBW->add( (*bw).SYMBOL.c_str());
 			bw++;
 		}
@@ -194,13 +198,14 @@ void updateSelect()
 	}
 }
 
-size_t updateList(long rf, int freq, string rmd, trx_mode md)
+size_t updateList(long rf, int freq, string rmd, trx_mode md, string usage = "")
 {
 	qrg_mode_t m;
 	m.rmode = rmd;
 	m.mode = md;
 	m.rfcarrier = rf;
 	m.carrier = freq;
+	m.usage = usage;
 
 	freqlist.push_back(m);
 	sort(freqlist.begin(), freqlist.end());
@@ -264,7 +269,7 @@ void saveFreqList()
 		LOG_ERROR("Could not open %s", (HomeDir + "frequencies2.txt").c_str());
 		return;
 	}
-	freqfile << "# rfcarrier rig_mode carrier mode\n";
+	freqfile << "# rfcarrier rig_mode carrier mode usage\n";
 
 	copy(	freqlist.begin(),
 			freqlist.end(),
@@ -281,11 +286,14 @@ void build_frequencies2_list()
 	// calculate the column widths
 	memset(fwidths, 0, sizeof(fwidths));
 	// these need to be a little wider than fl_width thinks
-	fwidths[max_rmode] = fwidths[max_mode] = 10;
+	fwidths[max_rmode] = fwidths[max_mode] = 
+	fwidths[max_carrier] = fwidths[max_rfcarrier]= 15;
 
 	fwidths[max_rfcarrier] += (int)ceil(fl_width("999999.999"));
 
-	fwidths[max_rmode] += (int)ceil(fl_width("XXXX"));
+	fwidths[max_rmode] += (int)ceil(fl_width("XXXXXX"));
+
+	fwidths[max_carrier] += (int)ceil(fl_width("8888"));
 
 	// find mode with longest shortname
 	size_t s, smax = 0, mmax = 0;
@@ -498,6 +506,15 @@ void qso_addFreq()
 	}
 }
 
+void qso_updateEntry(int i, std::string usage)
+{
+	int v = i - 1;
+	int sz = (int)freqlist.size();
+	if ((v >= 0) && (v < sz)) {
+		freqlist[v].usage = usage;
+	}
+}
+
 void setTitle()
 {
 	if (windowTitle.empty()) return;
@@ -522,7 +539,9 @@ bool init_NoRig_RigDialog()
 	qso_opBW->deactivate();
 	qso_opMODE->clear();
 
+printf("init_NoRig_RigDialog()\n");
 	for (size_t i = 0; i < sizeof(modes)/sizeof(modes[0]); i++) {
+printf("adding %s\n", modes[i].name);
 		qso_opMODE->add(modes[i].name);
 	}
 // list of LSB type modes that various xcvrs report via flrig

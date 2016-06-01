@@ -279,6 +279,7 @@ double modem::get_txfreq(void) const
 		return 0;
 	else if (mailserver && progdefaults.PSKmailSweetSpot)
 		return progdefaults.PSKsweetspot;
+	if (get_mode() == MODE_FSQ) return 1500;
 	return tx_frequency;
 }
 
@@ -286,6 +287,7 @@ double modem::get_txfreq_woffset(void) const
 {
 	if (mailserver && progdefaults.PSKmailSweetSpot)
 		return (progdefaults.PSKsweetspot - progdefaults.TxOffset);
+	if (get_mode() == MODE_FSQ) return (1500 - progdefaults.TxOffset);
 	return (tx_frequency - progdefaults.TxOffset);
 }
 
@@ -311,7 +313,7 @@ void modem::set_metric(double m)
 void modem::display_metric(double m)
 {
 	set_metric(m);
-	if(!progStatus.pwrsqlonoff)
+	if(!progStatus.kpsql_enabled)
 	::global_display_metric(m);
 }
 
@@ -382,7 +384,7 @@ double modem::sigmaN (double es_ovr_n0)
 	case MODE_PSK125: case MODE_PSK250: case MODE_PSK500:
 	case MODE_QPSK31: case MODE_QPSK63: case MODE_QPSK125: case MODE_QPSK250:
 	case MODE_PSK125R: case MODE_PSK250R: case MODE_PSK500R:
-		mode_factor *= 16;
+		mode_factor = 400;
 		break;
 	case MODE_THROB1: case MODE_THROB2: case MODE_THROB4:
 	case MODE_THROBX1: case MODE_THROBX2: case MODE_THROBX4:
@@ -431,13 +433,20 @@ double modem::gauss(double sigma) {
 // simulating the noise that is added to the signal.
 // return signal + noise, limiting value to +/- 1.0
 
+//static double mag;
+
 void modem::add_noise(double *buffer, int len)
 {
-	double sigma = sigmaN(progdefaults.s2n);
+	double sigma = sigmaN(noiseDB->value());
 	double sn = 0;
 	for (int n = 0; n < len; n++) {
-		sn = (buffer[n] + gauss(sigma)) / (1.0 + 3.0 * sigma);
-		buffer[n] = clamp(sn, -1.0, 1.0);
+//		mag = fabs(buffer[n]);
+//		if (btn_imd_on->value())
+//			buffer[n] *= (1.0 - mag *xmtimd->value())/(1.0 - xmtimd->value());
+		if (btnNoiseOn->value()) {
+			sn = (buffer[n] + gauss(sigma)) / (1.0 + 3.0 * sigma);
+			buffer[n] = clamp(sn, -1.0, 1.0);
+		}
 	}
 }
 
@@ -465,11 +474,11 @@ void modem::ModulateXmtr(double *buffer, int len)
 		return;
 	}
 
+	if (withnoise) add_noise(buffer, len);
+
 	if (progdefaults.viewXmtSignal &&
 		!(PERFORM_CPS_TEST || active_modem->XMLRPC_CPS_TEST))
 		trx_xmit_wfall_queue(samplerate, buffer, (size_t)len);
-
-	if (withnoise && progdefaults.noise) add_noise(buffer, len);
 
 	double mult = pow(10, progdefaults.txlevel / 20.0);
 	if (mult > 0.99) mult = 0.99;
@@ -504,11 +513,11 @@ void modem::ModulateStereo(double *left, double *right, int len, bool sample_fla
 	if(sample_flag)
 		tx_sample_count += len;
 
+	if (withnoise && progdefaults.noise) add_noise(left, len);
+
 	if (progdefaults.viewXmtSignal &&
 		!(PERFORM_CPS_TEST || active_modem->XMLRPC_CPS_TEST))
 		trx_xmit_wfall_queue(samplerate, left, (size_t)len);
-
-	if (withnoise && progdefaults.noise) add_noise(left, len);
 
 	double mult = pow(10, progdefaults.txlevel / 20.0);
 	if (mult > 0.99) mult = 0.99;
@@ -546,11 +555,11 @@ void modem::ModulateVideoStereo(double *left, double *right, int len, bool sampl
 	if(sample_flag)
 		tx_sample_count += len;
 
+	if (withnoise && progdefaults.noise) add_noise(left, len);
+
 	if (progdefaults.viewXmtSignal &&
 		!(PERFORM_CPS_TEST || active_modem->XMLRPC_CPS_TEST))
 		trx_xmit_wfall_queue(samplerate, left, (size_t)len);
-
-	if (withnoise && progdefaults.noise) add_noise(left, len);
 
 	double mult = 0.99 * pow(10, progdefaults.txlevel / 20.0);
 
@@ -588,6 +597,8 @@ void modem::ModulateVideo(double *buffer, int len)
 			ModulateVideoStereo( buffer, PTTchannel, len, false);
 		return;
 	}
+
+	if (withnoise && progdefaults.noise) add_noise(buffer, len);
 
 	if (progdefaults.viewXmtSignal &&
 		!(PERFORM_CPS_TEST || active_modem->XMLRPC_CPS_TEST))
@@ -709,7 +720,7 @@ void modem::cwid_send_symbol(int bits)
 		sample = 0,
 		currsym = bits & 1;
 
-	freq = tx_frequency - progdefaults.TxOffset;
+	freq = get_txfreq() - progdefaults.TxOffset;
 
 	if ((currsym == 1) && (cwid_lastsym == 0))
 		cwid_phaseacc = 0.0;
@@ -834,7 +845,7 @@ void modem::wfid_make_tones(int numchars)
 {
 	double f, flo, fhi;
 	int vwidth = (numchars*NUMCOLS + (numchars-1)*CHARSPACE - 1);
-	f = tx_frequency + TONESPACING * vwidth/2.0;
+	f = get_txfreq() + TONESPACING * vwidth/2.0;
 	fhi = f + TONESPACING;
 	flo = fhi - (vwidth + 2) * TONESPACING;
 	for (int i = 1; i <= NUMCOLS * numchars; i++) {

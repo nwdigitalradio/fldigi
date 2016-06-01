@@ -160,6 +160,9 @@ extern void				write_fsqDebug(std::string s, int style = FTextBase::RECV);
 extern void				fsq_que_clear();
 extern void				write_fsq_que(std::string s);
 
+extern void start_tx_timer();
+extern void stop_tx_timer();
+
 extern void fsq_disableshift();
 extern void fsq_enableshift();
 extern void fsq_updateRxPic(unsigned char data, int pos);
@@ -239,6 +242,7 @@ extern void			cbSELCAL(Fl_Widget *w, void *d);
 extern void			cbFSQCALL(Fl_Widget *w, void *d);
 
 extern void			ifkp_showTxViewer(char C = 'T');
+extern void			ifkp_load_scaled_image(std::string);
 extern Fl_Double_Window	*ifkppicRxWin;
 extern Fl_Double_Window	*ifkppicTxWin;
 
@@ -268,6 +272,7 @@ extern Fl_Value_Slider2	*mvsquelch;
 extern Fl_Light_Button		*btnAFC;
 extern Fl_Light_Button		*btnSQL;
 extern Fl_Light_Button		*btnPSQL;
+extern Fl_Box				*rsid_status;
 extern Fl_Light_Button		*btnRSID;
 extern Fl_Light_Button		*btnTxRSID;
 extern Fl_Light_Button		*btnTune;
@@ -550,5 +555,6 @@ extern void			thor_update_avatar(unsigned char data, int pos);
 extern int			thor_get_avatar_pixel(int pos, int color);
 extern void			cb_thor_send_avatar( Fl_Widget *w, void *);
 extern picture		*thor_avatar;
+extern void			thor_load_scaled_image(std::string fname);
 
 #endif

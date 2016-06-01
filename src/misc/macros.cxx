@@ -1892,6 +1892,74 @@ static void pTxQueIMAGE(std::string &s, size_t &i, size_t endbracket)
 	s.replace(i, endbracket - i + 1, "^!");
 }
 
+static void doINSERTIMAGE(std::string s)
+{
+	if (s.length() > 0) {
+
+		bool Greyscale = false;
+		size_t p = string::npos;
+		string fname = s.substr(7);
+		p = fname.find(">");
+		fname.erase(p);
+		p = fname.find("G,");
+		if (p == string::npos) p = fname.find("g,");
+		if (p != string::npos) {
+			Greyscale = true;
+			fname.erase(p,2);
+		}
+		while (fname[0] == ' ') fname.erase(0,1);
+		if (s.empty()) return;
+
+		trx_mode md = active_modem->get_mode();
+		if ((md == MODE_MFSK16 || md == MODE_MFSK32 ||
+			 md == MODE_MFSK64 || md == MODE_MFSK128) &&
+			active_modem->get_cap() & modem::CAP_IMG) {
+				Greyscale ?
+					active_modem->send_Grey_image(fname) :
+					active_modem->send_color_image(fname);
+		}
+		else if (md == MODE_IFKP) {
+			ifkp_load_scaled_image(fname);
+		}
+		else if (md >= MODE_THOR_FIRST && md <= MODE_THOR_LAST)
+			thor_load_scaled_image(fname);
+	}
+	que_ok = true;
+}
+
+void TxQueINSERTIMAGE(std::string s)
+{
+	trx_mode active_mode = active_modem->get_mode();
+	if (! (active_mode == MODE_MFSK16 ||
+		   active_mode == MODE_MFSK32 ||
+		   active_mode == MODE_MFSK64 ||
+		   active_mode == MODE_MFSK128 ||
+		   active_mode == MODE_IFKP ||
+		   (active_mode >= MODE_THOR_FIRST && active_mode <= MODE_THOR_LAST) ) &&
+		   active_modem->get_cap() & modem::CAP_IMG)
+		return;
+
+	string scmd = "<IMAGE:>";
+	scmd.insert(7,s);
+
+	struct CMDS cmd = { scmd, doINSERTIMAGE };
+	push_txcmd(cmd);
+
+	string itext = s;
+	size_t p = itext.rfind("\\");
+	if (p == string::npos) p = itext.rfind("/");
+	if (p != string::npos) itext.erase(0, p+1);
+	p = itext.rfind(".");
+	if (p != string::npos) itext.erase(p);
+	itext.insert(0, "\nImage: ");
+	itext.append(" ^!");
+
+	if (active_mode == MODE_IFKP)
+		ifkp_tx_text->add_text(itext);
+	else
+		TransmitText->add_text(itext);
+}
+
 #include <float.h>
 #include "re.h"
 
@@ -2797,6 +2865,7 @@ void set_macro_env(void)
 
 		FLDIGI_MODEM,
 		FLDIGI_MODEM_LONG_NAME,
+		FLDIGI_MODEM_ADIF_NAME,
 		FLDIGI_DIAL_FREQUENCY,
 		FLDIGI_AUDIO_FREQUENCY,
 		FLDIGI_FREQUENCY,
@@ -2883,6 +2952,8 @@ void set_macro_env(void)
 
 		{ "FLDIGI_MODEM", mode_info[active_modem->get_mode()].sname },
 		{ "FLDIGI_MODEM_LONG_NAME", mode_info[active_modem->get_mode()].name },
+		{ "FLDIGI_MODEM_ADIF_NAME", mode_info[active_modem->get_mode()].adif_name },
+
 		{ "FLDIGI_DIAL_FREQUENCY", "" },
 		{ "FLDIGI_AUDIO_FREQUENCY", "" },
 		{ "FLDIGI_FREQUENCY", "" },
@@ -3608,10 +3679,9 @@ void MACROTEXT::openMacroFile()
 								 _("Open macro file"),
 								 _("Fldigi macro definition file\t*.{mdf}"),
 								 deffilename.c_str());
-	if (p) {
+	if (p && *p) {
 		loadMacros(p);
 		progStatus.LastMacroFile = p;
-//	}
 		showMacroSet();
 		if (progdefaults.DisplayMacroFilename) {
 			string Macroset;
@@ -3650,12 +3720,15 @@ void MACROTEXT::saveMacroFile()
 								 _("Save macro file"),
 								 _("Fldigi macro definition file\t*.{mdf}"),
 								 deffilename.c_str());
-	if (p) {
-		string sp = p;
-		if (sp.rfind(".mdf") == string::npos) sp.append(".mdf");
-		saveMacros(sp.c_str());
-		progStatus.LastMacroFile = sp;
-	}
+	if (!p) return;
+	if (!*p) return;
+
+	string sp = p;
+	if (sp.empty()) return;
+	if (sp.rfind(".mdf") == string::npos) sp.append(".mdf");
+	saveMacros(sp.c_str());
+	progStatus.LastMacroFile = sp;
+
 }
 
 void MACROTEXT::savecurrentMACROS(std::string &s, size_t &i, size_t endbracket)

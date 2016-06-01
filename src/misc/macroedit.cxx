@@ -320,9 +320,10 @@ void update_macro_button(int iMacro, const char *text, const char *name)
 		btnMacro[iMacro % NUMMACKEYS]->label( macros.name[iMacro].c_str() );
 		btnMacro[iMacro % NUMMACKEYS]->redraw_label();
 	}
-	btnDockMacro[iMacro]->label(macros.name[iMacro].c_str());
-	btnDockMacro[iMacro]->redraw_label();
-
+	if (progdefaults.dockable_macros) {
+		btnDockMacro[iMacro]->label(macros.name[iMacro].c_str());
+		btnDockMacro[iMacro]->redraw_label();
+	}
 	macros.changed = true;
 }
 
@@ -343,7 +344,7 @@ void cbInsertMacro(Fl_Widget *, void *)
 			_("Text file to insert"),
 			filters.c_str(),
 			HomeDir.c_str());
-		if (p) {
+		if (p && *p) {
 			text.insert(6, p);
 		} else
 			text = "";
@@ -353,7 +354,7 @@ void cbInsertMacro(Fl_Widget *, void *)
 			_("Test text file"),
 			filters.c_str(),
 			HomeDir.c_str());
-		if (p) {
+		if (p && *p) {
 			text.insert(10, p);
 		} else
 			text = "";
@@ -363,7 +364,7 @@ void cbInsertMacro(Fl_Widget *, void *)
 			_("MFSK image file"),
 			filters.c_str(),
 			PicsDir.c_str());
-		if (p) {
+		if (p && *p) {
 			text.insert(7, p);
 		} else
 			text = "";
@@ -373,7 +374,7 @@ void cbInsertMacro(Fl_Widget *, void *)
 			_("Change to Macro file"),
 			filters.c_str(),
 			MacrosDir.c_str());
-		if (p) {
+		if (p && *p) {
 			text.insert(8, p);
 		} else
 			text = "";
@@ -385,7 +386,7 @@ void cbInsertMacro(Fl_Widget *, void *)
 			_("Executable file to insert"),
 			filters.c_str(),
 			HomeDir.c_str());
-		if (p) {
+		if (p && *p) {
 			string exefile = p;
 			exefile.append("</EXEC>");
 			text.insert(6, exefile);

@@ -89,26 +89,31 @@ bin_PROGRAMS = $(am__EXEEXT_1) $(am__EXEEXT_2)
 @WIN32_TRUE@am__append_3 = -fno-var-tracking
 @WIN32_TRUE@am__append_4 = -fno-var-tracking
 @ENABLE_FLXMLRPC_FALSE@am__append_5 = $(XMLRPCPP_SRC)
-@ENABLE_FLXMLRPC_TRUE@am__append_6 = @FLXMLRPC_CFLAGS@
+@ENABLE_FLXMLRPC_FALSE@am__append_6 = $(XMLRPCPP_SRC)
 @ENABLE_FLXMLRPC_TRUE@am__append_7 = @FLXMLRPC_CFLAGS@
 @ENABLE_FLXMLRPC_TRUE@am__append_8 = @FLXMLRPC_CFLAGS@
-@ENABLE_FLXMLRPC_TRUE@am__append_9 = @FLXMLRPC_LIBS@
-@ENABLE_HAMLIB_TRUE@am__append_10 = $(HAMLIB_SRC)
-@NEED_HAMLIB_LOCATOR_TRUE@am__append_11 = $(LOCATOR_SRC)
-@ENABLE_BENCHMARK_TRUE@am__append_12 = $(BENCHMARK_SRC)
-@COMPAT_REGEX_TRUE@am__append_13 = $(REGEX_SRC)
-@COMPAT_REGEX_TRUE@am__append_14 = $(REGEX_SRC)
-@COMPAT_STACK_TRUE@am__append_15 = $(STACK_SRC)
-@COMPAT_STACK_TRUE@am__append_16 = $(STACK_SRC)
-@MINGW32_TRUE@am__append_17 = $(MINGW32_SRC)
-@MINGW32_TRUE@am__append_18 = $(MINGW32_SRC)
-@USE_NLS_TRUE@am__append_19 = $(NLS_SRC)
-@USE_NLS_TRUE@am__append_20 = $(NLS_SRC)
-@HAVE_WINDRES_TRUE@@WIN32_TRUE@am__append_21 = $(FLDIGI_WIN32_RES_SRC)
-@HAVE_WINDRES_TRUE@@WIN32_TRUE@am__append_22 = $(FLARQ_WIN32_RES_SRC)
-@DARWIN_TRUE@am__append_23 = $(APPBUNDLE_NOLIBS) $(APPBUNDLE) $(APPBUNDLE)*.dmg
-@HAVE_NSIS_TRUE@am__append_24 = $(INSTALLER_FILE)
-@USE_NLS_TRUE@am__append_25 = share
+@ENABLE_FLXMLRPC_TRUE@am__append_9 = @FLXMLRPC_CFLAGS@
+@ENABLE_FLXMLRPC_TRUE@am__append_10 = @FLXMLRPC_LIBS@
+@ENABLE_FLXMLRPC_TRUE@am__append_11 = @FLXMLRPC_CFLAGS@
+@ENABLE_FLXMLRPC_TRUE@am__append_12 = @FLXMLRPC_CFLAGS@
+@ENABLE_FLXMLRPC_TRUE@am__append_13 = @FLXMLRPC_CFLAGS@
+@ENABLE_FLXMLRPC_TRUE@am__append_14 = @FLXMLRPC_LIBS@
+@ENABLE_HAMLIB_TRUE@am__append_15 = $(HAMLIB_SRC)
+@NEED_HAMLIB_LOCATOR_TRUE@am__append_16 = $(LOCATOR_SRC)
+@ENABLE_BENCHMARK_TRUE@am__append_17 = $(BENCHMARK_SRC)
+@COMPAT_REGEX_TRUE@am__append_18 = $(REGEX_SRC)
+@COMPAT_REGEX_TRUE@am__append_19 = $(REGEX_SRC)
+@COMPAT_STACK_TRUE@am__append_20 = $(STACK_SRC)
+@COMPAT_STACK_TRUE@am__append_21 = $(STACK_SRC)
+@MINGW32_TRUE@am__append_22 = $(MINGW32_SRC)
+@MINGW32_TRUE@am__append_23 = $(MINGW32_SRC)
+@USE_NLS_TRUE@am__append_24 = $(NLS_SRC)
+@USE_NLS_TRUE@am__append_25 = $(NLS_SRC)
+@HAVE_WINDRES_TRUE@@WIN32_TRUE@am__append_26 = $(FLDIGI_WIN32_RES_SRC)
+@HAVE_WINDRES_TRUE@@WIN32_TRUE@am__append_27 = $(FLARQ_WIN32_RES_SRC)
+@DARWIN_TRUE@am__append_28 = $(APPBUNDLE_NOLIBS) $(APPBUNDLE) $(APPBUNDLE)*.dmg
+@HAVE_NSIS_TRUE@am__append_29 = $(INSTALLER_FILE)
+@USE_NLS_TRUE@am__append_30 = share
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(srcdir)/config.h.in $(top_srcdir)/build-aux/depcomp \
@@ -141,15 +146,28 @@ CONFIG_CLEAN_VPATH_FILES =
 @WANT_FLARQ_TRUE@am__EXEEXT_2 = flarq$(EXEEXT)
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am__flarq_SOURCES_DIST = compat/regex.h compat/regex.c include/stack.h \
-	misc/stack.cxx include/compat.h compat/getsysinfo.c \
-	compat/mingw.c compat/mingw.h misc/nls.cxx include/nls.h \
-	flarq-src/flarqrc.rc dialogs/font_browser.cxx \
+am__flarq_SOURCES_DIST = xmlrpcpp/XmlRpcBase64.h \
+	xmlrpcpp/XmlRpcClient.cpp xmlrpcpp/XmlRpcClient.h \
+	xmlrpcpp/XmlRpcDispatch.cpp xmlrpcpp/XmlRpcDispatch.h \
+	xmlrpcpp/XmlRpcException.h xmlrpcpp/XmlRpc.h \
+	xmlrpcpp/XmlRpcMutex.cpp xmlrpcpp/XmlRpcMutex.h \
+	xmlrpcpp/XmlRpcServerConnection.cpp \
+	xmlrpcpp/XmlRpcServerConnection.h xmlrpcpp/XmlRpcServer.cpp \
+	xmlrpcpp/XmlRpcServer.h xmlrpcpp/XmlRpcServerMethod.cpp \
+	xmlrpcpp/XmlRpcServerMethod.h xmlrpcpp/XmlRpcSocket.cpp \
+	xmlrpcpp/XmlRpcSocket.h xmlrpcpp/XmlRpcSource.cpp \
+	xmlrpcpp/XmlRpcSource.h xmlrpcpp/XmlRpcUtil.cpp \
+	xmlrpcpp/XmlRpcUtil.h xmlrpcpp/XmlRpcValue.cpp \
+	xmlrpcpp/XmlRpcValue.h compat/regex.h compat/regex.c \
+	include/stack.h misc/stack.cxx include/compat.h \
+	compat/getsysinfo.c compat/mingw.c compat/mingw.h misc/nls.cxx \
+	include/nls.h flarq-src/flarqrc.rc dialogs/font_browser.cxx \
 	flarq-src/arq.cxx flarq-src/arqdialogs.cxx \
 	flarq-src/arqhelp.cxx flarq-src/b64.cxx flarq-src/flarq.cxx \
-	flarq-src/flarqenv.cxx flarq-src/include/arq.h \
-	flarq-src/include/arqdialogs.h flarq-src/include/b64.h \
-	flarq-src/include/flarq.h flarq-src/include/flarqenv.h \
+	flarq-src/flarqenv.cxx flarq-src/xml_server.cxx \
+	flarq-src/include/arq.h flarq-src/include/arqdialogs.h \
+	flarq-src/include/b64.h flarq-src/include/flarq.h \
+	flarq-src/include/flarqenv.h flarq-src/include/xml_server.h \
 	include/Fl_Text_Display_mod.H include/Fl_Text_Editor_mod.H \
 	include/FTextView.h include/debug.h include/fileselect.h \
 	include/flinput2.h include/flmisc.h include/flslider2.h \
@@ -165,25 +183,38 @@ am__flarq_SOURCES_DIST = compat/regex.h compat/regex.c include/stack.h \
 	widgets/Fl_Text_Display_mod.cxx widgets/Fl_Text_Editor_mod.cxx \
 	widgets/FTextView.cxx
 am__dirstamp = $(am__leading_dot)dirstamp
-am__objects_1 = compat/flarq-regex.$(OBJEXT)
-@COMPAT_REGEX_TRUE@am__objects_2 = $(am__objects_1)
-am__objects_3 = misc/flarq-stack.$(OBJEXT)
-@COMPAT_STACK_TRUE@am__objects_4 = $(am__objects_3)
-am__objects_5 = compat/flarq-getsysinfo.$(OBJEXT) \
+am__objects_1 = xmlrpcpp/flarq-XmlRpcClient.$(OBJEXT) \
+	xmlrpcpp/flarq-XmlRpcDispatch.$(OBJEXT) \
+	xmlrpcpp/flarq-XmlRpcMutex.$(OBJEXT) \
+	xmlrpcpp/flarq-XmlRpcServerConnection.$(OBJEXT) \
+	xmlrpcpp/flarq-XmlRpcServer.$(OBJEXT) \
+	xmlrpcpp/flarq-XmlRpcServerMethod.$(OBJEXT) \
+	xmlrpcpp/flarq-XmlRpcSocket.$(OBJEXT) \
+	xmlrpcpp/flarq-XmlRpcSource.$(OBJEXT) \
+	xmlrpcpp/flarq-XmlRpcUtil.$(OBJEXT) \
+	xmlrpcpp/flarq-XmlRpcValue.$(OBJEXT)
+@ENABLE_FLXMLRPC_FALSE@am__objects_2 = $(am__objects_1)
+am__objects_3 = compat/flarq-regex.$(OBJEXT)
+@COMPAT_REGEX_TRUE@am__objects_4 = $(am__objects_3)
+am__objects_5 = misc/flarq-stack.$(OBJEXT)
+@COMPAT_STACK_TRUE@am__objects_6 = $(am__objects_5)
+am__objects_7 = compat/flarq-getsysinfo.$(OBJEXT) \
 	compat/flarq-mingw.$(OBJEXT)
-@MINGW32_TRUE@am__objects_6 = $(am__objects_5)
-am__objects_7 = misc/flarq-nls.$(OBJEXT)
-@USE_NLS_TRUE@am__objects_8 = $(am__objects_7)
-am__objects_9 = flarq-src/flarqrc.$(OBJEXT)
-@HAVE_WINDRES_TRUE@@WIN32_TRUE@am__objects_10 = $(am__objects_9)
+@MINGW32_TRUE@am__objects_8 = $(am__objects_7)
+am__objects_9 = misc/flarq-nls.$(OBJEXT)
+@USE_NLS_TRUE@am__objects_10 = $(am__objects_9)
+am__objects_11 = flarq-src/flarqrc.$(OBJEXT)
+@HAVE_WINDRES_TRUE@@WIN32_TRUE@am__objects_12 = $(am__objects_11)
 am_flarq_OBJECTS = $(am__objects_2) $(am__objects_4) $(am__objects_6) \
-	$(am__objects_8) $(am__objects_10) \
+	$(am__objects_8) $(am__objects_10) $(am__objects_12) \
 	dialogs/flarq-font_browser.$(OBJEXT) \
 	flarq-src/flarq-arq.$(OBJEXT) \
 	flarq-src/flarq-arqdialogs.$(OBJEXT) \
 	flarq-src/flarq-arqhelp.$(OBJEXT) \
 	flarq-src/flarq-b64.$(OBJEXT) flarq-src/flarq-flarq.$(OBJEXT) \
-	flarq-src/flarq-flarqenv.$(OBJEXT) combo/flarq-combo.$(OBJEXT) \
+	flarq-src/flarq-flarqenv.$(OBJEXT) \
+	flarq-src/flarq-xml_server.$(OBJEXT) \
+	combo/flarq-combo.$(OBJEXT) \
 	fileselector/flarq-fileselect.$(OBJEXT) \
 	logbook/flarq-table.$(OBJEXT) misc/flarq-ascii.$(OBJEXT) \
 	misc/flarq-debug.$(OBJEXT) misc/flarq-stacktrace.$(OBJEXT) \
@@ -333,8 +364,8 @@ am__fldigi_SOURCES_DIST = include/xmlrpc.h misc/xmlrpc.cxx \
 	fsq/fsq_monitor.cxx wwv/analysis.cxx wwv/fftscan.cxx \
 	wwv/wwv.cxx logbook/xmlrpc_log.cxx libtiniconv/tiniconv.c \
 	libtiniconv/tiniconv_desc.c
-am__objects_11 = misc/fldigi-xmlrpc.$(OBJEXT)
-am__objects_12 = xmlrpcpp/fldigi-XmlRpcClient.$(OBJEXT) \
+am__objects_13 = misc/fldigi-xmlrpc.$(OBJEXT)
+am__objects_14 = xmlrpcpp/fldigi-XmlRpcClient.$(OBJEXT) \
 	xmlrpcpp/fldigi-XmlRpcDispatch.$(OBJEXT) \
 	xmlrpcpp/fldigi-XmlRpcMutex.$(OBJEXT) \
 	xmlrpcpp/fldigi-XmlRpcServerConnection.$(OBJEXT) \
@@ -344,28 +375,28 @@ am__objects_12 = xmlrpcpp/fldigi-XmlRpcClient.$(OBJEXT) \
 	xmlrpcpp/fldigi-XmlRpcSource.$(OBJEXT) \
 	xmlrpcpp/fldigi-XmlRpcUtil.$(OBJEXT) \
 	xmlrpcpp/fldigi-XmlRpcValue.$(OBJEXT)
-@ENABLE_FLXMLRPC_FALSE@am__objects_13 = $(am__objects_12)
-am__objects_14 = rigcontrol/fldigi-hamlib.$(OBJEXT) \
+@ENABLE_FLXMLRPC_FALSE@am__objects_15 = $(am__objects_14)
+am__objects_16 = rigcontrol/fldigi-hamlib.$(OBJEXT) \
 	rigcontrol/fldigi-rigclass.$(OBJEXT)
-@ENABLE_HAMLIB_TRUE@am__objects_15 = $(am__objects_14)
-am__objects_16 =
-am__objects_17 = misc/fldigi-benchmark.$(OBJEXT)
-@ENABLE_BENCHMARK_TRUE@am__objects_18 = $(am__objects_17)
-am__objects_19 = compat/fldigi-regex.$(OBJEXT)
-@COMPAT_REGEX_TRUE@am__objects_20 = $(am__objects_19)
-am__objects_21 = misc/fldigi-stack.$(OBJEXT)
-@COMPAT_STACK_TRUE@am__objects_22 = $(am__objects_21)
-am__objects_23 = compat/fldigi-getsysinfo.$(OBJEXT) \
+@ENABLE_HAMLIB_TRUE@am__objects_17 = $(am__objects_16)
+am__objects_18 =
+am__objects_19 = misc/fldigi-benchmark.$(OBJEXT)
+@ENABLE_BENCHMARK_TRUE@am__objects_20 = $(am__objects_19)
+am__objects_21 = compat/fldigi-regex.$(OBJEXT)
+@COMPAT_REGEX_TRUE@am__objects_22 = $(am__objects_21)
+am__objects_23 = misc/fldigi-stack.$(OBJEXT)
+@COMPAT_STACK_TRUE@am__objects_24 = $(am__objects_23)
+am__objects_25 = compat/fldigi-getsysinfo.$(OBJEXT) \
 	compat/fldigi-mingw.$(OBJEXT)
-@MINGW32_TRUE@am__objects_24 = $(am__objects_23)
-am__objects_25 = misc/fldigi-nls.$(OBJEXT)
-@USE_NLS_TRUE@am__objects_26 = $(am__objects_25)
-am__objects_27 = fldigirc.$(OBJEXT)
-@HAVE_WINDRES_TRUE@@WIN32_TRUE@am__objects_28 = $(am__objects_27)
-am_fldigi_OBJECTS = $(am__objects_11) $(am__objects_13) \
-	$(am__objects_15) $(am__objects_16) $(am__objects_18) \
-	$(am__objects_20) $(am__objects_22) $(am__objects_24) \
-	$(am__objects_26) $(am__objects_28) \
+@MINGW32_TRUE@am__objects_26 = $(am__objects_25)
+am__objects_27 = misc/fldigi-nls.$(OBJEXT)
+@USE_NLS_TRUE@am__objects_28 = $(am__objects_27)
+am__objects_29 = fldigirc.$(OBJEXT)
+@HAVE_WINDRES_TRUE@@WIN32_TRUE@am__objects_30 = $(am__objects_29)
+am_fldigi_OBJECTS = $(am__objects_13) $(am__objects_15) \
+	$(am__objects_17) $(am__objects_18) $(am__objects_20) \
+	$(am__objects_22) $(am__objects_24) $(am__objects_26) \
+	$(am__objects_28) $(am__objects_30) \
 	combo/fldigi-combo.$(OBJEXT) cw_rtty/fldigi-cw.$(OBJEXT) \
 	cw_rtty/fldigi-morse.$(OBJEXT) cw_rtty/fldigi-rtty.$(OBJEXT) \
 	cw_rtty/fldigi-view_rtty.$(OBJEXT) \
@@ -475,7 +506,7 @@ am_fldigi_OBJECTS = $(am__objects_11) $(am__objects_13) \
 	logbook/fldigi-xmlrpc_log.$(OBJEXT) \
 	libtiniconv/fldigi-tiniconv.$(OBJEXT) \
 	libtiniconv/fldigi-tiniconv_desc.$(OBJEXT)
-nodist_fldigi_OBJECTS = $(am__objects_16)
+nodist_fldigi_OBJECTS = $(am__objects_18)
 fldigi_OBJECTS = $(am_fldigi_OBJECTS) $(nodist_fldigi_OBJECTS)
 fldigi_DEPENDENCIES =
 fldigi_LINK = $(CXXLD) $(fldigi_CXXFLAGS) $(CXXFLAGS) \
@@ -994,16 +1025,17 @@ SUBDIRS =
 # The BUILD_* variables are defined in build.m4
 fldigi_CPPFLAGS = -DBUILD_FLDIGI -DLOCALEDIR=\"$(localedir)\" \
 	@FLDIGI_BUILD_CPPFLAGS@ -DPKGDATADIR=\"$(pkgdatadir)\" \
-	$(am__append_3) $(am__append_6)
+	$(am__append_3) $(am__append_7)
 fldigi_CXXFLAGS = @FLDIGI_BUILD_CXXFLAGS@ $(am__append_4) \
-	$(am__append_7)
-fldigi_CFLAGS = $(fldigi_CXXFLAGS) $(am__append_8)
-fldigi_LDFLAGS = @FLDIGI_BUILD_LDFLAGS@ $(am__append_9)
+	$(am__append_8)
+fldigi_CFLAGS = $(fldigi_CXXFLAGS) $(am__append_9)
+fldigi_LDFLAGS = @FLDIGI_BUILD_LDFLAGS@ $(am__append_10)
 fldigi_LDADD = @FLDIGI_BUILD_LDADD@
-flarq_CPPFLAGS = -DBUILD_FLARQ -DLOCALEDIR=\"$(localedir)\" @FLARQ_BUILD_CPPFLAGS@
-flarq_CXXFLAGS = @FLARQ_BUILD_CXXFLAGS@
-flarq_CFLAGS = $(flarq_CXXFLAGS)
-flarq_LDFLAGS = @FLARQ_BUILD_LDFLAGS@
+flarq_CPPFLAGS = -DBUILD_FLARQ -DLOCALEDIR=\"$(localedir)\" \
+	@FLARQ_BUILD_CPPFLAGS@ $(am__append_11)
+flarq_CXXFLAGS = @FLARQ_BUILD_CXXFLAGS@ $(am__append_12)
+flarq_CFLAGS = $(flarq_CXXFLAGS) $(am__append_13)
+flarq_LDFLAGS = @FLARQ_BUILD_LDFLAGS@ $(am__append_14)
 flarq_LDADD = @FLARQ_BUILD_LDADD@
 HAMLIB_SRC = \
 include/hamlib.h \
@@ -1102,13 +1134,13 @@ EXTRA_fldigi_SOURCES = $(HAMLIB_SRC) $(XMLRPC_SRC) \
 	libtiniconv/encdec/koi8_u.h libtiniconv/encdec/mac_cyrillic.h \
 	libtiniconv/encdec/ucs2.h libtiniconv/encdec/utf7.h \
 	libtiniconv/encdec/utf8.h libtiniconv/encdec/vietcomb.h
-EXTRA_flarq_SOURCES = $(FLARQ_WIN32_RES_SRC) $(COMMON_WIN32_RES_SRC)
+EXTRA_flarq_SOURCES = $(FLARQ_WIN32_RES_SRC) $(COMMON_WIN32_RES_SRC) $(XMLRPCPP_SRC)
 
 # Sources that we build. It is OK to have headers here.
-fldigi_SOURCES = $(XMLRPC_SRC) $(am__append_5) $(am__append_10) \
-	$(am__append_11) $(am__append_12) $(am__append_13) \
-	$(am__append_15) $(am__append_17) $(am__append_19) \
-	$(am__append_21) combo/combo.cxx cw_rtty/cw.cxx \
+fldigi_SOURCES = $(XMLRPC_SRC) $(am__append_5) $(am__append_15) \
+	$(am__append_16) $(am__append_17) $(am__append_18) \
+	$(am__append_20) $(am__append_22) $(am__append_24) \
+	$(am__append_26) combo/combo.cxx cw_rtty/cw.cxx \
 	cw_rtty/morse.cxx cw_rtty/rtty.cxx cw_rtty/view_rtty.cxx \
 	contestia/contestia.cxx dialogs/confdialog.cxx \
 	dialogs/fl_digi.cxx dialogs/font_browser.cxx \
@@ -1222,25 +1254,27 @@ fldigi_SOURCES = $(XMLRPC_SRC) $(am__append_5) $(am__append_10) \
 	fsq/fsq_monitor.cxx wwv/analysis.cxx wwv/fftscan.cxx \
 	wwv/wwv.cxx logbook/xmlrpc_log.cxx libtiniconv/tiniconv.c \
 	libtiniconv/tiniconv_desc.c
-flarq_SOURCES = $(am__append_14) $(am__append_16) $(am__append_18) \
-	$(am__append_20) $(am__append_22) dialogs/font_browser.cxx \
-	flarq-src/arq.cxx flarq-src/arqdialogs.cxx \
-	flarq-src/arqhelp.cxx flarq-src/b64.cxx flarq-src/flarq.cxx \
-	flarq-src/flarqenv.cxx flarq-src/include/arq.h \
+flarq_SOURCES = $(am__append_6) $(am__append_19) $(am__append_21) \
+	$(am__append_23) $(am__append_25) $(am__append_27) \
+	dialogs/font_browser.cxx flarq-src/arq.cxx \
+	flarq-src/arqdialogs.cxx flarq-src/arqhelp.cxx \
+	flarq-src/b64.cxx flarq-src/flarq.cxx flarq-src/flarqenv.cxx \
+	flarq-src/xml_server.cxx flarq-src/include/arq.h \
 	flarq-src/include/arqdialogs.h flarq-src/include/b64.h \
 	flarq-src/include/flarq.h flarq-src/include/flarqenv.h \
-	include/Fl_Text_Display_mod.H include/Fl_Text_Editor_mod.H \
-	include/FTextView.h include/debug.h include/fileselect.h \
-	include/flinput2.h include/flmisc.h include/flslider2.h \
-	include/font_browser.h include/icons.h include/pixmaps.h \
-	include/re.h include/socket.h include/stacktrace.h \
-	include/threads.h include/table.h include/util.h \
-	combo/combo.cxx fileselector/fileselect.cxx logbook/table.cxx \
-	misc/ascii.cxx misc/debug.cxx misc/stacktrace.cxx \
-	misc/threads.cxx misc/timeops.cxx widgets/flinput2.cxx \
-	widgets/flmisc.cxx widgets/flslider2.cxx misc/icons.cxx \
-	misc/pixmaps.cxx misc/pixmaps_tango.cxx misc/re.cxx \
-	misc/socket.cxx misc/util.cxx widgets/Fl_Text_Buffer_mod.cxx \
+	flarq-src/include/xml_server.h include/Fl_Text_Display_mod.H \
+	include/Fl_Text_Editor_mod.H include/FTextView.h \
+	include/debug.h include/fileselect.h include/flinput2.h \
+	include/flmisc.h include/flslider2.h include/font_browser.h \
+	include/icons.h include/pixmaps.h include/re.h \
+	include/socket.h include/stacktrace.h include/threads.h \
+	include/table.h include/util.h combo/combo.cxx \
+	fileselector/fileselect.cxx logbook/table.cxx misc/ascii.cxx \
+	misc/debug.cxx misc/stacktrace.cxx misc/threads.cxx \
+	misc/timeops.cxx widgets/flinput2.cxx widgets/flmisc.cxx \
+	widgets/flslider2.cxx misc/icons.cxx misc/pixmaps.cxx \
+	misc/pixmaps_tango.cxx misc/re.cxx misc/socket.cxx \
+	misc/util.cxx widgets/Fl_Text_Buffer_mod.cxx \
 	widgets/Fl_Text_Display_mod.cxx widgets/Fl_Text_Editor_mod.cxx \
 	widgets/FTextView.cxx
 
@@ -1249,8 +1283,8 @@ BUILT_SOURCES =
 # not distributed,
 nodist_fldigi_SOURCES = $(BUILT_SOURCES)
 # and deleted by the clean targets
-CLEANFILES = $(BUILT_SOURCES) $(am__append_24)
-CLEAN_LOCAL = $(am__append_23) $(am__append_25)
+CLEANFILES = $(BUILT_SOURCES) $(am__append_29)
+CLEAN_LOCAL = $(am__append_28) $(am__append_30)
 FLDIGI_FL_SRC = \
 		dialogs/confdialog.fl \
 		dialogs/notifydialog.fl \
@@ -1409,6 +1443,32 @@ installcheck-binPROGRAMS: $(bin_PROGRAMS)
 	    else echo "$$f does not support $$opt" 1>&2; bad=1; fi; \
 	  done; \
 	done; rm -f c$${pid}_.???; exit $$bad
+xmlrpcpp/$(am__dirstamp):
+	@$(MKDIR_P) xmlrpcpp
+	@: > xmlrpcpp/$(am__dirstamp)
+xmlrpcpp/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) xmlrpcpp/$(DEPDIR)
+	@: > xmlrpcpp/$(DEPDIR)/$(am__dirstamp)
+xmlrpcpp/flarq-XmlRpcClient.$(OBJEXT): xmlrpcpp/$(am__dirstamp) \
+	xmlrpcpp/$(DEPDIR)/$(am__dirstamp)
+xmlrpcpp/flarq-XmlRpcDispatch.$(OBJEXT): xmlrpcpp/$(am__dirstamp) \
+	xmlrpcpp/$(DEPDIR)/$(am__dirstamp)
+xmlrpcpp/flarq-XmlRpcMutex.$(OBJEXT): xmlrpcpp/$(am__dirstamp) \
+	xmlrpcpp/$(DEPDIR)/$(am__dirstamp)
+xmlrpcpp/flarq-XmlRpcServerConnection.$(OBJEXT):  \
+	xmlrpcpp/$(am__dirstamp) xmlrpcpp/$(DEPDIR)/$(am__dirstamp)
+xmlrpcpp/flarq-XmlRpcServer.$(OBJEXT): xmlrpcpp/$(am__dirstamp) \
+	xmlrpcpp/$(DEPDIR)/$(am__dirstamp)
+xmlrpcpp/flarq-XmlRpcServerMethod.$(OBJEXT): xmlrpcpp/$(am__dirstamp) \
+	xmlrpcpp/$(DEPDIR)/$(am__dirstamp)
+xmlrpcpp/flarq-XmlRpcSocket.$(OBJEXT): xmlrpcpp/$(am__dirstamp) \
+	xmlrpcpp/$(DEPDIR)/$(am__dirstamp)
+xmlrpcpp/flarq-XmlRpcSource.$(OBJEXT): xmlrpcpp/$(am__dirstamp) \
+	xmlrpcpp/$(DEPDIR)/$(am__dirstamp)
+xmlrpcpp/flarq-XmlRpcUtil.$(OBJEXT): xmlrpcpp/$(am__dirstamp) \
+	xmlrpcpp/$(DEPDIR)/$(am__dirstamp)
+xmlrpcpp/flarq-XmlRpcValue.$(OBJEXT): xmlrpcpp/$(am__dirstamp) \
+	xmlrpcpp/$(DEPDIR)/$(am__dirstamp)
 compat/$(am__dirstamp):
 	@$(MKDIR_P) compat
 	@: > compat/$(am__dirstamp)
@@ -1458,6 +1518,8 @@ flarq-src/flarq-b64.$(OBJEXT): flarq-src/$(am__dirstamp) \
 flarq-src/flarq-flarq.$(OBJEXT): flarq-src/$(am__dirstamp) \
 	flarq-src/$(DEPDIR)/$(am__dirstamp)
 flarq-src/flarq-flarqenv.$(OBJEXT): flarq-src/$(am__dirstamp) \
+	flarq-src/$(DEPDIR)/$(am__dirstamp)
+flarq-src/flarq-xml_server.$(OBJEXT): flarq-src/$(am__dirstamp) \
 	flarq-src/$(DEPDIR)/$(am__dirstamp)
 combo/$(am__dirstamp):
 	@$(MKDIR_P) combo
@@ -1531,12 +1593,6 @@ flarq$(EXEEXT): $(flarq_OBJECTS) $(flarq_DEPENDENCIES) $(EXTRA_flarq_DEPENDENCIE
 	$(AM_V_CXXLD)$(flarq_LINK) $(flarq_OBJECTS) $(flarq_LDADD) $(LIBS)
 misc/fldigi-xmlrpc.$(OBJEXT): misc/$(am__dirstamp) \
 	misc/$(DEPDIR)/$(am__dirstamp)
-xmlrpcpp/$(am__dirstamp):
-	@$(MKDIR_P) xmlrpcpp
-	@: > xmlrpcpp/$(am__dirstamp)
-xmlrpcpp/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) xmlrpcpp/$(DEPDIR)
-	@: > xmlrpcpp/$(DEPDIR)/$(am__dirstamp)
 xmlrpcpp/fldigi-XmlRpcClient.$(OBJEXT): xmlrpcpp/$(am__dirstamp) \
 	xmlrpcpp/$(DEPDIR)/$(am__dirstamp)
 xmlrpcpp/fldigi-XmlRpcDispatch.$(OBJEXT): xmlrpcpp/$(am__dirstamp) \
@@ -2232,6 +2288,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@flarq-src/$(DEPDIR)/flarq-b64.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@flarq-src/$(DEPDIR)/flarq-flarq.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@flarq-src/$(DEPDIR)/flarq-flarqenv.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@flarq-src/$(DEPDIR)/flarq-xml_server.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fsq/$(DEPDIR)/fldigi-bitmaps.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fsq/$(DEPDIR)/fldigi-fsq-pic.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fsq/$(DEPDIR)/fldigi-fsq.Po@am__quote@
@@ -2391,6 +2448,16 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@wwv/$(DEPDIR)/fldigi-analysis.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@wwv/$(DEPDIR)/fldigi-fftscan.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@wwv/$(DEPDIR)/fldigi-wwv.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xmlrpcpp/$(DEPDIR)/flarq-XmlRpcClient.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xmlrpcpp/$(DEPDIR)/flarq-XmlRpcDispatch.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xmlrpcpp/$(DEPDIR)/flarq-XmlRpcMutex.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerConnection.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerMethod.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSocket.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSource.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xmlrpcpp/$(DEPDIR)/flarq-XmlRpcUtil.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xmlrpcpp/$(DEPDIR)/flarq-XmlRpcValue.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xmlrpcpp/$(DEPDIR)/fldigi-XmlRpcClient.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xmlrpcpp/$(DEPDIR)/fldigi-XmlRpcDispatch.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xmlrpcpp/$(DEPDIR)/fldigi-XmlRpcMutex.Po@am__quote@
@@ -2546,6 +2613,146 @@ libtiniconv/fldigi-tiniconv_desc.obj: libtiniconv/tiniconv_desc.c
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
+xmlrpcpp/flarq-XmlRpcClient.o: xmlrpcpp/XmlRpcClient.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcClient.o -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcClient.Tpo -c -o xmlrpcpp/flarq-XmlRpcClient.o `test -f 'xmlrpcpp/XmlRpcClient.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcClient.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcClient.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcClient.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcClient.cpp' object='xmlrpcpp/flarq-XmlRpcClient.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcClient.o `test -f 'xmlrpcpp/XmlRpcClient.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcClient.cpp
+
+xmlrpcpp/flarq-XmlRpcClient.obj: xmlrpcpp/XmlRpcClient.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcClient.obj -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcClient.Tpo -c -o xmlrpcpp/flarq-XmlRpcClient.obj `if test -f 'xmlrpcpp/XmlRpcClient.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcClient.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcClient.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcClient.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcClient.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcClient.cpp' object='xmlrpcpp/flarq-XmlRpcClient.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcClient.obj `if test -f 'xmlrpcpp/XmlRpcClient.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcClient.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcClient.cpp'; fi`
+
+xmlrpcpp/flarq-XmlRpcDispatch.o: xmlrpcpp/XmlRpcDispatch.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcDispatch.o -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcDispatch.Tpo -c -o xmlrpcpp/flarq-XmlRpcDispatch.o `test -f 'xmlrpcpp/XmlRpcDispatch.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcDispatch.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcDispatch.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcDispatch.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcDispatch.cpp' object='xmlrpcpp/flarq-XmlRpcDispatch.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcDispatch.o `test -f 'xmlrpcpp/XmlRpcDispatch.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcDispatch.cpp
+
+xmlrpcpp/flarq-XmlRpcDispatch.obj: xmlrpcpp/XmlRpcDispatch.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcDispatch.obj -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcDispatch.Tpo -c -o xmlrpcpp/flarq-XmlRpcDispatch.obj `if test -f 'xmlrpcpp/XmlRpcDispatch.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcDispatch.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcDispatch.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcDispatch.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcDispatch.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcDispatch.cpp' object='xmlrpcpp/flarq-XmlRpcDispatch.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcDispatch.obj `if test -f 'xmlrpcpp/XmlRpcDispatch.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcDispatch.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcDispatch.cpp'; fi`
+
+xmlrpcpp/flarq-XmlRpcMutex.o: xmlrpcpp/XmlRpcMutex.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcMutex.o -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcMutex.Tpo -c -o xmlrpcpp/flarq-XmlRpcMutex.o `test -f 'xmlrpcpp/XmlRpcMutex.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcMutex.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcMutex.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcMutex.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcMutex.cpp' object='xmlrpcpp/flarq-XmlRpcMutex.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcMutex.o `test -f 'xmlrpcpp/XmlRpcMutex.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcMutex.cpp
+
+xmlrpcpp/flarq-XmlRpcMutex.obj: xmlrpcpp/XmlRpcMutex.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcMutex.obj -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcMutex.Tpo -c -o xmlrpcpp/flarq-XmlRpcMutex.obj `if test -f 'xmlrpcpp/XmlRpcMutex.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcMutex.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcMutex.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcMutex.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcMutex.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcMutex.cpp' object='xmlrpcpp/flarq-XmlRpcMutex.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcMutex.obj `if test -f 'xmlrpcpp/XmlRpcMutex.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcMutex.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcMutex.cpp'; fi`
+
+xmlrpcpp/flarq-XmlRpcServerConnection.o: xmlrpcpp/XmlRpcServerConnection.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcServerConnection.o -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerConnection.Tpo -c -o xmlrpcpp/flarq-XmlRpcServerConnection.o `test -f 'xmlrpcpp/XmlRpcServerConnection.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcServerConnection.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerConnection.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerConnection.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcServerConnection.cpp' object='xmlrpcpp/flarq-XmlRpcServerConnection.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcServerConnection.o `test -f 'xmlrpcpp/XmlRpcServerConnection.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcServerConnection.cpp
+
+xmlrpcpp/flarq-XmlRpcServerConnection.obj: xmlrpcpp/XmlRpcServerConnection.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcServerConnection.obj -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerConnection.Tpo -c -o xmlrpcpp/flarq-XmlRpcServerConnection.obj `if test -f 'xmlrpcpp/XmlRpcServerConnection.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcServerConnection.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcServerConnection.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerConnection.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerConnection.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcServerConnection.cpp' object='xmlrpcpp/flarq-XmlRpcServerConnection.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcServerConnection.obj `if test -f 'xmlrpcpp/XmlRpcServerConnection.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcServerConnection.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcServerConnection.cpp'; fi`
+
+xmlrpcpp/flarq-XmlRpcServer.o: xmlrpcpp/XmlRpcServer.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcServer.o -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServer.Tpo -c -o xmlrpcpp/flarq-XmlRpcServer.o `test -f 'xmlrpcpp/XmlRpcServer.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcServer.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServer.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcServer.cpp' object='xmlrpcpp/flarq-XmlRpcServer.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcServer.o `test -f 'xmlrpcpp/XmlRpcServer.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcServer.cpp
+
+xmlrpcpp/flarq-XmlRpcServer.obj: xmlrpcpp/XmlRpcServer.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcServer.obj -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServer.Tpo -c -o xmlrpcpp/flarq-XmlRpcServer.obj `if test -f 'xmlrpcpp/XmlRpcServer.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcServer.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcServer.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServer.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcServer.cpp' object='xmlrpcpp/flarq-XmlRpcServer.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcServer.obj `if test -f 'xmlrpcpp/XmlRpcServer.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcServer.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcServer.cpp'; fi`
+
+xmlrpcpp/flarq-XmlRpcServerMethod.o: xmlrpcpp/XmlRpcServerMethod.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcServerMethod.o -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerMethod.Tpo -c -o xmlrpcpp/flarq-XmlRpcServerMethod.o `test -f 'xmlrpcpp/XmlRpcServerMethod.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcServerMethod.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerMethod.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerMethod.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcServerMethod.cpp' object='xmlrpcpp/flarq-XmlRpcServerMethod.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcServerMethod.o `test -f 'xmlrpcpp/XmlRpcServerMethod.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcServerMethod.cpp
+
+xmlrpcpp/flarq-XmlRpcServerMethod.obj: xmlrpcpp/XmlRpcServerMethod.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcServerMethod.obj -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerMethod.Tpo -c -o xmlrpcpp/flarq-XmlRpcServerMethod.obj `if test -f 'xmlrpcpp/XmlRpcServerMethod.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcServerMethod.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcServerMethod.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerMethod.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcServerMethod.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcServerMethod.cpp' object='xmlrpcpp/flarq-XmlRpcServerMethod.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcServerMethod.obj `if test -f 'xmlrpcpp/XmlRpcServerMethod.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcServerMethod.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcServerMethod.cpp'; fi`
+
+xmlrpcpp/flarq-XmlRpcSocket.o: xmlrpcpp/XmlRpcSocket.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcSocket.o -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSocket.Tpo -c -o xmlrpcpp/flarq-XmlRpcSocket.o `test -f 'xmlrpcpp/XmlRpcSocket.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcSocket.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSocket.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSocket.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcSocket.cpp' object='xmlrpcpp/flarq-XmlRpcSocket.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcSocket.o `test -f 'xmlrpcpp/XmlRpcSocket.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcSocket.cpp
+
+xmlrpcpp/flarq-XmlRpcSocket.obj: xmlrpcpp/XmlRpcSocket.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcSocket.obj -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSocket.Tpo -c -o xmlrpcpp/flarq-XmlRpcSocket.obj `if test -f 'xmlrpcpp/XmlRpcSocket.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcSocket.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcSocket.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSocket.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSocket.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcSocket.cpp' object='xmlrpcpp/flarq-XmlRpcSocket.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcSocket.obj `if test -f 'xmlrpcpp/XmlRpcSocket.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcSocket.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcSocket.cpp'; fi`
+
+xmlrpcpp/flarq-XmlRpcSource.o: xmlrpcpp/XmlRpcSource.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcSource.o -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSource.Tpo -c -o xmlrpcpp/flarq-XmlRpcSource.o `test -f 'xmlrpcpp/XmlRpcSource.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcSource.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSource.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSource.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcSource.cpp' object='xmlrpcpp/flarq-XmlRpcSource.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcSource.o `test -f 'xmlrpcpp/XmlRpcSource.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcSource.cpp
+
+xmlrpcpp/flarq-XmlRpcSource.obj: xmlrpcpp/XmlRpcSource.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcSource.obj -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSource.Tpo -c -o xmlrpcpp/flarq-XmlRpcSource.obj `if test -f 'xmlrpcpp/XmlRpcSource.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcSource.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcSource.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSource.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcSource.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcSource.cpp' object='xmlrpcpp/flarq-XmlRpcSource.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcSource.obj `if test -f 'xmlrpcpp/XmlRpcSource.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcSource.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcSource.cpp'; fi`
+
+xmlrpcpp/flarq-XmlRpcUtil.o: xmlrpcpp/XmlRpcUtil.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcUtil.o -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcUtil.Tpo -c -o xmlrpcpp/flarq-XmlRpcUtil.o `test -f 'xmlrpcpp/XmlRpcUtil.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcUtil.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcUtil.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcUtil.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcUtil.cpp' object='xmlrpcpp/flarq-XmlRpcUtil.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcUtil.o `test -f 'xmlrpcpp/XmlRpcUtil.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcUtil.cpp
+
+xmlrpcpp/flarq-XmlRpcUtil.obj: xmlrpcpp/XmlRpcUtil.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcUtil.obj -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcUtil.Tpo -c -o xmlrpcpp/flarq-XmlRpcUtil.obj `if test -f 'xmlrpcpp/XmlRpcUtil.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcUtil.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcUtil.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcUtil.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcUtil.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcUtil.cpp' object='xmlrpcpp/flarq-XmlRpcUtil.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcUtil.obj `if test -f 'xmlrpcpp/XmlRpcUtil.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcUtil.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcUtil.cpp'; fi`
+
+xmlrpcpp/flarq-XmlRpcValue.o: xmlrpcpp/XmlRpcValue.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcValue.o -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcValue.Tpo -c -o xmlrpcpp/flarq-XmlRpcValue.o `test -f 'xmlrpcpp/XmlRpcValue.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcValue.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcValue.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcValue.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcValue.cpp' object='xmlrpcpp/flarq-XmlRpcValue.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcValue.o `test -f 'xmlrpcpp/XmlRpcValue.cpp' || echo '$(srcdir)/'`xmlrpcpp/XmlRpcValue.cpp
+
+xmlrpcpp/flarq-XmlRpcValue.obj: xmlrpcpp/XmlRpcValue.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT xmlrpcpp/flarq-XmlRpcValue.obj -MD -MP -MF xmlrpcpp/$(DEPDIR)/flarq-XmlRpcValue.Tpo -c -o xmlrpcpp/flarq-XmlRpcValue.obj `if test -f 'xmlrpcpp/XmlRpcValue.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcValue.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcValue.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) xmlrpcpp/$(DEPDIR)/flarq-XmlRpcValue.Tpo xmlrpcpp/$(DEPDIR)/flarq-XmlRpcValue.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='xmlrpcpp/XmlRpcValue.cpp' object='xmlrpcpp/flarq-XmlRpcValue.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o xmlrpcpp/flarq-XmlRpcValue.obj `if test -f 'xmlrpcpp/XmlRpcValue.cpp'; then $(CYGPATH_W) 'xmlrpcpp/XmlRpcValue.cpp'; else $(CYGPATH_W) '$(srcdir)/xmlrpcpp/XmlRpcValue.cpp'; fi`
+
 misc/flarq-stack.o: misc/stack.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT misc/flarq-stack.o -MD -MP -MF misc/$(DEPDIR)/flarq-stack.Tpo -c -o misc/flarq-stack.o `test -f 'misc/stack.cxx' || echo '$(srcdir)/'`misc/stack.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) misc/$(DEPDIR)/flarq-stack.Tpo misc/$(DEPDIR)/flarq-stack.Po
@@ -2671,6 +2878,20 @@ flarq-src/flarq-flarqenv.obj: flarq-src/flarqenv.cxx
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='flarq-src/flarqenv.cxx' object='flarq-src/flarq-flarqenv.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o flarq-src/flarq-flarqenv.obj `if test -f 'flarq-src/flarqenv.cxx'; then $(CYGPATH_W) 'flarq-src/flarqenv.cxx'; else $(CYGPATH_W) '$(srcdir)/flarq-src/flarqenv.cxx'; fi`
+
+flarq-src/flarq-xml_server.o: flarq-src/xml_server.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT flarq-src/flarq-xml_server.o -MD -MP -MF flarq-src/$(DEPDIR)/flarq-xml_server.Tpo -c -o flarq-src/flarq-xml_server.o `test -f 'flarq-src/xml_server.cxx' || echo '$(srcdir)/'`flarq-src/xml_server.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) flarq-src/$(DEPDIR)/flarq-xml_server.Tpo flarq-src/$(DEPDIR)/flarq-xml_server.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='flarq-src/xml_server.cxx' object='flarq-src/flarq-xml_server.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o flarq-src/flarq-xml_server.o `test -f 'flarq-src/xml_server.cxx' || echo '$(srcdir)/'`flarq-src/xml_server.cxx
+
+flarq-src/flarq-xml_server.obj: flarq-src/xml_server.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT flarq-src/flarq-xml_server.obj -MD -MP -MF flarq-src/$(DEPDIR)/flarq-xml_server.Tpo -c -o flarq-src/flarq-xml_server.obj `if test -f 'flarq-src/xml_server.cxx'; then $(CYGPATH_W) 'flarq-src/xml_server.cxx'; else $(CYGPATH_W) '$(srcdir)/flarq-src/xml_server.cxx'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) flarq-src/$(DEPDIR)/flarq-xml_server.Tpo flarq-src/$(DEPDIR)/flarq-xml_server.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='flarq-src/xml_server.cxx' object='flarq-src/flarq-xml_server.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -c -o flarq-src/flarq-xml_server.obj `if test -f 'flarq-src/xml_server.cxx'; then $(CYGPATH_W) 'flarq-src/xml_server.cxx'; else $(CYGPATH_W) '$(srcdir)/flarq-src/xml_server.cxx'; fi`
 
 combo/flarq-combo.o: combo/combo.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(flarq_CPPFLAGS) $(CPPFLAGS) $(flarq_CXXFLAGS) $(CXXFLAGS) -MT combo/flarq-combo.o -MD -MP -MF combo/$(DEPDIR)/flarq-combo.Tpo -c -o combo/flarq-combo.o `test -f 'combo/combo.cxx' || echo '$(srcdir)/'`combo/combo.cxx

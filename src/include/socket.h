@@ -36,6 +36,9 @@
 #else
 #  include <winsock2.h>
 #  include <windows.h>
+#  ifndef ENOTCONN
+#  define ENOTCONN WSAENOTCONN
+#  endif
 #endif
 
 #include <string>
@@ -138,10 +141,12 @@ public:
 	void listen(int backlog = SOMAXCONN);
 	Socket accept(void);
 	Socket accept1(void);
+	Socket * accept2(void);
 
 	// Client
 	void connect(const Address& addr);
 	void connect(void);
+	bool connect1(void);
 
 	// Data Transimission
 	size_t send(const void* buf, size_t len);
