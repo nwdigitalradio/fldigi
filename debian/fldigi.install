@@ -1,1 +1,3 @@
-debian/*xpm usr/share/pixmaps
+debian/*.xpm usr/share/pixmaps
+debian/fldigi.png usr/share/icons/hicolor/64/apps
+debian/flarq.png usr/share/icons/hicolor/48/apps
