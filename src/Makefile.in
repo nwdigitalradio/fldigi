@@ -127,15 +127,15 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/intl/gettext.m4 \
 	$(top_srcdir)/m4/intl/progtest.m4 \
 	$(top_srcdir)/m4/ax_compare_version.m4 \
 	$(top_srcdir)/m4/benchmark.m4 $(top_srcdir)/m4/bind.m4 \
-	$(top_srcdir)/m4/build.m4 $(top_srcdir)/m4/debug.m4 \
-	$(top_srcdir)/m4/docs.m4 $(top_srcdir)/m4/fltk.m4 \
-	$(top_srcdir)/m4/funcs.m4 $(top_srcdir)/m4/hash.m4 \
-	$(top_srcdir)/m4/libintl.m4 $(top_srcdir)/m4/macosx.m4 \
-	$(top_srcdir)/m4/np-compat.m4 $(top_srcdir)/m4/opt.m4 \
-	$(top_srcdir)/m4/oss.m4 $(top_srcdir)/m4/pkg-config.m4 \
-	$(top_srcdir)/m4/progs.m4 $(top_srcdir)/m4/static.m4 \
-	$(top_srcdir)/m4/tls.m4 $(top_srcdir)/m4/win32.m4 \
-	$(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/build.m4 $(top_srcdir)/m4/c++11.m4 \
+	$(top_srcdir)/m4/debug.m4 $(top_srcdir)/m4/docs.m4 \
+	$(top_srcdir)/m4/fltk.m4 $(top_srcdir)/m4/funcs.m4 \
+	$(top_srcdir)/m4/hash.m4 $(top_srcdir)/m4/libintl.m4 \
+	$(top_srcdir)/m4/macosx.m4 $(top_srcdir)/m4/np-compat.m4 \
+	$(top_srcdir)/m4/opt.m4 $(top_srcdir)/m4/oss.m4 \
+	$(top_srcdir)/m4/pkg-config.m4 $(top_srcdir)/m4/progs.m4 \
+	$(top_srcdir)/m4/static.m4 $(top_srcdir)/m4/tls.m4 \
+	$(top_srcdir)/m4/win32.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -273,76 +273,77 @@ am__fldigi_SOURCES_DIST = include/xmlrpc.h misc/xmlrpc.cxx \
 	include/cw.h include/data_io.h include/debug.h \
 	include/digiscope.h include/dxcc.h include/thor.h \
 	include/thorvaricode.h include/dominoex.h include/dominovar.h \
-	include/feld.h include/fftfilt.h include/filters.h \
-	include/fl_digi.h include/fl_lock.h include/fldigi-config.h \
-	include/flinput2.h include/flmisc.h include/flslider2.h \
-	include/font_browser.h include/fontdef.h include/gettext.h \
-	include/globals.h include/icons.h include/interleave.h \
-	include/jalocha/pj_cmpx.h include/jalocha/pj_fft.h \
-	include/jalocha/pj_fht.h include/jalocha/pj_fifo.h \
-	include/jalocha/pj_gray.h include/jalocha/pj_lowpass3.h \
-	include/jalocha/pj_mfsk.h include/jalocha/pj_struc.h \
-	include/kiss_io.h include/maclogger.h include/ax25_decode.h \
-	include/coordinate.h include/gfft.h include/kmlserver.h \
-	include/locator.h include/log.h include/logger.h \
-	include/macroedit.h include/macros.h include/main.h \
-	include/mbuffer.h include/mfsk.h include/mfskvaricode.h \
-	include/wefax.h include/wefax-pic.h include/navtex.h \
-	include/misc.h include/modem.h include/morse.h \
-	include/mt63base.h include/mt63.h include/network.h \
-	include/dsp.h include/newinstall.h include/notify.h \
-	include/notifydialog.h include/record_browse.h \
-	include/olivia.h include/pkg.h include/picture.h \
-	include/progress.h include/psk.h include/viewpsk.h \
-	include/pskcoeff.h include/pskvaricode.h include/pskeval.h \
-	include/ptt.h include/pixmaps.h include/pskrep.h \
-	include/qrunner.h include/lookupcall.h include/qrzlib.h \
-	include/raster.h include/re.h include/rigCAT.h include/rigio.h \
-	include/rigsupport.h include/rigxml.h include/ringbuffer.h \
-	include/rsid.h include/rtty.h include/view_rtty.h \
-	include/nco.h include/synop.h include/nullmodem.h \
-	include/record_loader.h include/record_loader_gui.h \
-	include/rx_extract.h include/speak.h include/serial.h \
-	include/estrings.h include/smeter.h include/pwrmeter.h \
-	include/socket.h include/sound.h include/soundconf.h \
-	include/spot.h include/ssb.h include/stacktrace.h \
-	include/status.h include/strutil.h include/testmodem.h \
-	include/threads.h include/throb.h include/timeops.h \
-	include/trx.h include/util.h include/Viewer.h \
-	include/viterbi.h include/waterfall.h include/fsq.h \
-	include/ifkp.h include/wwv.h include/xmlreader.h \
+	include/fd_logger.h include/feld.h include/fftfilt.h \
+	include/filters.h include/fl_digi.h include/fl_lock.h \
+	include/fldigi-config.h include/flinput2.h include/flmisc.h \
+	include/flslider2.h include/font_browser.h include/fontdef.h \
+	include/gettext.h include/globals.h include/icons.h \
+	include/interleave.h include/jalocha/pj_cmpx.h \
+	include/jalocha/pj_fft.h include/jalocha/pj_fht.h \
+	include/jalocha/pj_fifo.h include/jalocha/pj_gray.h \
+	include/jalocha/pj_lowpass3.h include/jalocha/pj_mfsk.h \
+	include/jalocha/pj_struc.h include/kiss_io.h \
+	include/maclogger.h include/n3fjp_logger.h \
+	include/ax25_decode.h include/coordinate.h include/gfft.h \
+	include/kmlserver.h include/locator.h include/log.h \
+	include/logger.h include/macroedit.h include/macros.h \
+	include/main.h include/mbuffer.h include/mfsk.h \
+	include/mfskvaricode.h include/wefax.h include/wefax-pic.h \
+	include/navtex.h include/misc.h include/modem.h \
+	include/morse.h include/mt63base.h include/mt63.h \
+	include/network.h include/dsp.h include/newinstall.h \
+	include/notify.h include/notifydialog.h \
+	include/record_browse.h include/olivia.h include/pkg.h \
+	include/picture.h include/progress.h include/psk.h \
+	include/viewpsk.h include/pskcoeff.h include/pskvaricode.h \
+	include/pskeval.h include/ptt.h include/pixmaps.h \
+	include/pskrep.h include/qrunner.h include/lookupcall.h \
+	include/qrzlib.h include/raster.h include/re.h \
+	include/rigCAT.h include/rigio.h include/rigsupport.h \
+	include/rigxml.h include/ringbuffer.h include/rsid.h \
+	include/rtty.h include/view_rtty.h include/nco.h \
+	include/synop.h include/nullmodem.h include/record_loader.h \
+	include/record_loader_gui.h include/rx_extract.h \
+	include/speak.h include/serial.h include/estrings.h \
+	include/smeter.h include/pwrmeter.h include/socket.h \
+	include/sound.h include/soundconf.h include/spot.h \
+	include/ssb.h include/stacktrace.h include/status.h \
+	include/strutil.h include/testmodem.h include/threads.h \
+	include/throb.h include/timeops.h include/trx.h include/util.h \
+	include/Viewer.h include/viterbi.h include/waterfall.h \
+	include/fsq.h include/ifkp.h include/wwv.h include/xmlreader.h \
 	include/adif_def.h include/adif_io.h include/calendar.h \
 	include/date.h include/field_def.h include/logbook.h \
-	include/lgbook.h include/logsupport.h include/outputencoder.h \
-	include/qso_db.h include/table.h include/textio.h \
-	include/psk_browser.h include/utf8file_io.h include/weather.h \
-	include/dock_events.h include/dock_gp.h include/drag_btn.h \
-	include/dropwin.h include/toolgrp.h include/toolwin.h \
-	irrxml/CXMLReaderImpl.h irrxml/fast_atof.h irrxml/heapsort.h \
-	irrxml/irrArray.h irrxml/irrString.h irrxml/irrTypes.h \
-	irrxml/irrXML.cpp irrxml/irrXML.h logbook/adif_io.cxx \
-	logbook/calendar.cxx logbook/date.cxx logbook/lgbook.cxx \
-	logbook/logbook.cxx logbook/logsupport.cxx \
+	include/lgbook.h include/fd_view.h include/logsupport.h \
+	include/outputencoder.h include/qso_db.h include/table.h \
+	include/textio.h include/psk_browser.h include/utf8file_io.h \
+	include/weather.h irrxml/CXMLReaderImpl.h irrxml/fast_atof.h \
+	irrxml/heapsort.h irrxml/irrArray.h irrxml/irrString.h \
+	irrxml/irrTypes.h irrxml/irrXML.cpp irrxml/irrXML.h \
+	psm/psm.cxx psm/psm.h logbook/adif_io.cxx logbook/calendar.cxx \
+	logbook/date.cxx logbook/fd_logger.cxx logbook/lgbook.cxx \
+	logbook/fd_view.cxx logbook/logbook.cxx logbook/logsupport.cxx \
 	logbook/lookupcall.cxx logbook/maclogger.cxx \
-	logbook/qrzlib.cxx logbook/qso_db.cxx logbook/table.cxx \
-	logbook/textio.cxx logger/logger.cxx logger/rx_extract.cxx \
-	logger/speak.cxx main.cxx mfsk/interleave.cxx misc/locator.cxx \
-	mfsk/mfsk.cxx mfsk/mfskvaricode.cxx wefax/wefax.cxx \
-	wefax/wefax-pic.cxx navtex/navtex.cxx misc/ascii.cxx \
-	misc/ax25_decode.cxx misc/charsetdistiller.cxx \
-	misc/charsetlist.cxx misc/configuration.cxx \
-	misc/coordinate.cxx misc/debug.cxx misc/dxcc.cxx \
-	misc/icons.cxx misc/kiss_io.cxx misc/kmlserver.cxx \
-	misc/log.cxx misc/macroedit.cxx misc/macros.cxx misc/misc.cxx \
-	misc/network.cxx misc/newinstall.cxx misc/outputencoder.cxx \
-	misc/arq_io.cxx misc/pixmaps.cxx misc/pixmaps_tango.cxx \
-	misc/re.cxx misc/record_loader.cxx misc/socket.cxx \
-	misc/stacktrace.cxx misc/status.cxx misc/strutil.cxx \
-	misc/threads.cxx misc/timeops.cxx misc/utf8file_io.cxx \
-	misc/util.cxx misc/weather.cxx mt63/dsp.cxx mt63/mt63.cxx \
-	mt63/mt63base.cxx olivia/olivia.cxx psk/psk.cxx \
-	psk/pskcoeff.cxx psk/pskvaricode.cxx psk/viewpsk.cxx \
-	psk/pskeval.cxx qrunner/fqueue.h qrunner/qrunner.cxx \
+	logbook/n3fjp_logger.cxx logbook/qrzlib.cxx logbook/qso_db.cxx \
+	logbook/table.cxx logbook/textio.cxx logger/logger.cxx \
+	logger/rx_extract.cxx logger/speak.cxx main.cxx \
+	mfsk/interleave.cxx misc/locator.cxx mfsk/mfsk.cxx \
+	mfsk/mfskvaricode.cxx wefax/wefax.cxx wefax/wefax-pic.cxx \
+	navtex/navtex.cxx misc/ascii.cxx misc/ax25_decode.cxx \
+	misc/charsetdistiller.cxx misc/charsetlist.cxx \
+	misc/configuration.cxx misc/coordinate.cxx misc/debug.cxx \
+	misc/dxcc.cxx misc/icons.cxx misc/kiss_io.cxx \
+	misc/kmlserver.cxx misc/log.cxx misc/macroedit.cxx \
+	misc/macros.cxx misc/misc.cxx misc/network.cxx \
+	misc/newinstall.cxx misc/outputencoder.cxx misc/arq_io.cxx \
+	misc/pixmaps.cxx misc/pixmaps_tango.cxx misc/re.cxx \
+	misc/record_loader.cxx misc/socket.cxx misc/stacktrace.cxx \
+	misc/status.cxx misc/strutil.cxx misc/threads.cxx \
+	misc/timeops.cxx misc/utf8file_io.cxx misc/util.cxx \
+	misc/weather.cxx mt63/dsp.cxx mt63/mt63.cxx mt63/mt63base.cxx \
+	olivia/olivia.cxx psk/psk.cxx psk/pskcoeff.cxx \
+	psk/pskvaricode.cxx psk/viewpsk.cxx psk/pskeval.cxx \
+	qrunner/fqueue.h qrunner/qrunner.cxx \
 	rigcontrol/FreqControl.cxx rigcontrol/norig.cxx \
 	rigcontrol/ptt.cxx rigcontrol/rigio.cxx \
 	rigcontrol/rigsupport.cxx rigcontrol/rigxml.cxx \
@@ -358,11 +359,10 @@ am__fldigi_SOURCES_DIST = include/xmlrpc.h misc/xmlrpc.cxx \
 	widgets/FTextRXTX.cxx widgets/Panel.cxx widgets/flinput2.cxx \
 	widgets/flmisc.cxx widgets/flslider2.cxx widgets/picture.cxx \
 	widgets/progress.cxx widgets/psk_browser.cxx \
-	widgets/smeter.cxx widgets/pwrmeter.cxx widgets/dock_gp.cxx \
-	widgets/drag_btn.cxx widgets/dropwin.cxx widgets/toolgrp.cxx \
-	widgets/toolwin.cxx fsq/fsq.cxx ifkp/ifkp.cxx ifkp/tux.cxx \
-	fsq/fsq_monitor.cxx wwv/analysis.cxx wwv/fftscan.cxx \
-	wwv/wwv.cxx logbook/xmlrpc_log.cxx libtiniconv/tiniconv.c \
+	widgets/smeter.cxx widgets/pwrmeter.cxx fsq/fsq.cxx \
+	ifkp/ifkp.cxx ifkp/tux.cxx fsq/fsq_monitor.cxx \
+	wwv/analysis.cxx wwv/fftscan.cxx wwv/wwv.cxx \
+	logbook/xmlrpc_log.cxx libtiniconv/tiniconv.c \
 	libtiniconv/tiniconv_desc.c
 am__objects_13 = misc/fldigi-xmlrpc.$(OBJEXT)
 am__objects_14 = xmlrpcpp/fldigi-XmlRpcClient.$(OBJEXT) \
@@ -421,14 +421,18 @@ am_fldigi_OBJECTS = $(am__objects_13) $(am__objects_15) \
 	config_script/fldigi-create_default_script.$(OBJEXT) \
 	config_script/fldigi-run_scripts.$(OBJEXT) \
 	config_script/fldigi-script_parsing.$(OBJEXT) \
-	irrxml/fldigi-irrXML.$(OBJEXT) \
+	irrxml/fldigi-irrXML.$(OBJEXT) psm/fldigi-psm.$(OBJEXT) \
 	logbook/fldigi-adif_io.$(OBJEXT) \
 	logbook/fldigi-calendar.$(OBJEXT) \
-	logbook/fldigi-date.$(OBJEXT) logbook/fldigi-lgbook.$(OBJEXT) \
+	logbook/fldigi-date.$(OBJEXT) \
+	logbook/fldigi-fd_logger.$(OBJEXT) \
+	logbook/fldigi-lgbook.$(OBJEXT) \
+	logbook/fldigi-fd_view.$(OBJEXT) \
 	logbook/fldigi-logbook.$(OBJEXT) \
 	logbook/fldigi-logsupport.$(OBJEXT) \
 	logbook/fldigi-lookupcall.$(OBJEXT) \
 	logbook/fldigi-maclogger.$(OBJEXT) \
+	logbook/fldigi-n3fjp_logger.$(OBJEXT) \
 	logbook/fldigi-qrzlib.$(OBJEXT) \
 	logbook/fldigi-qso_db.$(OBJEXT) logbook/fldigi-table.$(OBJEXT) \
 	logbook/fldigi-textio.$(OBJEXT) logger/fldigi-logger.$(OBJEXT) \
@@ -494,12 +498,7 @@ am_fldigi_OBJECTS = $(am__objects_13) $(am__objects_15) \
 	widgets/fldigi-progress.$(OBJEXT) \
 	widgets/fldigi-psk_browser.$(OBJEXT) \
 	widgets/fldigi-smeter.$(OBJEXT) \
-	widgets/fldigi-pwrmeter.$(OBJEXT) \
-	widgets/fldigi-dock_gp.$(OBJEXT) \
-	widgets/fldigi-drag_btn.$(OBJEXT) \
-	widgets/fldigi-dropwin.$(OBJEXT) \
-	widgets/fldigi-toolgrp.$(OBJEXT) \
-	widgets/fldigi-toolwin.$(OBJEXT) fsq/fldigi-fsq.$(OBJEXT) \
+	widgets/fldigi-pwrmeter.$(OBJEXT) fsq/fldigi-fsq.$(OBJEXT) \
 	ifkp/fldigi-ifkp.$(OBJEXT) ifkp/fldigi-tux.$(OBJEXT) \
 	fsq/fldigi-fsq_monitor.$(OBJEXT) wwv/fldigi-analysis.$(OBJEXT) \
 	wwv/fldigi-fftscan.$(OBJEXT) wwv/fldigi-wwv.$(OBJEXT) \
@@ -849,6 +848,7 @@ CFLAGS = @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
+CXX11_SWITCH = @CXX11_SWITCH@
 CXXDEPMODE = @CXXDEPMODE@
 CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
@@ -1163,78 +1163,79 @@ fldigi_SOURCES = $(XMLRPC_SRC) $(am__append_5) $(am__append_15) \
 	include/cw.h include/data_io.h include/debug.h \
 	include/digiscope.h include/dxcc.h include/thor.h \
 	include/thorvaricode.h include/dominoex.h include/dominovar.h \
-	include/feld.h include/fftfilt.h include/filters.h \
-	include/fl_digi.h include/fl_lock.h include/fldigi-config.h \
-	include/flinput2.h include/flmisc.h include/flslider2.h \
-	include/font_browser.h include/fontdef.h include/gettext.h \
-	include/globals.h include/icons.h include/interleave.h \
-	include/jalocha/pj_cmpx.h include/jalocha/pj_fft.h \
-	include/jalocha/pj_fht.h include/jalocha/pj_fifo.h \
-	include/jalocha/pj_gray.h include/jalocha/pj_lowpass3.h \
-	include/jalocha/pj_mfsk.h include/jalocha/pj_struc.h \
-	include/kiss_io.h include/maclogger.h include/ax25_decode.h \
-	include/coordinate.h include/gfft.h include/kmlserver.h \
-	include/locator.h include/log.h include/logger.h \
-	include/macroedit.h include/macros.h include/main.h \
-	include/mbuffer.h include/mfsk.h include/mfskvaricode.h \
-	include/wefax.h include/wefax-pic.h include/navtex.h \
-	include/misc.h include/modem.h include/morse.h \
-	include/mt63base.h include/mt63.h include/network.h \
-	include/dsp.h include/newinstall.h include/notify.h \
-	include/notifydialog.h include/record_browse.h \
-	include/olivia.h include/pkg.h include/picture.h \
-	include/progress.h include/psk.h include/viewpsk.h \
-	include/pskcoeff.h include/pskvaricode.h include/pskeval.h \
-	include/ptt.h include/pixmaps.h include/pskrep.h \
-	include/qrunner.h include/lookupcall.h include/qrzlib.h \
-	include/raster.h include/re.h include/rigCAT.h include/rigio.h \
-	include/rigsupport.h include/rigxml.h include/ringbuffer.h \
-	include/rsid.h include/rtty.h include/view_rtty.h \
-	include/nco.h include/synop.h include/nullmodem.h \
-	include/record_loader.h include/record_loader_gui.h \
-	include/rx_extract.h include/speak.h include/serial.h \
-	include/estrings.h include/smeter.h include/pwrmeter.h \
-	include/socket.h include/sound.h include/soundconf.h \
-	include/spot.h include/ssb.h include/stacktrace.h \
-	include/status.h include/strutil.h include/testmodem.h \
-	include/threads.h include/throb.h include/timeops.h \
-	include/trx.h include/util.h include/Viewer.h \
-	include/viterbi.h include/waterfall.h include/fsq.h \
-	include/ifkp.h include/wwv.h include/xmlreader.h \
+	include/fd_logger.h include/feld.h include/fftfilt.h \
+	include/filters.h include/fl_digi.h include/fl_lock.h \
+	include/fldigi-config.h include/flinput2.h include/flmisc.h \
+	include/flslider2.h include/font_browser.h include/fontdef.h \
+	include/gettext.h include/globals.h include/icons.h \
+	include/interleave.h include/jalocha/pj_cmpx.h \
+	include/jalocha/pj_fft.h include/jalocha/pj_fht.h \
+	include/jalocha/pj_fifo.h include/jalocha/pj_gray.h \
+	include/jalocha/pj_lowpass3.h include/jalocha/pj_mfsk.h \
+	include/jalocha/pj_struc.h include/kiss_io.h \
+	include/maclogger.h include/n3fjp_logger.h \
+	include/ax25_decode.h include/coordinate.h include/gfft.h \
+	include/kmlserver.h include/locator.h include/log.h \
+	include/logger.h include/macroedit.h include/macros.h \
+	include/main.h include/mbuffer.h include/mfsk.h \
+	include/mfskvaricode.h include/wefax.h include/wefax-pic.h \
+	include/navtex.h include/misc.h include/modem.h \
+	include/morse.h include/mt63base.h include/mt63.h \
+	include/network.h include/dsp.h include/newinstall.h \
+	include/notify.h include/notifydialog.h \
+	include/record_browse.h include/olivia.h include/pkg.h \
+	include/picture.h include/progress.h include/psk.h \
+	include/viewpsk.h include/pskcoeff.h include/pskvaricode.h \
+	include/pskeval.h include/ptt.h include/pixmaps.h \
+	include/pskrep.h include/qrunner.h include/lookupcall.h \
+	include/qrzlib.h include/raster.h include/re.h \
+	include/rigCAT.h include/rigio.h include/rigsupport.h \
+	include/rigxml.h include/ringbuffer.h include/rsid.h \
+	include/rtty.h include/view_rtty.h include/nco.h \
+	include/synop.h include/nullmodem.h include/record_loader.h \
+	include/record_loader_gui.h include/rx_extract.h \
+	include/speak.h include/serial.h include/estrings.h \
+	include/smeter.h include/pwrmeter.h include/socket.h \
+	include/sound.h include/soundconf.h include/spot.h \
+	include/ssb.h include/stacktrace.h include/status.h \
+	include/strutil.h include/testmodem.h include/threads.h \
+	include/throb.h include/timeops.h include/trx.h include/util.h \
+	include/Viewer.h include/viterbi.h include/waterfall.h \
+	include/fsq.h include/ifkp.h include/wwv.h include/xmlreader.h \
 	include/adif_def.h include/adif_io.h include/calendar.h \
 	include/date.h include/field_def.h include/logbook.h \
-	include/lgbook.h include/logsupport.h include/outputencoder.h \
-	include/qso_db.h include/table.h include/textio.h \
-	include/psk_browser.h include/utf8file_io.h include/weather.h \
-	include/dock_events.h include/dock_gp.h include/drag_btn.h \
-	include/dropwin.h include/toolgrp.h include/toolwin.h \
-	irrxml/CXMLReaderImpl.h irrxml/fast_atof.h irrxml/heapsort.h \
-	irrxml/irrArray.h irrxml/irrString.h irrxml/irrTypes.h \
-	irrxml/irrXML.cpp irrxml/irrXML.h logbook/adif_io.cxx \
-	logbook/calendar.cxx logbook/date.cxx logbook/lgbook.cxx \
-	logbook/logbook.cxx logbook/logsupport.cxx \
+	include/lgbook.h include/fd_view.h include/logsupport.h \
+	include/outputencoder.h include/qso_db.h include/table.h \
+	include/textio.h include/psk_browser.h include/utf8file_io.h \
+	include/weather.h irrxml/CXMLReaderImpl.h irrxml/fast_atof.h \
+	irrxml/heapsort.h irrxml/irrArray.h irrxml/irrString.h \
+	irrxml/irrTypes.h irrxml/irrXML.cpp irrxml/irrXML.h \
+	psm/psm.cxx psm/psm.h logbook/adif_io.cxx logbook/calendar.cxx \
+	logbook/date.cxx logbook/fd_logger.cxx logbook/lgbook.cxx \
+	logbook/fd_view.cxx logbook/logbook.cxx logbook/logsupport.cxx \
 	logbook/lookupcall.cxx logbook/maclogger.cxx \
-	logbook/qrzlib.cxx logbook/qso_db.cxx logbook/table.cxx \
-	logbook/textio.cxx logger/logger.cxx logger/rx_extract.cxx \
-	logger/speak.cxx main.cxx mfsk/interleave.cxx misc/locator.cxx \
-	mfsk/mfsk.cxx mfsk/mfskvaricode.cxx wefax/wefax.cxx \
-	wefax/wefax-pic.cxx navtex/navtex.cxx misc/ascii.cxx \
-	misc/ax25_decode.cxx misc/charsetdistiller.cxx \
-	misc/charsetlist.cxx misc/configuration.cxx \
-	misc/coordinate.cxx misc/debug.cxx misc/dxcc.cxx \
-	misc/icons.cxx misc/kiss_io.cxx misc/kmlserver.cxx \
-	misc/log.cxx misc/macroedit.cxx misc/macros.cxx misc/misc.cxx \
-	misc/network.cxx misc/newinstall.cxx misc/outputencoder.cxx \
-	misc/arq_io.cxx misc/pixmaps.cxx misc/pixmaps_tango.cxx \
-	misc/re.cxx misc/record_loader.cxx misc/socket.cxx \
-	misc/stacktrace.cxx misc/status.cxx misc/strutil.cxx \
-	misc/threads.cxx misc/timeops.cxx misc/utf8file_io.cxx \
-	misc/util.cxx misc/weather.cxx mt63/dsp.cxx mt63/mt63.cxx \
-	mt63/mt63base.cxx include/navtex.h olivia/olivia.cxx \
-	psk/psk.cxx psk/pskcoeff.cxx psk/pskvaricode.cxx \
-	psk/viewpsk.cxx psk/pskeval.cxx qrunner/fqueue.h \
-	qrunner/qrunner.cxx rigcontrol/FreqControl.cxx \
-	rigcontrol/norig.cxx rigcontrol/ptt.cxx rigcontrol/rigio.cxx \
+	logbook/n3fjp_logger.cxx logbook/qrzlib.cxx logbook/qso_db.cxx \
+	logbook/table.cxx logbook/textio.cxx logger/logger.cxx \
+	logger/rx_extract.cxx logger/speak.cxx main.cxx \
+	mfsk/interleave.cxx misc/locator.cxx mfsk/mfsk.cxx \
+	mfsk/mfskvaricode.cxx wefax/wefax.cxx wefax/wefax-pic.cxx \
+	navtex/navtex.cxx misc/ascii.cxx misc/ax25_decode.cxx \
+	misc/charsetdistiller.cxx misc/charsetlist.cxx \
+	misc/configuration.cxx misc/coordinate.cxx misc/debug.cxx \
+	misc/dxcc.cxx misc/icons.cxx misc/kiss_io.cxx \
+	misc/kmlserver.cxx misc/log.cxx misc/macroedit.cxx \
+	misc/macros.cxx misc/misc.cxx misc/network.cxx \
+	misc/newinstall.cxx misc/outputencoder.cxx misc/arq_io.cxx \
+	misc/pixmaps.cxx misc/pixmaps_tango.cxx misc/re.cxx \
+	misc/record_loader.cxx misc/socket.cxx misc/stacktrace.cxx \
+	misc/status.cxx misc/strutil.cxx misc/threads.cxx \
+	misc/timeops.cxx misc/utf8file_io.cxx misc/util.cxx \
+	misc/weather.cxx mt63/dsp.cxx mt63/mt63.cxx mt63/mt63base.cxx \
+	include/navtex.h olivia/olivia.cxx psk/psk.cxx \
+	psk/pskcoeff.cxx psk/pskvaricode.cxx psk/viewpsk.cxx \
+	psk/pskeval.cxx qrunner/fqueue.h qrunner/qrunner.cxx \
+	rigcontrol/FreqControl.cxx rigcontrol/norig.cxx \
+	rigcontrol/ptt.cxx rigcontrol/rigio.cxx \
 	rigcontrol/rigsupport.cxx rigcontrol/rigxml.cxx \
 	rigcontrol/serial.cxx rigcontrol/xmlrpc_rig.cxx \
 	misc/estrings.cxx rsid/rsid.cxx soundcard/sound.cxx \
@@ -1248,11 +1249,10 @@ fldigi_SOURCES = $(XMLRPC_SRC) $(am__append_5) $(am__append_15) \
 	widgets/FTextRXTX.cxx widgets/Panel.cxx widgets/flinput2.cxx \
 	widgets/flmisc.cxx widgets/flslider2.cxx widgets/picture.cxx \
 	widgets/progress.cxx widgets/psk_browser.cxx \
-	widgets/smeter.cxx widgets/pwrmeter.cxx widgets/dock_gp.cxx \
-	widgets/drag_btn.cxx widgets/dropwin.cxx widgets/toolgrp.cxx \
-	widgets/toolwin.cxx fsq/fsq.cxx ifkp/ifkp.cxx ifkp/tux.cxx \
-	fsq/fsq_monitor.cxx wwv/analysis.cxx wwv/fftscan.cxx \
-	wwv/wwv.cxx logbook/xmlrpc_log.cxx libtiniconv/tiniconv.c \
+	widgets/smeter.cxx widgets/pwrmeter.cxx fsq/fsq.cxx \
+	ifkp/ifkp.cxx ifkp/tux.cxx fsq/fsq_monitor.cxx \
+	wwv/analysis.cxx wwv/fftscan.cxx wwv/wwv.cxx \
+	logbook/xmlrpc_log.cxx libtiniconv/tiniconv.c \
 	libtiniconv/tiniconv_desc.c
 flarq_SOURCES = $(am__append_6) $(am__append_19) $(am__append_21) \
 	$(am__append_23) $(am__append_25) $(am__append_27) \
@@ -1289,7 +1289,8 @@ FLDIGI_FL_SRC = \
 		dialogs/confdialog.fl \
 		dialogs/notifydialog.fl \
 		dialogs/record_browse.fl \
-		logbook/lgbook.fl
+		logbook/lgbook.fl \
+		logbook/fd_view.fl
 
 FLARQ_FL_SRC = flarq-src/arqdialogs.fl
 @WANT_FLDIGI_TRUE@WANT_FLDIGI = yes
@@ -1757,13 +1758,25 @@ irrxml/$(DEPDIR)/$(am__dirstamp):
 	@: > irrxml/$(DEPDIR)/$(am__dirstamp)
 irrxml/fldigi-irrXML.$(OBJEXT): irrxml/$(am__dirstamp) \
 	irrxml/$(DEPDIR)/$(am__dirstamp)
+psm/$(am__dirstamp):
+	@$(MKDIR_P) psm
+	@: > psm/$(am__dirstamp)
+psm/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) psm/$(DEPDIR)
+	@: > psm/$(DEPDIR)/$(am__dirstamp)
+psm/fldigi-psm.$(OBJEXT): psm/$(am__dirstamp) \
+	psm/$(DEPDIR)/$(am__dirstamp)
 logbook/fldigi-adif_io.$(OBJEXT): logbook/$(am__dirstamp) \
 	logbook/$(DEPDIR)/$(am__dirstamp)
 logbook/fldigi-calendar.$(OBJEXT): logbook/$(am__dirstamp) \
 	logbook/$(DEPDIR)/$(am__dirstamp)
 logbook/fldigi-date.$(OBJEXT): logbook/$(am__dirstamp) \
 	logbook/$(DEPDIR)/$(am__dirstamp)
+logbook/fldigi-fd_logger.$(OBJEXT): logbook/$(am__dirstamp) \
+	logbook/$(DEPDIR)/$(am__dirstamp)
 logbook/fldigi-lgbook.$(OBJEXT): logbook/$(am__dirstamp) \
+	logbook/$(DEPDIR)/$(am__dirstamp)
+logbook/fldigi-fd_view.$(OBJEXT): logbook/$(am__dirstamp) \
 	logbook/$(DEPDIR)/$(am__dirstamp)
 logbook/fldigi-logbook.$(OBJEXT): logbook/$(am__dirstamp) \
 	logbook/$(DEPDIR)/$(am__dirstamp)
@@ -1772,6 +1785,8 @@ logbook/fldigi-logsupport.$(OBJEXT): logbook/$(am__dirstamp) \
 logbook/fldigi-lookupcall.$(OBJEXT): logbook/$(am__dirstamp) \
 	logbook/$(DEPDIR)/$(am__dirstamp)
 logbook/fldigi-maclogger.$(OBJEXT): logbook/$(am__dirstamp) \
+	logbook/$(DEPDIR)/$(am__dirstamp)
+logbook/fldigi-n3fjp_logger.$(OBJEXT): logbook/$(am__dirstamp) \
 	logbook/$(DEPDIR)/$(am__dirstamp)
 logbook/fldigi-qrzlib.$(OBJEXT): logbook/$(am__dirstamp) \
 	logbook/$(DEPDIR)/$(am__dirstamp)
@@ -2059,16 +2074,6 @@ widgets/fldigi-smeter.$(OBJEXT): widgets/$(am__dirstamp) \
 	widgets/$(DEPDIR)/$(am__dirstamp)
 widgets/fldigi-pwrmeter.$(OBJEXT): widgets/$(am__dirstamp) \
 	widgets/$(DEPDIR)/$(am__dirstamp)
-widgets/fldigi-dock_gp.$(OBJEXT): widgets/$(am__dirstamp) \
-	widgets/$(DEPDIR)/$(am__dirstamp)
-widgets/fldigi-drag_btn.$(OBJEXT): widgets/$(am__dirstamp) \
-	widgets/$(DEPDIR)/$(am__dirstamp)
-widgets/fldigi-dropwin.$(OBJEXT): widgets/$(am__dirstamp) \
-	widgets/$(DEPDIR)/$(am__dirstamp)
-widgets/fldigi-toolgrp.$(OBJEXT): widgets/$(am__dirstamp) \
-	widgets/$(DEPDIR)/$(am__dirstamp)
-widgets/fldigi-toolwin.$(OBJEXT): widgets/$(am__dirstamp) \
-	widgets/$(DEPDIR)/$(am__dirstamp)
 fsq/$(am__dirstamp):
 	@$(MKDIR_P) fsq
 	@: > fsq/$(am__dirstamp)
@@ -2210,6 +2215,7 @@ mostlyclean-compile:
 	-rm -f navtex/*.$(OBJEXT)
 	-rm -f olivia/*.$(OBJEXT)
 	-rm -f psk/*.$(OBJEXT)
+	-rm -f psm/*.$(OBJEXT)
 	-rm -f qrunner/*.$(OBJEXT)
 	-rm -f rigcontrol/*.$(OBJEXT)
 	-rm -f rsid/*.$(OBJEXT)
@@ -2307,11 +2313,14 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-adif_io.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-calendar.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-date.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-fd_logger.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-fd_view.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-lgbook.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-logbook.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-logsupport.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-lookupcall.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-maclogger.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-n3fjp_logger.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-qrzlib.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-qso_db.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@logbook/$(DEPDIR)/fldigi-table.Po@am__quote@
@@ -2385,6 +2394,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@psk/$(DEPDIR)/fldigi-pskeval.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@psk/$(DEPDIR)/fldigi-pskvaricode.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@psk/$(DEPDIR)/fldigi-viewpsk.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@psm/$(DEPDIR)/fldigi-psm.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qrunner/$(DEPDIR)/fldigi-qrunner.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@rigcontrol/$(DEPDIR)/fldigi-FreqControl.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@rigcontrol/$(DEPDIR)/fldigi-hamlib.Po@am__quote@
@@ -2432,9 +2442,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-Fl_Text_Display_mod.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-Fl_Text_Editor_mod.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-Panel.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-dock_gp.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-drag_btn.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-dropwin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-flinput2.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-flmisc.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-flslider2.Po@am__quote@
@@ -2443,8 +2450,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-psk_browser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-pwrmeter.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-smeter.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-toolgrp.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@widgets/$(DEPDIR)/fldigi-toolwin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@wwv/$(DEPDIR)/fldigi-analysis.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@wwv/$(DEPDIR)/fldigi-fftscan.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@wwv/$(DEPDIR)/fldigi-wwv.Po@am__quote@
@@ -3817,6 +3822,20 @@ irrxml/fldigi-irrXML.obj: irrxml/irrXML.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o irrxml/fldigi-irrXML.obj `if test -f 'irrxml/irrXML.cpp'; then $(CYGPATH_W) 'irrxml/irrXML.cpp'; else $(CYGPATH_W) '$(srcdir)/irrxml/irrXML.cpp'; fi`
 
+psm/fldigi-psm.o: psm/psm.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT psm/fldigi-psm.o -MD -MP -MF psm/$(DEPDIR)/fldigi-psm.Tpo -c -o psm/fldigi-psm.o `test -f 'psm/psm.cxx' || echo '$(srcdir)/'`psm/psm.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) psm/$(DEPDIR)/fldigi-psm.Tpo psm/$(DEPDIR)/fldigi-psm.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='psm/psm.cxx' object='psm/fldigi-psm.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o psm/fldigi-psm.o `test -f 'psm/psm.cxx' || echo '$(srcdir)/'`psm/psm.cxx
+
+psm/fldigi-psm.obj: psm/psm.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT psm/fldigi-psm.obj -MD -MP -MF psm/$(DEPDIR)/fldigi-psm.Tpo -c -o psm/fldigi-psm.obj `if test -f 'psm/psm.cxx'; then $(CYGPATH_W) 'psm/psm.cxx'; else $(CYGPATH_W) '$(srcdir)/psm/psm.cxx'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) psm/$(DEPDIR)/fldigi-psm.Tpo psm/$(DEPDIR)/fldigi-psm.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='psm/psm.cxx' object='psm/fldigi-psm.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o psm/fldigi-psm.obj `if test -f 'psm/psm.cxx'; then $(CYGPATH_W) 'psm/psm.cxx'; else $(CYGPATH_W) '$(srcdir)/psm/psm.cxx'; fi`
+
 logbook/fldigi-adif_io.o: logbook/adif_io.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT logbook/fldigi-adif_io.o -MD -MP -MF logbook/$(DEPDIR)/fldigi-adif_io.Tpo -c -o logbook/fldigi-adif_io.o `test -f 'logbook/adif_io.cxx' || echo '$(srcdir)/'`logbook/adif_io.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) logbook/$(DEPDIR)/fldigi-adif_io.Tpo logbook/$(DEPDIR)/fldigi-adif_io.Po
@@ -3859,6 +3878,20 @@ logbook/fldigi-date.obj: logbook/date.cxx
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o logbook/fldigi-date.obj `if test -f 'logbook/date.cxx'; then $(CYGPATH_W) 'logbook/date.cxx'; else $(CYGPATH_W) '$(srcdir)/logbook/date.cxx'; fi`
 
+logbook/fldigi-fd_logger.o: logbook/fd_logger.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT logbook/fldigi-fd_logger.o -MD -MP -MF logbook/$(DEPDIR)/fldigi-fd_logger.Tpo -c -o logbook/fldigi-fd_logger.o `test -f 'logbook/fd_logger.cxx' || echo '$(srcdir)/'`logbook/fd_logger.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) logbook/$(DEPDIR)/fldigi-fd_logger.Tpo logbook/$(DEPDIR)/fldigi-fd_logger.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='logbook/fd_logger.cxx' object='logbook/fldigi-fd_logger.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o logbook/fldigi-fd_logger.o `test -f 'logbook/fd_logger.cxx' || echo '$(srcdir)/'`logbook/fd_logger.cxx
+
+logbook/fldigi-fd_logger.obj: logbook/fd_logger.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT logbook/fldigi-fd_logger.obj -MD -MP -MF logbook/$(DEPDIR)/fldigi-fd_logger.Tpo -c -o logbook/fldigi-fd_logger.obj `if test -f 'logbook/fd_logger.cxx'; then $(CYGPATH_W) 'logbook/fd_logger.cxx'; else $(CYGPATH_W) '$(srcdir)/logbook/fd_logger.cxx'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) logbook/$(DEPDIR)/fldigi-fd_logger.Tpo logbook/$(DEPDIR)/fldigi-fd_logger.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='logbook/fd_logger.cxx' object='logbook/fldigi-fd_logger.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o logbook/fldigi-fd_logger.obj `if test -f 'logbook/fd_logger.cxx'; then $(CYGPATH_W) 'logbook/fd_logger.cxx'; else $(CYGPATH_W) '$(srcdir)/logbook/fd_logger.cxx'; fi`
+
 logbook/fldigi-lgbook.o: logbook/lgbook.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT logbook/fldigi-lgbook.o -MD -MP -MF logbook/$(DEPDIR)/fldigi-lgbook.Tpo -c -o logbook/fldigi-lgbook.o `test -f 'logbook/lgbook.cxx' || echo '$(srcdir)/'`logbook/lgbook.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) logbook/$(DEPDIR)/fldigi-lgbook.Tpo logbook/$(DEPDIR)/fldigi-lgbook.Po
@@ -3872,6 +3905,20 @@ logbook/fldigi-lgbook.obj: logbook/lgbook.cxx
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='logbook/lgbook.cxx' object='logbook/fldigi-lgbook.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o logbook/fldigi-lgbook.obj `if test -f 'logbook/lgbook.cxx'; then $(CYGPATH_W) 'logbook/lgbook.cxx'; else $(CYGPATH_W) '$(srcdir)/logbook/lgbook.cxx'; fi`
+
+logbook/fldigi-fd_view.o: logbook/fd_view.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT logbook/fldigi-fd_view.o -MD -MP -MF logbook/$(DEPDIR)/fldigi-fd_view.Tpo -c -o logbook/fldigi-fd_view.o `test -f 'logbook/fd_view.cxx' || echo '$(srcdir)/'`logbook/fd_view.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) logbook/$(DEPDIR)/fldigi-fd_view.Tpo logbook/$(DEPDIR)/fldigi-fd_view.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='logbook/fd_view.cxx' object='logbook/fldigi-fd_view.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o logbook/fldigi-fd_view.o `test -f 'logbook/fd_view.cxx' || echo '$(srcdir)/'`logbook/fd_view.cxx
+
+logbook/fldigi-fd_view.obj: logbook/fd_view.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT logbook/fldigi-fd_view.obj -MD -MP -MF logbook/$(DEPDIR)/fldigi-fd_view.Tpo -c -o logbook/fldigi-fd_view.obj `if test -f 'logbook/fd_view.cxx'; then $(CYGPATH_W) 'logbook/fd_view.cxx'; else $(CYGPATH_W) '$(srcdir)/logbook/fd_view.cxx'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) logbook/$(DEPDIR)/fldigi-fd_view.Tpo logbook/$(DEPDIR)/fldigi-fd_view.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='logbook/fd_view.cxx' object='logbook/fldigi-fd_view.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o logbook/fldigi-fd_view.obj `if test -f 'logbook/fd_view.cxx'; then $(CYGPATH_W) 'logbook/fd_view.cxx'; else $(CYGPATH_W) '$(srcdir)/logbook/fd_view.cxx'; fi`
 
 logbook/fldigi-logbook.o: logbook/logbook.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT logbook/fldigi-logbook.o -MD -MP -MF logbook/$(DEPDIR)/fldigi-logbook.Tpo -c -o logbook/fldigi-logbook.o `test -f 'logbook/logbook.cxx' || echo '$(srcdir)/'`logbook/logbook.cxx
@@ -3928,6 +3975,20 @@ logbook/fldigi-maclogger.obj: logbook/maclogger.cxx
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='logbook/maclogger.cxx' object='logbook/fldigi-maclogger.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o logbook/fldigi-maclogger.obj `if test -f 'logbook/maclogger.cxx'; then $(CYGPATH_W) 'logbook/maclogger.cxx'; else $(CYGPATH_W) '$(srcdir)/logbook/maclogger.cxx'; fi`
+
+logbook/fldigi-n3fjp_logger.o: logbook/n3fjp_logger.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT logbook/fldigi-n3fjp_logger.o -MD -MP -MF logbook/$(DEPDIR)/fldigi-n3fjp_logger.Tpo -c -o logbook/fldigi-n3fjp_logger.o `test -f 'logbook/n3fjp_logger.cxx' || echo '$(srcdir)/'`logbook/n3fjp_logger.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) logbook/$(DEPDIR)/fldigi-n3fjp_logger.Tpo logbook/$(DEPDIR)/fldigi-n3fjp_logger.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='logbook/n3fjp_logger.cxx' object='logbook/fldigi-n3fjp_logger.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o logbook/fldigi-n3fjp_logger.o `test -f 'logbook/n3fjp_logger.cxx' || echo '$(srcdir)/'`logbook/n3fjp_logger.cxx
+
+logbook/fldigi-n3fjp_logger.obj: logbook/n3fjp_logger.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT logbook/fldigi-n3fjp_logger.obj -MD -MP -MF logbook/$(DEPDIR)/fldigi-n3fjp_logger.Tpo -c -o logbook/fldigi-n3fjp_logger.obj `if test -f 'logbook/n3fjp_logger.cxx'; then $(CYGPATH_W) 'logbook/n3fjp_logger.cxx'; else $(CYGPATH_W) '$(srcdir)/logbook/n3fjp_logger.cxx'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) logbook/$(DEPDIR)/fldigi-n3fjp_logger.Tpo logbook/$(DEPDIR)/fldigi-n3fjp_logger.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='logbook/n3fjp_logger.cxx' object='logbook/fldigi-n3fjp_logger.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o logbook/fldigi-n3fjp_logger.obj `if test -f 'logbook/n3fjp_logger.cxx'; then $(CYGPATH_W) 'logbook/n3fjp_logger.cxx'; else $(CYGPATH_W) '$(srcdir)/logbook/n3fjp_logger.cxx'; fi`
 
 logbook/fldigi-qrzlib.o: logbook/qrzlib.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT logbook/fldigi-qrzlib.o -MD -MP -MF logbook/$(DEPDIR)/fldigi-qrzlib.Tpo -c -o logbook/fldigi-qrzlib.o `test -f 'logbook/qrzlib.cxx' || echo '$(srcdir)/'`logbook/qrzlib.cxx
@@ -5273,76 +5334,6 @@ widgets/fldigi-pwrmeter.obj: widgets/pwrmeter.cxx
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o widgets/fldigi-pwrmeter.obj `if test -f 'widgets/pwrmeter.cxx'; then $(CYGPATH_W) 'widgets/pwrmeter.cxx'; else $(CYGPATH_W) '$(srcdir)/widgets/pwrmeter.cxx'; fi`
 
-widgets/fldigi-dock_gp.o: widgets/dock_gp.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT widgets/fldigi-dock_gp.o -MD -MP -MF widgets/$(DEPDIR)/fldigi-dock_gp.Tpo -c -o widgets/fldigi-dock_gp.o `test -f 'widgets/dock_gp.cxx' || echo '$(srcdir)/'`widgets/dock_gp.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) widgets/$(DEPDIR)/fldigi-dock_gp.Tpo widgets/$(DEPDIR)/fldigi-dock_gp.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='widgets/dock_gp.cxx' object='widgets/fldigi-dock_gp.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o widgets/fldigi-dock_gp.o `test -f 'widgets/dock_gp.cxx' || echo '$(srcdir)/'`widgets/dock_gp.cxx
-
-widgets/fldigi-dock_gp.obj: widgets/dock_gp.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT widgets/fldigi-dock_gp.obj -MD -MP -MF widgets/$(DEPDIR)/fldigi-dock_gp.Tpo -c -o widgets/fldigi-dock_gp.obj `if test -f 'widgets/dock_gp.cxx'; then $(CYGPATH_W) 'widgets/dock_gp.cxx'; else $(CYGPATH_W) '$(srcdir)/widgets/dock_gp.cxx'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) widgets/$(DEPDIR)/fldigi-dock_gp.Tpo widgets/$(DEPDIR)/fldigi-dock_gp.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='widgets/dock_gp.cxx' object='widgets/fldigi-dock_gp.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o widgets/fldigi-dock_gp.obj `if test -f 'widgets/dock_gp.cxx'; then $(CYGPATH_W) 'widgets/dock_gp.cxx'; else $(CYGPATH_W) '$(srcdir)/widgets/dock_gp.cxx'; fi`
-
-widgets/fldigi-drag_btn.o: widgets/drag_btn.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT widgets/fldigi-drag_btn.o -MD -MP -MF widgets/$(DEPDIR)/fldigi-drag_btn.Tpo -c -o widgets/fldigi-drag_btn.o `test -f 'widgets/drag_btn.cxx' || echo '$(srcdir)/'`widgets/drag_btn.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) widgets/$(DEPDIR)/fldigi-drag_btn.Tpo widgets/$(DEPDIR)/fldigi-drag_btn.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='widgets/drag_btn.cxx' object='widgets/fldigi-drag_btn.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o widgets/fldigi-drag_btn.o `test -f 'widgets/drag_btn.cxx' || echo '$(srcdir)/'`widgets/drag_btn.cxx
-
-widgets/fldigi-drag_btn.obj: widgets/drag_btn.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT widgets/fldigi-drag_btn.obj -MD -MP -MF widgets/$(DEPDIR)/fldigi-drag_btn.Tpo -c -o widgets/fldigi-drag_btn.obj `if test -f 'widgets/drag_btn.cxx'; then $(CYGPATH_W) 'widgets/drag_btn.cxx'; else $(CYGPATH_W) '$(srcdir)/widgets/drag_btn.cxx'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) widgets/$(DEPDIR)/fldigi-drag_btn.Tpo widgets/$(DEPDIR)/fldigi-drag_btn.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='widgets/drag_btn.cxx' object='widgets/fldigi-drag_btn.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o widgets/fldigi-drag_btn.obj `if test -f 'widgets/drag_btn.cxx'; then $(CYGPATH_W) 'widgets/drag_btn.cxx'; else $(CYGPATH_W) '$(srcdir)/widgets/drag_btn.cxx'; fi`
-
-widgets/fldigi-dropwin.o: widgets/dropwin.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT widgets/fldigi-dropwin.o -MD -MP -MF widgets/$(DEPDIR)/fldigi-dropwin.Tpo -c -o widgets/fldigi-dropwin.o `test -f 'widgets/dropwin.cxx' || echo '$(srcdir)/'`widgets/dropwin.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) widgets/$(DEPDIR)/fldigi-dropwin.Tpo widgets/$(DEPDIR)/fldigi-dropwin.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='widgets/dropwin.cxx' object='widgets/fldigi-dropwin.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o widgets/fldigi-dropwin.o `test -f 'widgets/dropwin.cxx' || echo '$(srcdir)/'`widgets/dropwin.cxx
-
-widgets/fldigi-dropwin.obj: widgets/dropwin.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT widgets/fldigi-dropwin.obj -MD -MP -MF widgets/$(DEPDIR)/fldigi-dropwin.Tpo -c -o widgets/fldigi-dropwin.obj `if test -f 'widgets/dropwin.cxx'; then $(CYGPATH_W) 'widgets/dropwin.cxx'; else $(CYGPATH_W) '$(srcdir)/widgets/dropwin.cxx'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) widgets/$(DEPDIR)/fldigi-dropwin.Tpo widgets/$(DEPDIR)/fldigi-dropwin.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='widgets/dropwin.cxx' object='widgets/fldigi-dropwin.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o widgets/fldigi-dropwin.obj `if test -f 'widgets/dropwin.cxx'; then $(CYGPATH_W) 'widgets/dropwin.cxx'; else $(CYGPATH_W) '$(srcdir)/widgets/dropwin.cxx'; fi`
-
-widgets/fldigi-toolgrp.o: widgets/toolgrp.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT widgets/fldigi-toolgrp.o -MD -MP -MF widgets/$(DEPDIR)/fldigi-toolgrp.Tpo -c -o widgets/fldigi-toolgrp.o `test -f 'widgets/toolgrp.cxx' || echo '$(srcdir)/'`widgets/toolgrp.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) widgets/$(DEPDIR)/fldigi-toolgrp.Tpo widgets/$(DEPDIR)/fldigi-toolgrp.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='widgets/toolgrp.cxx' object='widgets/fldigi-toolgrp.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o widgets/fldigi-toolgrp.o `test -f 'widgets/toolgrp.cxx' || echo '$(srcdir)/'`widgets/toolgrp.cxx
-
-widgets/fldigi-toolgrp.obj: widgets/toolgrp.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT widgets/fldigi-toolgrp.obj -MD -MP -MF widgets/$(DEPDIR)/fldigi-toolgrp.Tpo -c -o widgets/fldigi-toolgrp.obj `if test -f 'widgets/toolgrp.cxx'; then $(CYGPATH_W) 'widgets/toolgrp.cxx'; else $(CYGPATH_W) '$(srcdir)/widgets/toolgrp.cxx'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) widgets/$(DEPDIR)/fldigi-toolgrp.Tpo widgets/$(DEPDIR)/fldigi-toolgrp.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='widgets/toolgrp.cxx' object='widgets/fldigi-toolgrp.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o widgets/fldigi-toolgrp.obj `if test -f 'widgets/toolgrp.cxx'; then $(CYGPATH_W) 'widgets/toolgrp.cxx'; else $(CYGPATH_W) '$(srcdir)/widgets/toolgrp.cxx'; fi`
-
-widgets/fldigi-toolwin.o: widgets/toolwin.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT widgets/fldigi-toolwin.o -MD -MP -MF widgets/$(DEPDIR)/fldigi-toolwin.Tpo -c -o widgets/fldigi-toolwin.o `test -f 'widgets/toolwin.cxx' || echo '$(srcdir)/'`widgets/toolwin.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) widgets/$(DEPDIR)/fldigi-toolwin.Tpo widgets/$(DEPDIR)/fldigi-toolwin.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='widgets/toolwin.cxx' object='widgets/fldigi-toolwin.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o widgets/fldigi-toolwin.o `test -f 'widgets/toolwin.cxx' || echo '$(srcdir)/'`widgets/toolwin.cxx
-
-widgets/fldigi-toolwin.obj: widgets/toolwin.cxx
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT widgets/fldigi-toolwin.obj -MD -MP -MF widgets/$(DEPDIR)/fldigi-toolwin.Tpo -c -o widgets/fldigi-toolwin.obj `if test -f 'widgets/toolwin.cxx'; then $(CYGPATH_W) 'widgets/toolwin.cxx'; else $(CYGPATH_W) '$(srcdir)/widgets/toolwin.cxx'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) widgets/$(DEPDIR)/fldigi-toolwin.Tpo widgets/$(DEPDIR)/fldigi-toolwin.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='widgets/toolwin.cxx' object='widgets/fldigi-toolwin.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -c -o widgets/fldigi-toolwin.obj `if test -f 'widgets/toolwin.cxx'; then $(CYGPATH_W) 'widgets/toolwin.cxx'; else $(CYGPATH_W) '$(srcdir)/widgets/toolwin.cxx'; fi`
-
 fsq/fldigi-fsq.o: fsq/fsq.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fldigi_CPPFLAGS) $(CPPFLAGS) $(fldigi_CXXFLAGS) $(CXXFLAGS) -MT fsq/fldigi-fsq.o -MD -MP -MF fsq/$(DEPDIR)/fldigi-fsq.Tpo -c -o fsq/fldigi-fsq.o `test -f 'fsq/fsq.cxx' || echo '$(srcdir)/'`fsq/fsq.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fsq/$(DEPDIR)/fldigi-fsq.Tpo fsq/$(DEPDIR)/fldigi-fsq.Po
@@ -6280,6 +6271,8 @@ distclean-generic:
 	-rm -f olivia/$(am__dirstamp)
 	-rm -f psk/$(DEPDIR)/$(am__dirstamp)
 	-rm -f psk/$(am__dirstamp)
+	-rm -f psm/$(DEPDIR)/$(am__dirstamp)
+	-rm -f psm/$(am__dirstamp)
 	-rm -f qrunner/$(DEPDIR)/$(am__dirstamp)
 	-rm -f qrunner/$(am__dirstamp)
 	-rm -f rigcontrol/$(DEPDIR)/$(am__dirstamp)
@@ -6321,7 +6314,7 @@ clean: clean-recursive
 clean-am: clean-binPROGRAMS clean-generic clean-local mostlyclean-am
 
 distclean: distclean-recursive
-	-rm -rf ./$(DEPDIR) blank/$(DEPDIR) combo/$(DEPDIR) compat/$(DEPDIR) config_script/$(DEPDIR) contestia/$(DEPDIR) cw_rtty/$(DEPDIR) dialogs/$(DEPDIR) dominoex/$(DEPDIR) dtmf/$(DEPDIR) feld/$(DEPDIR) fileselector/$(DEPDIR) filters/$(DEPDIR) flarq-src/$(DEPDIR) fsq/$(DEPDIR) globals/$(DEPDIR) ifkp/$(DEPDIR) irrxml/$(DEPDIR) libtiniconv/$(DEPDIR) logbook/$(DEPDIR) logger/$(DEPDIR) mfsk/$(DEPDIR) misc/$(DEPDIR) mt63/$(DEPDIR) navtex/$(DEPDIR) olivia/$(DEPDIR) psk/$(DEPDIR) qrunner/$(DEPDIR) rigcontrol/$(DEPDIR) rsid/$(DEPDIR) soundcard/$(DEPDIR) spot/$(DEPDIR) ssb/$(DEPDIR) synop-src/$(DEPDIR) thor/$(DEPDIR) throb/$(DEPDIR) trx/$(DEPDIR) waterfall/$(DEPDIR) wefax/$(DEPDIR) widgets/$(DEPDIR) wwv/$(DEPDIR) xmlrpcpp/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) blank/$(DEPDIR) combo/$(DEPDIR) compat/$(DEPDIR) config_script/$(DEPDIR) contestia/$(DEPDIR) cw_rtty/$(DEPDIR) dialogs/$(DEPDIR) dominoex/$(DEPDIR) dtmf/$(DEPDIR) feld/$(DEPDIR) fileselector/$(DEPDIR) filters/$(DEPDIR) flarq-src/$(DEPDIR) fsq/$(DEPDIR) globals/$(DEPDIR) ifkp/$(DEPDIR) irrxml/$(DEPDIR) libtiniconv/$(DEPDIR) logbook/$(DEPDIR) logger/$(DEPDIR) mfsk/$(DEPDIR) misc/$(DEPDIR) mt63/$(DEPDIR) navtex/$(DEPDIR) olivia/$(DEPDIR) psk/$(DEPDIR) psm/$(DEPDIR) qrunner/$(DEPDIR) rigcontrol/$(DEPDIR) rsid/$(DEPDIR) soundcard/$(DEPDIR) spot/$(DEPDIR) ssb/$(DEPDIR) synop-src/$(DEPDIR) thor/$(DEPDIR) throb/$(DEPDIR) trx/$(DEPDIR) waterfall/$(DEPDIR) wefax/$(DEPDIR) widgets/$(DEPDIR) wwv/$(DEPDIR) xmlrpcpp/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-local distclean-tags
@@ -6367,7 +6360,7 @@ install-ps-am:
 installcheck-am: installcheck-binPROGRAMS
 
 maintainer-clean: maintainer-clean-recursive
-	-rm -rf ./$(DEPDIR) blank/$(DEPDIR) combo/$(DEPDIR) compat/$(DEPDIR) config_script/$(DEPDIR) contestia/$(DEPDIR) cw_rtty/$(DEPDIR) dialogs/$(DEPDIR) dominoex/$(DEPDIR) dtmf/$(DEPDIR) feld/$(DEPDIR) fileselector/$(DEPDIR) filters/$(DEPDIR) flarq-src/$(DEPDIR) fsq/$(DEPDIR) globals/$(DEPDIR) ifkp/$(DEPDIR) irrxml/$(DEPDIR) libtiniconv/$(DEPDIR) logbook/$(DEPDIR) logger/$(DEPDIR) mfsk/$(DEPDIR) misc/$(DEPDIR) mt63/$(DEPDIR) navtex/$(DEPDIR) olivia/$(DEPDIR) psk/$(DEPDIR) qrunner/$(DEPDIR) rigcontrol/$(DEPDIR) rsid/$(DEPDIR) soundcard/$(DEPDIR) spot/$(DEPDIR) ssb/$(DEPDIR) synop-src/$(DEPDIR) thor/$(DEPDIR) throb/$(DEPDIR) trx/$(DEPDIR) waterfall/$(DEPDIR) wefax/$(DEPDIR) widgets/$(DEPDIR) wwv/$(DEPDIR) xmlrpcpp/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) blank/$(DEPDIR) combo/$(DEPDIR) compat/$(DEPDIR) config_script/$(DEPDIR) contestia/$(DEPDIR) cw_rtty/$(DEPDIR) dialogs/$(DEPDIR) dominoex/$(DEPDIR) dtmf/$(DEPDIR) feld/$(DEPDIR) fileselector/$(DEPDIR) filters/$(DEPDIR) flarq-src/$(DEPDIR) fsq/$(DEPDIR) globals/$(DEPDIR) ifkp/$(DEPDIR) irrxml/$(DEPDIR) libtiniconv/$(DEPDIR) logbook/$(DEPDIR) logger/$(DEPDIR) mfsk/$(DEPDIR) misc/$(DEPDIR) mt63/$(DEPDIR) navtex/$(DEPDIR) olivia/$(DEPDIR) psk/$(DEPDIR) psm/$(DEPDIR) qrunner/$(DEPDIR) rigcontrol/$(DEPDIR) rsid/$(DEPDIR) soundcard/$(DEPDIR) spot/$(DEPDIR) ssb/$(DEPDIR) synop-src/$(DEPDIR) thor/$(DEPDIR) throb/$(DEPDIR) trx/$(DEPDIR) waterfall/$(DEPDIR) wefax/$(DEPDIR) widgets/$(DEPDIR) wwv/$(DEPDIR) xmlrpcpp/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

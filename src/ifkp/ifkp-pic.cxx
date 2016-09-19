@@ -128,7 +128,7 @@ void cb_btnifkpRxReset(Fl_Widget *, void *)
 void cb_btnifkpRxSave(Fl_Widget *, void *)
 {
 	ifkppicRx->save_png(PicsDir.c_str());
-//	FILE *raw = fopen("image.raw", "wb");
+//	FILE *raw = fl_fopen("image.raw", "wb");
 //	std::cout << "wrote " << fwrite(ifkp_rawvideo, 1, RAWSIZE, raw) << "\n";
 //	fclose(raw);
 }
@@ -138,7 +138,7 @@ void cb_btnifkpRxClose(Fl_Widget *, void *)
 	ifkppicRxWin->hide();
 	progStatus.ifkp_rx_abort = true;
 //	ifkppicRxWin->hide();
-//	FILE *raw = fopen("image.raw", "rb");
+//	FILE *raw = fl_fopen("image.raw", "rb");
 //	std::cout << "read " << fread(ifkp_rawvideo, 1, RAWSIZE, raw) << "\n";
 //	fclose(raw);
 //	ifkp_correct_video();
@@ -744,13 +744,15 @@ void ifkp_clear_avatar()
 	avatar_phase_correction = 0;
 	ifkp_numpixels = 0;
 	ifkp_rawrow = ifkp_rawrgb = ifkp_rawcol = 0;
-	ifkp_avatar->video(tux_img, 59 * 74 * 3);
+	ifkp_avatar->video(tux_img, sizeof(tux_img));
 }
 
 
 // W always 59, H always 74
 int ifkp_load_avatar(std::string image_fname, int W, int H)
 {
+	W = 59; H = 74;
+
 	if (image_fname.empty()) {
 		ifkp_clear_avatar();
 		return 1;
@@ -769,12 +771,12 @@ int ifkp_load_avatar(std::string image_fname, int W, int H)
 	std::string fname = AvatarDir;
 	fname.append(image_fname).append(".png");
 
-	FILE *temp = fopen(fname.c_str(), "rb");
+	FILE *temp = fl_fopen(fname.c_str(), "rb");
 	if (temp) {
 		fseek(temp, 0L, SEEK_SET);
 		fclose(temp);
 	} else {
-		ifkp_avatar->video(tux_img, W * H * 3);
+		ifkp_avatar->video(tux_img, 59 * 74 * 3);
 		return 1;
 	}
 
@@ -784,14 +786,14 @@ int ifkp_load_avatar(std::string image_fname, int W, int H)
 	shared_avatar_img->reload();
 
 	if (!shared_avatar_img) {
-		ifkp_avatar->video(tux_img, W * H * 3);
+		ifkp_avatar->video(tux_img, 59 * 74 * 3);
 		return 1;
 	}
 
 	if (shared_avatar_img->count() > 1) {
 		shared_avatar_img->release();
 		shared_avatar_img = 0;
-		ifkp_avatar->video(tux_img, W * H * 3);
+		ifkp_avatar->video(tux_img, 59 * 74 * 3);
 		return 0;
 	}
 
@@ -825,6 +827,7 @@ int ifkp_load_avatar(std::string image_fname, int W, int H)
 	ifkp_avatar->video(avatar_img, W * H * 3);
 
 	shared_avatar_img->release();
+	shared_avatar_img = 0;
 
 	return 1;
 }

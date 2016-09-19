@@ -40,19 +40,18 @@
 #include <map>
 #include <exception>
 #include <cstdlib>
-
 #include <signal.h>
 
-#include <xmlrpcpp/XmlRpcServer.h>
-#include <xmlrpcpp/XmlRpcServerMethod.h>
-#include <xmlrpcpp/XmlRpcValue.h>
+#include "threads.h"
+
+class XmlRpcImpl;
 
 #include "globals.h"
 #include "configuration.h"
 #ifdef HAVE_VALUES_H
 #	include <values.h>
 #endif
-#include "threads.h"
+
 #include "modem.h"
 #include "trx.h"
 #include "fl_digi.h"
@@ -182,7 +181,7 @@ struct RpcBuilder
 
 struct XmlRpcImpl : public XmlRpcServer
 {
-	void open(const char * port)
+	void fl_open(const char * port)
 	{
 		bindAndListen( atoi( port ) );
 
@@ -213,8 +212,8 @@ struct rpc_method
 typedef list<rpc_method> methods_t;
 static methods_t* methods = 0;
 
-static pthread_t* server_thread;
-static pthread_mutex_t* server_mutex;
+pthread_t* server_thread;
+pthread_mutex_t* server_mutex;
 
 XML_RPC_Server* XML_RPC_Server::inst = 0;
 
@@ -252,7 +251,7 @@ void XML_RPC_Server::start(const char* node, const char* service)
 	inst = new XML_RPC_Server;
 
 	try {
-		inst->server_impl->open(service);
+		inst->server_impl->fl_open(service);
 		if (pthread_create(server_thread, NULL, thread_func, NULL) != 0)
 			throw runtime_error(strerror(errno));
 	}
@@ -1473,8 +1472,10 @@ public:
 	void execute(const xmlrpc_c::paramList& params, xmlrpc_c::value* retval)
 	{
 		XMLRPC_LOCK;
-		if (!wf->xmtrcv->value())
+		if (!wf->xmtrcv->value()) {
+LOG_INFO("enable TX");
 			REQ(set_button, wf->xmtrcv, true);
+		}
 		*retval = xmlrpc_c::value_nil();
 	}
 };
@@ -1507,8 +1508,10 @@ public:
 	void execute(const xmlrpc_c::paramList& params, xmlrpc_c::value* retval)
 	{
 		XMLRPC_LOCK;
-		if (wf->xmtrcv->value())
+		if (wf->xmtrcv->value()) {
+LOG_INFO("disable TX");
 			REQ(set_button, wf->xmtrcv, false);
+		}
 		*retval = xmlrpc_c::value_nil();
 	}
 };
@@ -1721,13 +1724,16 @@ public:
 	}
 };
 
+pthread_mutex_t tx_queue_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 static string xmlchars;
 bool xmltest_char_available;
 static size_t pxmlchar = 0;
 static char xml_status_msg[50];
+
 int xmltest_char()
 {
+	guard_lock xmlchr_lock(&tx_queue_mutex);
 	if (xmlchars.empty() || !xmltest_char_available)
 		return 0;
 	if (pxmlchar >= xmlchars.length() ) {
@@ -1736,11 +1742,10 @@ int xmltest_char()
 		xmltest_char_available = false;
 		return -3;
 	}
-	pxmlchar++;
 	snprintf(xml_status_msg, sizeof(xml_status_msg), "%d%% sent",
-		100*pxmlchar/xmlchars.length());
+		static_cast<int>(100*pxmlchar/xmlchars.length()));
 	put_status(xml_status_msg, 1.0);
-	return xmlchars[pxmlchar] & 0xFF;
+	return xmlchars[pxmlchar++] & 0xFF;
 }
 
 void reset_xmlchars()
@@ -2952,6 +2957,32 @@ public:
 	}
 };
 
+class Text_add_tx_queu : public xmlrpc_c::method
+{
+public:
+	Text_add_tx_queu()
+	{
+		_signature = "n:s";
+		_help = "Adds a string to the TX transmit queu.";
+	}
+	void execute(const xmlrpc_c::paramList& params, xmlrpc_c::value* retval)
+	{
+		XMLRPC_LOCK;
+		guard_lock xmlchr_lock(&tx_queue_mutex);
+		std::string txt2send = params.getString(0);
+		if (xmlchars.empty()) {
+			xmlchars = txt2send;
+			xmltest_char_available = true;
+			pxmlchar = 0;
+		}
+		else {
+			xmlchars.append(txt2send);
+		}
+		*retval = xmlrpc_c::value_nil();
+	}
+};
+
+
 class Text_add_tx : public xmlrpc_c::method
 {
 public:
@@ -2963,10 +2994,7 @@ public:
 	void execute(const xmlrpc_c::paramList& params, xmlrpc_c::value* retval)
 	{
 		XMLRPC_LOCK;
-//		REQ_SYNC(&FTextTX::add_text, TransmitText, params.getString(0));
-		xmlchars = params.getString(0);
-		xmltest_char_available = true;
-		pxmlchar = 0;
+		REQ_SYNC(&FTextTX::add_text, TransmitText, params.getString(0));
 		*retval = xmlrpc_c::value_nil();
 	}
 };
@@ -3577,6 +3605,7 @@ ELEM_(Text_get_rx_length, "text.get_rx_length")                        \
 ELEM_(Text_get_rx, "text.get_rx")                                      \
 ELEM_(Text_clear_rx, "text.clear_rx")                                  \
 ELEM_(Text_add_tx, "text.add_tx")                                      \
+ELEM_(Text_add_tx_queu, "text.add_tx_queu")                            \
 ELEM_(Text_add_tx_bytes, "text.add_tx_bytes")                          \
 ELEM_(Text_clear_tx, "text.clear_tx")                                  \
 \

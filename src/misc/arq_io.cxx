@@ -528,12 +528,10 @@ bool ARQ_SOCKET_Server::start(const char* node, const char* service)
 
 void ARQ_SOCKET_Server::stop(void)
 {
-	// FILEME - uncomment when we have an ARQ_SOCKET_Server than can be
-	// interrupted
-	//	if (!inst)
-	//		return;
-	//	delete inst;
-	//	inst = 0;
+	if (!inst)
+		return;
+	delete inst;
+	inst = 0;
 }
 
 void* ARQ_SOCKET_Server::thread_func(void*)
@@ -894,6 +892,13 @@ int arq_get_char()
 		}
 	}
 	return c;
+}
+
+void flush_arq_tx_buffer(void)
+{
+	guard_lock arq_rx_lock(&arq_rx_mutex);
+    arq_text_available = false;
+    arqtext.clear();
 }
 
 //======================================================================

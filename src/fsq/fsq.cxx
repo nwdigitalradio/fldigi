@@ -341,7 +341,7 @@ bool fsq::fsq_squelch_open()
 	return ch_sqlch_open || metric >= progStatus.sldrSquelchValue;
 }
 
-static string triggers = " !#$%&'()*+,-.;<=>?@[\\]^_`{|}~";
+static string triggers = " !#$%&'()*+,-.;<=>?@[\\]^_{|}~";
 static string allcall = "allcall";
 static string cqcqcq = "cqcqcq";
 
@@ -392,10 +392,12 @@ void fsq::parse_rx_text()
 
 	state = TEXT;
 	size_t p = rx_text.find(':');
+	if (p == 0) {
+		rx_text.erase(0,1);
+		return;
+	}
 	if (p == std::string::npos ||
-		p == 0 ||
 		rx_text.length() < p + 2) {
-		rx_text.clear();
 		return;
 	}
 
@@ -404,10 +406,11 @@ void fsq::parse_rx_text()
 	station_calling.clear();
 
 	int max = p+1;
+	if (max > 20) max = 20;
 	std::string substr;
-	for (int i = 1; (i < 10) && (i < max); i++) {
+	for (int i = 1; i < max; i++) {
 		if (rx_text[p-i] <= ' ' || rx_text[p-i] > 'z') {
-			rx_text.clear();
+			rx_text.erase(0, p+1);
 			return;
 		}
 		substr = rx_text.substr(p-i, i);
@@ -419,10 +422,10 @@ void fsq::parse_rx_text()
 
 	if (station_calling == mycall) { // do not display any of own rx stream
 		LOG_ERROR("Station calling is mycall: %s", station_calling.c_str());
-		rx_text.clear();
+		rx_text.erase(0, p+3);
+//		rx_text.clear();
 		return;
 	}
-
 	if (!station_calling.empty()) {
 		REQ(add_to_heard_list, station_calling, szestimate);
 		std::string sheard = ztbuf;
@@ -535,13 +538,14 @@ void fsq::parse_rx_text()
 		}
 	}
 
-// if allcall; only respond to the ' ', '*', '#', and '%' triggers
+// if allcall; only respond to the ' ', '*', '#', '%', and '[' triggers
 	else {
 		switch (tr) {
 			case ' ': parse_space(true);   break;
 			case '*': parse_star();    break;
 			case '#': parse_pound();   break;
 			case '%': parse_pcnt();    break;
+			case '[': parse_relayed(); break;
 		}
 	}
 
@@ -675,14 +679,12 @@ void fsq::parse_pound(std::string relay)
 {
 	size_t p1 = NIT, p2 = NIT;
 	std::string fname = "";
-	bool call_file = true;
 	p1 = rx_text.find('[');
 	if (p1 != NIT) {
 		p2 = rx_text.find(']', p1);
 		if (p2 != NIT) {
 			fname = rx_text.substr(p1 + 1, p2 - p1 - 1);
 			fname = fl_filename_name(fname.c_str());
-			call_file = false;
 		} else p2 = 0;
 	} else p2 = 0;
 	if (fname.empty()) {
@@ -695,13 +697,13 @@ void fsq::parse_pound(std::string relay)
 
 	std::ofstream rxfile;
 	fname.insert(0, TempDir);
-	if (call_file) {
+	if (progdefaults.always_append) {
 		rxfile.open(fname.c_str(), ios::app);
 	} else {
 		rxfile.open(fname.c_str(), ios::out);
 	}
 	if (!rxfile) return;
-	if (call_file && progdefaults.add_fsq_msg_dt) {
+	if (progdefaults.add_fsq_msg_dt) {
 		rxfile << "Received: " << zdate() << ", " << ztime() << "\n";
 		rxfile << rx_text.substr(p2+1) << "\n";
 	} else
@@ -933,7 +935,8 @@ void fsq::lf_check(int ch)
 	static char lfpair[3] = "01";
 	static char bstrng[4] = "012";
 
-	lfpair[0] = lfpair[1];  lfpair[1] = 0xFF & ch;
+	lfpair[0] = lfpair[1];
+	lfpair[1] = 0xFF & ch;
 
 	bstrng[0] = bstrng[1];
 	bstrng[1] = bstrng[2];
@@ -991,6 +994,7 @@ void fsq::process_symbol(int sym)
 				double val = snfilt->value();
 				for (int i = 0; i < SQLFILT_SIZE; i++) snfilt->run(val);
 				ch_sqlch_open = true;
+				rx_text.clear();
 			}
 
 			if (fsq_squelch_open()) {

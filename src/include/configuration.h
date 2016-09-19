@@ -703,6 +703,9 @@
         ELEM_(bool, add_fsq_msg_dt, "ADDFSQMSGDT",                                      \
               "Add date-time stamp to each # type received message",                    \
               1)                                                                        \
+        ELEM_(bool, always_append, "ALWAYS_APPEND",                                     \
+              "Enable to always append # directive messages to named file",             \
+              1)                                                                        \
         /* IFKP */                                                                      \
         ELEM_(int, ifkp_baud, "IFKPBAUD",                                               \
               "1, 2, 3",                                                                \
@@ -983,10 +986,30 @@
         ELEM_(std::string, maclogger_log_filename, "MACLOGGER_LOG_FILENAME",            \
               "Filename for maclogger UDP datastream file",                             \
               "maclogger_udp_strings.txt")                                              \
+        /* N3FJP tcpip interface */                                                     \
+        ELEM_(std::string, N3FJP_address, "N3FJP_ADDRESS",                              \
+              "IP Address of N3FJP socket",                                             \
+              "127.0.0.1")                                                              \
+        ELEM_(std::string, N3FJP_port, "N3FJP_PORT",                                    \
+              "IP port number of N3FJP socket",                                         \
+              "1100")                                                                   \
+        ELEM_(bool, enable_N3FJP_log, "ENABLE_N3FJP_LOG",                               \
+              "Enable data stream logging.",                                            \
+              true)                                                                     \
+        ELEM_(bool, connect_to_n3fjp, "CONNECT_TO_N3FJP",                               \
+              "Connect to the N3FJP log server",                                        \
+              false)                                                                    \
+        ELEM_(bool, N3FJP_sweet_spot, "N3FJP_SWEET_SPOT",                               \
+              "Use N3FJP spot report as signal center freq.\n"                          \
+              "Center the target at mode sweet spot",                                   \
+              false)                                                                    \
         /* Rig control */                                                               \
         ELEM_(bool, flrig_keys_modem, "FLRIG_KEYS_MODEM",                               \
               "PTT change at flrig changes Rx/Tx state\n"                               \
               "set to false if multple instance of fldigi used with single flrig",      \
+              true)                                                                     \
+        ELEM_(bool, fldigi_client_to_flrig, "CLIENT_TO_FLRIG",                          \
+              "True if flrig xmlrpc server is used for xcvr control",                   \
               true)                                                                     \
         ELEM_(bool, btnusb, "BTNUSB",                                                   \
               "This setting is currently unused",                                       \
@@ -1232,6 +1255,10 @@
               "0 - 8000, 1 - 11025, 2 - 16000, 3 - 22050\n"                             \
               "4 - 24000, 5 - 44100, 6 - 48000",                                        \
               0)                                                                        \
+        ELEM_(bool, record_both_channels, "RECORD_BOTH_CHANNELS",                       \
+              "Enabled - record wav file in stereo\n"                                   \
+              "Disabled - record wav file in monaural (left channel only)",             \
+              false)                                                                    \
         ELEM_(bool, loop_playback, "LOOPPLAYBACK",                                      \
               "true = continuous loop of sound file playback\n"                         \
               "false = single pass through playback file.",                             \
@@ -1315,11 +1342,43 @@
         ELEM_(std::string, mytxpower, "TXPOWER",                                        \
               "TX power used for logbook entries",                                      \
               "")                                                                       \
+        ELEM_(std::string, my_FD_call, "FD_CALL",                                       \
+              "Field Day call sign",                                                    \
+              "")                                                                       \
+        ELEM_(std::string, fd_op_call, "FD_OP_CALL",                                    \
+              "Field Day (w1hkj) server position operator call",                        \
+              "")                                                                       \
+        ELEM_(std::string, my_FD_class, "FDCLASS",                                      \
+              "Field Day class",                                                        \
+              "")                                                                       \
+        ELEM_(std::string, my_FD_section, "FDSECTION",                                  \
+              "Field Day section",                                                      \
+              "")                                                                       \
+        ELEM_(std::string, my_FD_mult, "FDMULT",                                        \
+              "Field Day multiplier",                                                   \
+              "5")                                                                      \
+        ELEM_(int, logging, "LOGGING",                                                  \
+              "Logging for:\n"                                                          \
+              "  0 - generic QSO\n"                                                     \
+              "  1 - generic contest\n"                                                 \
+              "  2 - Field Day\n"                                                       \
+              "  3 - CQWW RTTY\n"                                                       \
+              "  4 - BART",                                                             \
+              0)                                                                        \
+        ELEM_(bool, connect_to_fdserver, "CONNECT_TO_FDSERVER",                         \
+              "Connect to field day server",                                            \
+              false)                                                                    \
+        ELEM_(std::string, fd_tcpip_addr, "FD_TCPIP_ADDR",                              \
+              "Field Day (w1hkj) server tcpip address",                                 \
+              "127.0.0.1")                                                              \
+        ELEM_(std::string, fd_tcpip_port, "FD_TCPIP_PORT",                              \
+              "Field Day (w1hkj) server tcpip port",                                    \
+              "20001")                                                                  \
         /* Macro controls */                                                            \
         ELEM_(bool, UseLastMacro, "USELASTMACRO",                                       \
               "Load last used macro file on startup",                                   \
               false)                                                                    \
-        ELEM_(double, mbw, "MBW",                                                      \
+        ELEM_(double, mbw, "MBW",                                                       \
               "Delay between execution of RIGMODE and FILWID\n"                         \
               "when in the same macro definition\n"                                     \
               "range 0.1 to 2.0, default = 0.5",                                        \
@@ -1337,6 +1396,9 @@
               "# and position of macro bars\n"                                          \
               "0..12, 1 = default",                                                     \
               1)                                                                        \
+        ELEM_(bool, macro_post, "MACROPOST",                                            \
+              "expand ^! macro tags in Rx panel when executed",                         \
+              false)                                                                    \
         ELEM_(double, txlevel, "TXATTEN",                                               \
               "TX attenuator (db) -30 .. 0",                                            \
               -3.0)                                                                     \
@@ -1679,24 +1741,57 @@
         ELEM_(int, busyChannelSeconds, "BUSY_CHANNEL_SECONDS",                          \
               "Number of seconds to wait before transmit resume",                       \
               3)                                                                        \
+        ELEM_(bool, show_psm_btn, "SHOW_PSM_BTN",                                       \
+              "Display / Enable PSM button on main dialog",                             \
+              false)                                                                    \
         ELEM_(int, kpsql_attenuation, "KPSQL_ATTENUATION",                              \
               "KPSQL Attenuation in 1/n of 1:1 Gain",                                   \
               2)                                                                        \
         ELEM_(bool, csma_enabled, "CSMA_ENABLED",                                       \
               "Use CSMA on heavy traffic channels (AX25)",                              \
               true)                                                                     \
-	    ELEM_(bool, kiss_tcp_io, "KISS_TCP_IO",                                         \
-	          "Connect kiss io via TCP/IP vise UDP/IP",                                 \
-	          false)                                                                    \
+        ELEM_(bool, kiss_tcp_io, "KISS_TCP_IO",                                         \
+              "Connect kiss io via TCP/IP vise UDP/IP",                                 \
+              false)                                                                    \
         ELEM_(bool, kiss_tcp_listen, "KISS_TCP_LISTEN",                                 \
               "Listen for TCP connection (Server mode)",                                \
               false)                                                                    \
         ELEM_(bool, kpsql_enabled, "KPSQL_ENABLED",                                     \
-              "Enable/Disable KPSQL",                                                   \
+              "Enable/Disable PSM",                                                     \
               false)                                                                    \
         ELEM_(bool, tcp_udp_auto_connect, "TCP_UDP_AUTO_CONNECT",                       \
               "Make Connect Attemp on Fldigi Start",                                    \
               false)                                                                    \
+        ELEM_(int, csma_persistance, "CSMA_PERSISTANCE",                                \
+              "CSMA Persistance",                                                       \
+              63)                                                                       \
+        ELEM_(int, csma_slot_time, "CSMA_SLOT_TIME",                                    \
+              "CSMA Slot Time",                                                         \
+              10)                                                                       \
+        ELEM_(int, csma_transmit_delay, "CSMA_TRANSMIT_DELAY",                          \
+              "CSMA Transit Delay",                                                     \
+              50)                                                                       \
+        ELEM_(int, psm_flush_buffer_timeout, "PSM_FLUSH_BUFFER_TIMEOUT",                \
+              "Flush buffer timout",                                                    \
+              15)                                                                       \
+        ELEM_(int, psm_minimum_bandwidth, "PSM_MINIMUM_BANDWIDTH",                      \
+              "PSM minimum measured bandwidth",                                         \
+              100)                                                                      \
+        ELEM_(int, psm_minimum_bandwidth_margin, "PSM_MINIMUM_BANDWIDTH_MARGIN",        \
+              "PSM minimum measured bandwidth margin",                                  \
+              10)                                                                       \
+        ELEM_(bool, psm_use_histogram, "PSM_USE_HISTOGRAM",                             \
+              "Histogram threshold",                                                    \
+              false)                                                                    \
+        ELEM_(int, psm_histogram_offset_threshold, "PSM_HISTOGRAM_OFFSET_THRESHOLD",    \
+              "Histogram theshold referece level",                                      \
+              3)                                                                        \
+        ELEM_(int, psm_hit_time_window, "PSM_HIT_TIME_WINDOW",                          \
+              "Valid signal test rate (milliseconds)",                                  \
+              15)                                                                       \
+        ELEM_(int, tx_buffer_timeout, "TX_BUFFER_TIMEOUT",                              \
+              "Transmit buffer timeout (minutes)",                                      \
+              15)                                                                       \
         ELEM_(bool, kiss_io_modem_change_inhibit, "KISS_IO_MODEM_CHANGE_INHIBIT",       \
               "Enable/Disable Modem Change to a non 8 bit when KISS IO is in use",      \
               false)                                                                    \
@@ -1779,6 +1874,9 @@
              "Minimum length of logged messages",                                       \
              0 )                                                                        \
         /* WX fetch from NOAA */                                                        \
+        ELEM_(std::string, wx_url, "WX_URL",                                            \
+             "Internet URL used to fetch METAR data using wget symbology",              \
+             "http://tgftp.nws.noaa.gov/data/observations/metar/decoded/" )             \
         ELEM_(std::string, wx_eoh, "WX_EOH",                                            \
              "Text at end of METAR report header\n"                                     \
              "default = Connection: close",                                             \
@@ -1813,7 +1911,7 @@
         ELEM_(bool, wx_station_name, "WX_STATION_NAME",                                 \
               "Report station noun name",                                               \
               true)                                                                     \
-    /* KML Keyhole Markup Language */                                               \
+    /* KML Keyhole Markup Language */                                                   \
         ELEM_(bool, kml_purge_on_startup, "KML_PURGE_ON_STARTUP",                       \
               "Purge KML data at startup",                                              \
               false)                                                                    \
@@ -1835,7 +1933,7 @@
        ELEM_(int, kml_balloon_style, "KML_BALLOON_STYLE",                               \
              "KML balloons data displayed as text, HTML tables, HTML single matrix",    \
              2)                                                                         \
-       ELEM_(double, cnt_dft_range, "cnt_dft_range",                                   \
+       ELEM_(double, cnt_dft_range, "cnt_dft_range",                                    \
              "Display range in dB for dft scan modem",                                  \
              60.0)                                                                      \
        ELEM_(int, cnt_dft_scans, "cnt_dft_scans",                                       \
@@ -1844,7 +1942,7 @@
        ELEM_(bool, dft_relative, "dft_relative",                                        \
              "Plot vertical scale as dB relative to maximum value",                     \
              false)                                                                     \
-       ELEM_(std::string, auto_flrig_pathname, "AUTO_FLRIG_PATHNAME",                  \
+       ELEM_(std::string, auto_flrig_pathname, "AUTO_FLRIG_PATHNAME",                   \
               "Full pathname to the flrig executable",                                  \
               "")                                                                       \
         ELEM_(std::string, auto_flamp_pathname, "AUTO_FLAMP_PATHNAME",                  \
@@ -1915,9 +2013,9 @@
         ELEM_(bool, psk8DCDShortFlag, "PSK8DCDSHORTFLAG",                               \
               "Flag: Change DCD pre-ample length",                                      \
               false)                                                                    \
-        ELEM_(bool, dockable_macros, "DOCKABLE_MACROS",                                 \
+        ELEM_(bool, display_48macros, "DISPLAY_48MACROS",                               \
               "Allow dockable macros",                                                  \
-              true)
+              false)
 
 
 // declare the struct

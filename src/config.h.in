@@ -99,7 +99,7 @@
 /* flxmlrpc version */
 #undef FLXMLRPC_BUILD_VERSION
 
-/* Define to 1 if gcc >= 4.1.0 */
+/* Define to 0 if gcc < 4.1.0 */
 #undef GCC_VER_OK
 
 /* hamlib version */
@@ -118,6 +118,9 @@
 
 /* Define to 1 if we have clock_gettime */
 #undef HAVE_CLOCK_GETTIME
+
+/* define if the compiler supports basic C++11 syntax */
+#undef HAVE_CXX11
 
 /* Define to 0 if not using dbg::stack */
 #undef HAVE_DBG_STACK
@@ -229,16 +232,16 @@
 /* Define to 1 if you have the <stdlib.h> header file. */
 #undef HAVE_STDLIB_H
 
-/* Define to 1 if we have std::bind in <functional> */
+/* Defined 0 if we do not have std::bind in <functional> */
 #undef HAVE_STD_BIND
 
-/* Define to 0 if we do not have std::hash in <unordered_map> */
+/* Defined 0 if we do not have std::bind in <unordered_map> */
 #undef HAVE_STD_HASH
 
-/* Define to 1 if we have std::tr1::bind in <tr1/functional> */
+/* Defined 0 if we do not have std::tr1::bind in <tr1/functional> */
 #undef HAVE_STD_TR1_BIND
 
-/* Define to 1 if we do not have std::tr1::hash in <tr1/unordered_map> */
+/* Defined 0 if we do not have std::tr1::hash in <tr1/unordered_map> */
 #undef HAVE_STD_TR1_HASH
 
 /* Define to 1 if you have the `strcasecmp' function. */

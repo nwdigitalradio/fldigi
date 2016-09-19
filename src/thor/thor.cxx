@@ -73,7 +73,7 @@ void thor::tx_init(SoundBase *sc)
 	videoText();
 	strSecXmtText = progdefaults.THORsecText;
 	if (strSecXmtText.length() == 0)
-		strSecXmtText = "fldigi "PACKAGE_VERSION" ";
+		strSecXmtText = "fldigi " PACKAGE_VERSION " ";
 	cptr = 0;
 }
 
@@ -1358,8 +1358,10 @@ void thor::send_image() {
 }
 
 void thor::thor_send_image(std::string image_str) {
-	if (!image_str.empty()) hide_after_sending = true;
-	imageheader = image_str;
+	if (!image_str.empty()) {
+		hide_after_sending = true;
+		imageheader = image_str;
+	}
 	if (txstate == TX_STATE_RECEIVE)
 		start_tx();
 }

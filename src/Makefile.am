@@ -243,7 +243,8 @@ FLDIGI_FL_SRC = \
 		dialogs/confdialog.fl \
 		dialogs/notifydialog.fl \
 		dialogs/record_browse.fl \
-		logbook/lgbook.fl
+		logbook/lgbook.fl \
+		logbook/fd_view.fl
 FLARQ_FL_SRC = flarq-src/arqdialogs.fl
 
 if HAVE_FLUID
@@ -384,6 +385,7 @@ fldigi_SOURCES += \
 	include/thorvaricode.h \
 	include/dominoex.h \
 	include/dominovar.h \
+	include/fd_logger.h \
 	include/feld.h \
 	include/fftfilt.h \
 	include/filters.h \
@@ -409,6 +411,7 @@ fldigi_SOURCES += \
 	include/jalocha/pj_struc.h \
 	include/kiss_io.h \
 	include/maclogger.h \
+	include/n3fjp_logger.h \
 	include/ax25_decode.h \
 	include/coordinate.h \
 	include/gfft.h \
@@ -500,6 +503,7 @@ fldigi_SOURCES += \
 	include/field_def.h \
 	include/logbook.h \
 	include/lgbook.h \
+	include/fd_view.h \
 	include/logsupport.h \
 	include/outputencoder.h \
 	include/qso_db.h \
@@ -508,12 +512,6 @@ fldigi_SOURCES += \
 	include/psk_browser.h \
 	include/utf8file_io.h \
 	include/weather.h \
-	include/dock_events.h \
-	include/dock_gp.h \
-	include/drag_btn.h \
-	include/dropwin.h \
-	include/toolgrp.h \
-	include/toolwin.h \
 	irrxml/CXMLReaderImpl.h \
 	irrxml/fast_atof.h \
 	irrxml/heapsort.h \
@@ -522,14 +520,19 @@ fldigi_SOURCES += \
 	irrxml/irrTypes.h \
 	irrxml/irrXML.cpp \
 	irrxml/irrXML.h \
+	psm/psm.cxx \
+	psm/psm.h \
 	logbook/adif_io.cxx \
 	logbook/calendar.cxx \
 	logbook/date.cxx \
+	logbook/fd_logger.cxx \
 	logbook/lgbook.cxx \
+	logbook/fd_view.cxx \
 	logbook/logbook.cxx \
 	logbook/logsupport.cxx \
 	logbook/lookupcall.cxx \
 	logbook/maclogger.cxx \
+	logbook/n3fjp_logger.cxx \
 	logbook/qrzlib.cxx \
 	logbook/qso_db.cxx \
 	logbook/table.cxx \
@@ -628,11 +631,6 @@ fldigi_SOURCES += \
 	widgets/psk_browser.cxx \
 	widgets/smeter.cxx \
 	widgets/pwrmeter.cxx \
-	widgets/dock_gp.cxx \
-	widgets/drag_btn.cxx \
-	widgets/dropwin.cxx \
-	widgets/toolgrp.cxx \
-	widgets/toolwin.cxx \
 	fsq/fsq.cxx \
 	ifkp/ifkp.cxx \
 	ifkp/tux.cxx \

@@ -30,6 +30,7 @@
 #include <unistd.h>
 #include <sys/stat.h>
 
+#include <FL/fl_utf8.h>
 #include "debug.h"
 #include "gettext.h"
 #include "script_parsing.h"
@@ -206,6 +207,7 @@ static const SCRIPT_COMMANDS default_fldigi_command_table[] = {
 	{ CMD_FLDIGI_LOCK,      SCRIPT_COMMAND, 0,  1, {0}, { p_bool     }, 0, 0, 0, process_lock,         0, 0},
 	{ CMD_FLDIGI_SQL,       SCRIPT_COMMAND, 0,  1, {0}, { p_bool     }, 0, 0, 0, process_sql,          0, 0},
 	{ CMD_FLDIGI_KPSQL,     SCRIPT_COMMAND, 0,  1, {0}, { p_bool     }, 0, 0, 0, process_kpsql,        0, 0},
+	{ CMD_FLDIGI_KPSM,      SCRIPT_COMMAND, 0,  1, {0}, { p_bool     }, 0, 0, 0, process_kpsql,        0, 0},
 	{ CMD_FLDIGI_MODEM,     SCRIPT_COMMAND, 0,  1, {0}, { p_string   }, 0, 0, 0, process_modem,        0, 0},
 	{ CMD_END_CMD,          SCRIPT_COMMAND, 0,  0, {0}, { p_list_end }, 0, 0, 0, 0, 0, 0},
 	{ {0} }
@@ -1239,7 +1241,7 @@ SCRIPT_CODES ScriptParsing::parse_commands(char *file_name_path)
 		return script_function_parameter_error;
 	}
 
-	fd = fopen(file_name_path, "r");
+	fd = fl_fopen(file_name_path, "r");
 	line_number = 0;
 
 	if(!fd) {
@@ -1341,7 +1343,7 @@ SCRIPT_CODES ScriptParsing::check_filename(char *filename)
 
 	FILE *fd = (FILE *)0;
 
-	fd = fopen(filename, "r");
+	fd = fl_fopen(filename, "r");
 
 	if(!fd) {
 		error = script_file_not_found;

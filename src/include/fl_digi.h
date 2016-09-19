@@ -46,12 +46,11 @@
 #include "smeter.h"
 #include "pwrmeter.h"
 #include "picture.h"
-#include "dropwin.h"
 
 extern fre_t seek_re;
 
-//extern Fl_Double_Window *fl_digi_main;
-extern dropwin			*fl_digi_main;
+extern Fl_Double_Window *fl_digi_main;
+//extern dropwin			*fl_digi_main;
 
 extern Fl_Double_Window *scopeview;
 //extern Fl_Double_Window *opBrowserView;
@@ -64,6 +63,7 @@ extern bool		bMOREINFO;
 
 extern FTextRX			*ReceiveText;
 extern FTextTX			*TransmitText;
+extern Raster			*FHdisp;
 extern pskBrowser		*mainViewer;
 extern Fl_Input2		*txtInpSeek;
 extern Fl_Box			*hideViewer;
@@ -106,6 +106,8 @@ extern Fl_Input2		*inpCountry;
 extern Fl_Input2		*inpSerNo;
 extern Fl_Input2		*outSerNo;
 extern Fl_Input2		*inpXchgIn;
+extern Fl_Input2		*inpXchgIn1;
+extern Fl_Input2		*inpXchgIn2;
 extern Fl_Input2		*inpVEprov;
 extern Fl_Input2		*inpLoc;
 extern Fl_Input2		*inpNotes;
@@ -113,9 +115,9 @@ extern Fl_Input2		*inpAZ;	// WA5ZNU
 extern Fl_Button		*qsoSave;
 extern Fl_Box			*txtRigName;
 
-extern cFreqControl	*qsoFreqDisp1;
+extern cFreqControl		*qsoFreqDisp1;
 extern cFreqControl 	*qsoFreqDisp2;
-extern cFreqControl	*qsoFreqDisp3;
+extern cFreqControl		*qsoFreqDisp3;
 extern Fl_Input2		*inpFreq2;
 
 extern Fl_Input2		*inpCall1;
@@ -232,7 +234,7 @@ extern void			cb_ifkp_heard(Fl_Browser*, void*);
 
 extern void			enableSELCAL();
 
-extern unsigned char tux_img[];
+extern unsigned char tux_img[59*74*3];
 
 extern void			cbFSQQTC(Fl_Widget *w, void *d);
 extern void			cbFSQQTH(Fl_Widget *w, void *d);
@@ -285,11 +287,14 @@ extern int				altMacros;
 extern waterfall		*wf;
 extern Digiscope		*digiscope;
 
+extern std::string		argv_window_title;
 extern std::string		main_window_title;
+extern std::string		xcvr_title;
 
 extern int Qwait_time;
 extern int Qidle_time;
 extern bool idling;
+extern bool csma_idling;
 
 extern void toggleRSID();
 
@@ -314,7 +319,7 @@ extern void cb_mnuVisitURL(Fl_Widget*, void* arg);
 
 extern void put_freq(double frequency);
 extern void put_Bandwidth(int bandwidth);
-extern void global_display_metric(double metric);
+extern void callback_set_metric(double metric);
 extern void put_cwRcvWPM(double wpm);
 
 extern void set_scope_mode(Digiscope::scope_mode md);
@@ -363,6 +368,11 @@ extern void showMacroSet();
 extern void setwfrange();
 extern void showDTMF(const std::string s);
 
+extern void * set_xmtrcv_button_false(void);
+extern void * set_xmtrcv_button_true(void);
+extern void * set_xmtrcv_selection_color_pending(void);
+extern void * set_xmtrcv_selection_color_transmitting(void);
+extern void xmtrcv_selection_color(Fl_Color clr);
 extern void xmtrcv_selection_color();
 extern void rev_selection_color();
 extern void xmtlock_selection_color();
@@ -448,6 +458,7 @@ extern void abort_tx();
 extern void set_rx_tx();
 extern void set_rx_only();
 
+extern void connect_to_fdserver(bool);
 extern void LOGGING_colors_font();
 extern void LOGBOOK_colors_font();
 
@@ -522,6 +533,10 @@ extern void notch_off();
 extern void enable_kiss(void);
 extern void enable_arq(void);
 
+// PSM Configuration.
+extern void psm_set_defaults(void);
+extern void update_csma_io_config(int which);
+
 // thread terminators
 extern void ADIF_RW_close(void);
 extern void EQSL_close(void);
@@ -556,5 +571,18 @@ extern int			thor_get_avatar_pixel(int pos, int color);
 extern void			cb_thor_send_avatar( Fl_Widget *w, void *);
 extern picture		*thor_avatar;
 extern void			thor_load_scaled_image(std::string fname);
+
+// field day
+extern Fl_Input2	*inp_FD_class;
+extern Fl_Input2	*inp_FD_section;
+extern Fl_Input2	*inp_FD_class1;
+extern Fl_Input2	*inp_FD_section1;
+extern Fl_Input2	*inp_FD_class2;
+extern Fl_Input2	*inp_FD_section2;
+
+// CQWW RTTY
+extern Fl_Input2	*inp_CQzone;
+extern Fl_Input2	*inp_CQstate;
+
 
 #endif
