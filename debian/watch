@@ -1,2 +1,2 @@
 version=3
-http://sf.net/fldigi/fldigi-(\d\S*)\.(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))
+http://sf.net/fldigi/fldigi-([\d\.]+)\.(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))
