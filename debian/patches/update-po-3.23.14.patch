@@ -1,0 +1,94 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ fldigi (3.23.14-1) unstable; urgency=medium
+ .
+   * New upstream release
+Author: Kamal Mostafa <kamal@whence.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- fldigi-3.23.14.orig/po/de.po
++++ fldigi-3.23.14/po/de.po
+@@ -642,6 +642,9 @@ msgstr "Neueste Aktivität für Grid"
+ #: src/dialogs/fl_digi.cxx:6135 src/dialogs/fl_digi.cxx:6143
+ msgid "Click to set power level"
+ msgstr ""
++"Klick links - Ausführen\n"
++"Fkey - Ausführen\n"
++"Klick rechts - Editieren"
+ 
+ #: src/dialogs/fl_digi.cxx:6166
+ msgid "Adjust Power Level"
+@@ -4721,7 +4724,6 @@ msgstr "Multi-Kanal Detektor"
+ #: src/dialogs/confdialog.cxx:9666
+ msgid "Disable on very slow CPUs of if signal browser is not used"
+ msgstr ""
+-"Auf sehr langsamen CPUs ausschalten, falls Signal Browser nicht benutzt wird"
+ 
+ #: src/dialogs/confdialog.cxx:9671
+ msgid "8 psk"
+--- fldigi-3.23.14.orig/po/it.po
++++ fldigi-3.23.14/po/it.po
+@@ -655,6 +655,9 @@ msgstr "Attivitá recenti per il quadrat
+ #: src/dialogs/fl_digi.cxx:6135 src/dialogs/fl_digi.cxx:6143
+ msgid "Click to set power level"
+ msgstr ""
++"Tasto sinistro - esegui\n"
++"Tasto funzione - esegui\n"
++"Tasto destro - modifica"
+ 
+ #: src/dialogs/fl_digi.cxx:6166
+ msgid "Adjust Power Level"
+@@ -4669,8 +4672,8 @@ msgstr "Caratteri estesi a 8 bit"
+ 
+ #: src/dialogs/confdialog.cxx:9311
+ #, fuzzy
+-msgid "Enable this for UTF-8 characters"
+-msgstr "Abilitare per i caratteri accentati Latin-1"
++msgid "Minimum # hits in tone detector"
++msgstr "Decodificatore Multicanale"
+ 
+ #: src/dialogs/confdialog.cxx:9317
+ msgid "Long receive integration"
+@@ -4736,8 +4739,8 @@ msgstr ""
+ 
+ #: src/dialogs/confdialog.cxx:9446 src/dialogs/confdialog.cxx:9454
+ #, fuzzy
+-msgid "Enable this for UTF-8 character transmission"
+-msgstr "Abilitare per i caratteri accentati Latin-1"
++msgid "convert operator callsign to lower case"
++msgstr "Converti il campo nominativo a maiuscole"
+ 
+ #: src/dialogs/confdialog.cxx:9459 src/dialogs/confdialog.cxx:9556
+ msgid "xmt start/stop tones"
+--- fldigi-3.23.14.orig/po/pl.po
++++ fldigi-3.23.14/po/pl.po
+@@ -7779,6 +7779,12 @@ msgstr "Zawody:"
+ msgid "QSO Date"
+ msgstr "Data QSO"
+ 
++#~ msgid "Prompt to save macro file when closing"
++#~ msgstr "Monituj o zapisanie pliku przy zamykaniu makro"
++
++#~ msgid "Dual Port"
++#~ msgstr "Podwójny port"
++
+ #~ msgid ""
+ #~ "Could not check for updates:\n"
+ #~ "%s"
