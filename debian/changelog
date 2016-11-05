@@ -1,3 +1,9 @@
+fldigi (3.23.15-1) wilderness; urgency=medium
+
+  *  New upstream release
+
+ -- Jeremy McDermond <nh6z@nh6z.net>  Sat, 05 Nov 2016 14:05:08 -0700
+
 fldigi (3.23.14-1) unstable; urgency=medium
 
   * New upstream release
